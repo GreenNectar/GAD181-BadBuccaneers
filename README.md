@@ -2,7 +2,7 @@
 
 A series of fun-filled pirate-themed, multiplayer micro-games. Join a crew, bring your mateys, & see which one of yarr can get the most treasure
 
-Adventures be various, as you sea-faring dogs must compete in a series of small games no longer than 30 seconds, varying from swordplay, launching yourself from cannons, stealing treasure, avoiding sharks, memorizing maps, & peeling oranges. Scurvy be a pharsh mistress.
+Adventures be various, as you sea-faring dogs must compete in a series of small games no longer than 30 seconds, varying from swordplay, launching yourself from cannons, stealing treasure, avoiding sharks, memorizing maps, & peeling oranges. Scurvy be a harsh mistress.
 
 ## License
 
