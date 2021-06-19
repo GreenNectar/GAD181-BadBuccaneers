@@ -4,6 +4,10 @@ A series of fun-filled pirate-themed, multiplayer micro-games. Join a crew, brin
 
 Adventures be various, as you sea-faring dogs must compete in a series of small games no longer than 30 seconds, varying from swordplay, launching yourself from cannons, stealing treasure, avoiding sharks, memorizing maps, & peeling oranges. Scurvy be a harsh mistress.
 
+Check out the pitch below!
+
+[![Bad Bucanneers Pitch](https://img.youtube.com/vi/-8aRQ1a1yTw/0.jpg)](https://www.youtube.com/watch?v=-8aRQ1a1yTw "Click to watch the pitch on YouTube")
+
 ## License
 
 This repository is for SAE Unit GAD181 Class 2021
