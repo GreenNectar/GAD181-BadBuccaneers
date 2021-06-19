@@ -13,4 +13,16 @@ public static class Extensions
     {
         return layerMask == (layerMask | (1 << layer));
     }
+
+    public static float Angle(this Vector2 vector)
+    {
+        if (vector.x < 0)
+        {
+            return 360 - (Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg * -1);
+        }
+        else
+        {
+            return Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
+        }
+    }
 }
