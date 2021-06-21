@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mathfx : MonoBehaviour
+public static class Mathfx
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Remaps a float from two values, to another two values
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="fromMin"></param>
+    /// <param name="fromMax"></param>
+    /// <param name="toMin"></param>
+    /// <param name="toMax"></param>
+    /// <returns></returns>
+    public static float Map(float value, float fromMin, float fromMax, float toMin, float toMax)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return (value - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin;
     }
 }

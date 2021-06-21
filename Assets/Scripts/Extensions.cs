@@ -25,4 +25,19 @@ public static class Extensions
             return Mathf.Atan2(vector.x, vector.y) * Mathf.Rad2Deg;
         }
     }
+
+    public static float Step(this float value, float max, int steps)
+    {
+        return Mathf.Round(value / (max / steps)) * (max / steps);
+    }
+
+    public static float StepCeil(this float value, float max, int steps)
+    {
+        return Mathf.Ceil(value / (max / steps)) * (max / steps);
+    }
+
+    public static float StepFloor(this float value, float max, int steps)
+    {
+        return Mathf.Floor(value / (max / steps)) * (max / steps);
+    }
 }

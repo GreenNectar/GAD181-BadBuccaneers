@@ -1098,7 +1098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1735507436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1389,6 +1389,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2870036954254436807, guid: c002154e97b0aa745b05ec3b1bff0713, type: 3}
       propertyPath: rotationRight
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870036954254436807, guid: c002154e97b0aa745b05ec3b1bff0713, type: 3}
+      propertyPath: correctDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870036954254436807, guid: c002154e97b0aa745b05ec3b1bff0713, type: 3}
+      propertyPath: vibrationDistance
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2870036954254436856, guid: c002154e97b0aa745b05ec3b1bff0713, type: 3}

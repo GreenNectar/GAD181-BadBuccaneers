@@ -9,31 +9,54 @@ using UnityEngine;
 /// </summary>
 public static class GlobalRandom
 {
-    private static float[] randomNumbers;
-    private static float[] RandomNumbers
+    //private static float[] randomNumbers;
+    //private static float[] RandomNumbers
+    //{
+    //    get
+    //    {
+    //        if (randomNumbers == null || randomNumbers.Length == 0)
+    //        {
+    //            SetRandomNumbers();
+    //        }
+    //        return randomNumbers;
+    //    }
+    //}
+
+    //private static void SetRandomNumbers()
+    //{
+    //    randomNumbers = new float[1024];
+
+    //    for (int i = 0; i < 1024; i++)
+    //    {
+    //        randomNumbers[i] = Random.Range(0f, 1f);
+    //    }
+    //}
+
+    //public static float Range(float min, float max)
+    //{
+    //    return RandomNumbers[Time.frameCount % randomNumbers.Length].Remap(0f, 1f, min, max);//((Time.frameCount % 256f) / 256f).Remap(0f, 1f, min, max);
+    //}
+
+    private static int generatedFrame = -1;
+    private static float generatedNumber = 0;
+
+    private static float GetRandomValue()
     {
-        get
+        if (Time.frameCount != generatedFrame)
         {
-            if (randomNumbers == null || randomNumbers.Length == 0)
-            {
-                SetRandomNumbers();
-            }
-            return randomNumbers;
+            generatedFrame = Time.frameCount;
+            generatedNumber = Random.Range(0f, float.MaxValue);
+            return generatedNumber;
         }
-    }
-
-    private static void SetRandomNumbers()
-    {
-        randomNumbers = new float[1024];
-
-        for (int i = 0; i < 1024; i++)
+        else
         {
-            randomNumbers[i] = Random.Range(0f, 1f);
+            return generatedNumber;
         }
     }
 
     public static float Range(float min, float max)
     {
-        return RandomNumbers[Time.frameCount % randomNumbers.Length].Remap(0f, 1f, min, max);//((Time.frameCount % 256f) / 256f).Remap(0f, 1f, min, max);
+
+        return GetRandomValue().Remap(0f, 1f, min, max);
     }
 }

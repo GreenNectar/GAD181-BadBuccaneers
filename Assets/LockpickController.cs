@@ -1,15 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using Random = UnityEngine.Random;
 
 public class LockpickController : MonoBehaviour
 {
+    #region General
+
+    [Header("General")]
     [SerializeField]
     private float speed = 1f;
+    [Header("Pick Transforms")]
+    [SerializeField, Tooltip("How far away the picks are from the correct positions that still count as a success")]
+    private float correctDistance = 15f;
+    [SerializeField, Tooltip("")]
+    private float vibrationDistance = 30f;
 
+    [Header("Pick Transforms")]
     [SerializeField]
     private Transform pickLeft;
     [SerializeField]
@@ -17,26 +28,36 @@ public class LockpickController : MonoBehaviour
     [SerializeField]
     private Transform pickPosition;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The correct rotation of the left pick")]
     private float correctRotationLeft = 0f;
-    [SerializeField]
+    [SerializeField, Tooltip("The correct rotation of the right pick")]
     private float correctRotationRight = 180f;
-    [SerializeField]
-    private float correctDistance = 15f;
-    [SerializeField]
-    private float vibrationDistance = 30f;
 
+    // The rotation that we want to be at
     [SerializeField]
     private float rotationLeft = 0f;
     [SerializeField]
     private float rotationRight = 0f;
+
+    // The rotation we are currently at
     [SerializeField]
     private float currentRotationLeft = 0f;
     [SerializeField]
     private float currentRotationRight = 0f;
 
+    // The current lock we are picking
+    private int currentLock = 0;
+
+    #endregion
+
+    #region Components
+
     private PlayerInput playerInput;
     private Animator animator;
+
+    #endregion
+
+    #region Properties
 
     private bool canOpen = false;
     public void AllowOpening()
@@ -58,6 +79,17 @@ public class LockpickController : MonoBehaviour
             return diff;
         }
     }
+
+    #endregion
+
+    #region Static Values
+
+    // Made it static so all other instances can use it (keeps the randomness the same on all instances)
+    private static float[] randomValues;
+
+    #endregion
+
+    #region Input
 
     public void OnLeftMove(InputValue value)
     {
@@ -86,8 +118,22 @@ public class LockpickController : MonoBehaviour
             if (DistanceFromCorrect <= correctDistance)
             {
                 animator.SetTrigger("Open");
+                if (currentLock < 3 - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)
+                SetCorrectLockRotations();
             }
         }
+    }
+
+    #endregion
+
+    private void OnDisable()
+    {
+        DisableVibrations();
+    }
+
+    private void OnDestroy()
+    {
+        DisableVibrations();
     }
 
     // Start is called before the first frame update
@@ -99,6 +145,19 @@ public class LockpickController : MonoBehaviour
         animator = GetComponent<Animator>();
         currentRotationLeft = rotationLeft;
         currentRotationRight = rotationRight;
+
+        // Create the random rotations
+        if (randomValues == null)
+        {
+            Random.InitState(DateTime.Now.GetHashCode());
+            randomValues = new float[6]; // We have six values as we need two per lock (left and right)
+            for (int i = 0; i < randomValues.Length; i++)
+            {
+                randomValues[i] = Random.Range(0f, 1080f) % 360f; // I wasn't sure if randomness weirdness was gonna prioritise the middle so I did a thing
+            }
+        }
+
+        SetCorrectLockRotations();
     }
 
     // Update is called once per frame
@@ -124,14 +183,21 @@ public class LockpickController : MonoBehaviour
                 {
                     // The vibration amount is the inverse distance from the max distance over the distance. This will turn (0 to vibrationDistance degrees to 0 to 1)
                     float vibrationAmount = (vibrationDistance - DistanceFromCorrect) / vibrationDistance;
-                    vibrationAmount *= vibrationAmount; // Square it, this makes the transitions feel a bit nicer
+                    vibrationAmount *= vibrationAmount; // Square it, this makes the transitions feel a bit nicer a(also graph like this _/\_)
+                    // We want to have the vibration spike when we are within the correct position buffer
+                    if (DistanceFromCorrect <= correctDistance)
+                    {
+                        vibrationAmount = 1f;
+                    }
+                    else
+                    {
+                        vibrationAmount = Mathfx.Map(vibrationAmount, 0f, 1f, 0f, 0.3f);
+                    }
                     gamePad.SetMotorSpeeds(vibrationAmount, vibrationAmount); // Set it brother
-                                                                              //Debug.Log($"Vibration amount l:{vibrationAmount} r:{vibrationAmount}");
                 }
                 else
                 {
                     gamePad.SetMotorSpeeds(0f, 0f);
-                    //Debug.Log($"Vibration amount l:{0f} r:{0f}");
                 }
             }
 
@@ -163,16 +229,6 @@ public class LockpickController : MonoBehaviour
         //gamePad.SetMotorSpeeds(leftVibration * maxVibration, rightVibration * maxVibration);
     }
 
-    private void OnDisable()
-    {
-        DisableVibrations();
-    }
-
-    private void OnDestroy()
-    {
-        DisableVibrations();
-    }
-
     private void DisableVibrations()
     {
         // Get the gamepad associated with the player
@@ -183,6 +239,15 @@ public class LockpickController : MonoBehaviour
             gamePad.SetMotorSpeeds(0f, 0f);
             gamePad.ResetHaptics();
         }
+    }
+
+    /// <summary>
+    /// Sets the correct rotations for both picks based on the current pick and the random values
+    /// </summary>
+    private void SetCorrectLockRotations()
+    {
+        correctRotationLeft = randomValues[currentLock * 2];
+        correctRotationRight = randomValues[(currentLock * 2) + 1];
     }
 
     private void OnDrawGizmosSelected()
