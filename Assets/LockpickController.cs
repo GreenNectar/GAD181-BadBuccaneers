@@ -47,6 +47,8 @@ public class LockpickController : MonoBehaviour
 
     // The current lock we are picking
     private int currentLock = 0;
+    private int currentChest = 0;
+    private int currentPin = 0;
 
     #endregion
 
@@ -77,6 +79,40 @@ public class LockpickController : MonoBehaviour
             float rightDiff = Mathf.Abs(Mathf.DeltaAngle(currentRotationRight, correctRotationRight)); // Get the angle distance of the right pick
             float diff = leftDiff + rightDiff; // Add the differences
             return diff;
+        }
+    }
+
+    #endregion
+
+    #region Pins
+
+    [Serializable]
+    private class Pin
+    {
+        public Transform[] pins;
+        public float heightOffsetWhenComplete = 0.1f;
+        public bool isOpened = false;
+    }
+
+    [Serializable]
+    private class Chest
+    {
+        public Pin[] pins;
+    }
+
+    [SerializeField]
+    private Chest[] chests;
+
+    private int NumberOfPins
+    {
+        get
+        {
+            int pins = 0;
+            foreach (var chest in chests)
+            {
+                pins += chest.pins.Length;
+            }
+            return pins;
         }
     }
 
@@ -117,8 +153,28 @@ public class LockpickController : MonoBehaviour
         {
             if (DistanceFromCorrect <= correctDistance)
             {
-                animator.SetTrigger("Open");
-                if (currentLock < 3 - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)
+                // Move pin by the offset for that pin-set
+                if (currentPin < chests[currentChest].pins.Length)
+                {
+                    Pin pin = chests[currentChest].pins[currentPin];
+                    foreach (var p in pin.pins)
+                    {
+                        p.transform.position += Vector3.up * pin.heightOffsetWhenComplete;
+                    }
+                }
+
+                // Increment pin
+                currentPin++;
+
+                // If we have finished all pins then we open the chest
+                if (currentPin >= chests[currentChest].pins.Length)
+                {
+                    currentPin = 0;
+                    currentChest++;
+                    animator.SetTrigger("Open");
+                }
+
+                if (currentLock < NumberOfPins - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)
                 SetCorrectLockRotations();
             }
         }
@@ -150,7 +206,7 @@ public class LockpickController : MonoBehaviour
         if (randomValues == null)
         {
             Random.InitState(DateTime.Now.GetHashCode());
-            randomValues = new float[6]; // We have six values as we need two per lock (left and right)
+            randomValues = new float[NumberOfPins * 2]; //[6]; // We have six values as we need two per lock (left and right)
             for (int i = 0; i < randomValues.Length; i++)
             {
                 randomValues[i] = Random.Range(0f, 1080f) % 360f; // I wasn't sure if randomness weirdness was gonna prioritise the middle so I did a thing
@@ -187,6 +243,7 @@ public class LockpickController : MonoBehaviour
                     // We want to have the vibration spike when we are within the correct position buffer
                     if (DistanceFromCorrect <= correctDistance)
                     {
+                        Debug.Log("Is in correct position");
                         vibrationAmount = 1f;
                     }
                     else
