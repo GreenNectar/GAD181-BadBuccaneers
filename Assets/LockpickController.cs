@@ -1,10 +1,11 @@
+using Rewired;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
+//using UnityEngine.InputSystem;
+//using static UnityEngine.InputSystem.InputAction;
 using Random = UnityEngine.Random;
 
 public class LockpickController : MonoBehaviour
@@ -54,8 +55,9 @@ public class LockpickController : MonoBehaviour
 
     #region Components
 
-    private PlayerInput playerInput;
+    //private PlayerInput playerInput;
     private Animator animator;
+    private Player player;
 
     #endregion
 
@@ -127,58 +129,58 @@ public class LockpickController : MonoBehaviour
 
     #region Input
 
-    public void OnLeftMove(InputValue value)
-    {
-        if (value.Get<Vector2>().sqrMagnitude > 0.25f)
-        {
-            rotationLeft = value.Get<Vector2>().Angle();
-        }
-    }
+    //public void OnLeftMove(InputValue value)
+    //{
+    //    if (value.Get<Vector2>().sqrMagnitude > 0.25f)
+    //    {
+    //        rotationLeft = value.Get<Vector2>().Angle();
+    //    }
+    //}
 
-    public void OnRightMove(InputValue value)
-    {
-        if (value.Get<Vector2>().sqrMagnitude > 0.25f)
-        {
-            rotationRight = value.Get<Vector2>().Angle();
-        }
-    }
+    //public void OnRightMove(InputValue value)
+    //{
+    //    if (value.Get<Vector2>().sqrMagnitude > 0.25f)
+    //    {
+    //        rotationRight = value.Get<Vector2>().Angle();
+    //    }
+    //}
 
-    public void OnFire(InputValue value)
-    {
-        // Check if we are allowed to open
-        if (!canOpen) return;
+    //public void OnFire(InputValue value)
+    //{
+    //    // Check if we are allowed to open
+    //    if (!canOpen) return;
 
-        // If we have pressed the button, then we check to see if we have fulfilled the conditions and then trigger the animator to open the chest
-        if (value.isPressed)
-        {
-            if (DistanceFromCorrect <= correctDistance)
-            {
-                // Move pin by the offset for that pin-set
-                if (currentPin < chests[currentChest].pins.Length)
-                {
-                    Pin pin = chests[currentChest].pins[currentPin];
-                    foreach (var p in pin.pins)
-                    {
-                        p.transform.position += Vector3.up * pin.heightOffsetWhenComplete;
-                    }
-                }
+    //    // If we have pressed the button, then we check to see if we have fulfilled the conditions and then trigger the animator to open the chest
+    //    if (value.isPressed)
+    //    {
+    //        if (DistanceFromCorrect <= correctDistance)
+    //        {
+    //            // Move pin by the offset for that pin-set
+    //            if (currentPin < chests[currentChest].pins.Length)
+    //            {
+    //                Pin pin = chests[currentChest].pins[currentPin];
+    //                foreach (var p in pin.pins)
+    //                {
+    //                    p.transform.position += Vector3.up * pin.heightOffsetWhenComplete;
+    //                }
+    //            }
 
-                // Increment pin
-                currentPin++;
+    //            // Increment pin
+    //            currentPin++;
 
-                // If we have finished all pins then we open the chest
-                if (currentPin >= chests[currentChest].pins.Length)
-                {
-                    currentPin = 0;
-                    currentChest++;
-                    animator.SetTrigger("Open");
-                }
+    //            // If we have finished all pins then we open the chest
+    //            if (currentPin >= chests[currentChest].pins.Length)
+    //            {
+    //                currentPin = 0;
+    //                currentChest++;
+    //                animator.SetTrigger("Open");
+    //            }
 
-                if (currentLock < NumberOfPins - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)
-                SetCorrectLockRotations();
-            }
-        }
-    }
+    //            if (currentLock < NumberOfPins - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)
+    //            SetCorrectLockRotations();
+    //        }
+    //    }
+    //}
 
     #endregion
 
@@ -195,9 +197,16 @@ public class LockpickController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position += Vector3.left * 50f * (FindObjectsOfType<PlayerInput>(false).Length - 1f);
+        player = ReInput.players.GetPlayer(0);
 
-        playerInput = GetComponentInParent<PlayerInput>();
+        if (player == null)
+        {
+            throw new Exception("Bruh, couldn't find player");
+        }
+
+        //transform.position += Vector3.left * 50f * (FindObjectsOfType<PlayerInput>(false).Length - 1f);
+
+        //playerInput = GetComponentInParent<PlayerInput>();
         animator = GetComponent<Animator>();
         currentRotationLeft = rotationLeft;
         currentRotationRight = rotationRight;
@@ -219,46 +228,52 @@ public class LockpickController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var gamePad = Gamepad.all.FirstOrDefault(g => playerInput.devices.Any(d => d.deviceId == g.deviceId));
+        GetInput();
 
         if (!canOpen)
         {
-            if (gamePad != null)
-            {
-                gamePad.SetMotorSpeeds(0f, 0f);
-                return;
-            }
+            player.SetVibration(0, 0f);
+            player.SetVibration(1, 0f);
+            return;
         }
         else
         {
-            if (gamePad != null)
+            float leftVibration = 0f; // Big motor
+            float rightVibration = 0f; // Small motor
+
+            // This is the vibration that has to have both of the picks in the correct rotation (with 'vibrationDistance' maximum degrees between them)
+            // The vibration is scaled to how close it is to the correct positions
+            if (DistanceFromCorrect <= vibrationDistance) // If the difference is lower than the vibration distance, we want to set the vibration
             {
-                // This is the vibration that has to have both of the picks in the correct rotation (with 'vibrationDistance' maximum degrees between them)
-                // The vibration is scaled to how close it is to the correct positions
-                if (DistanceFromCorrect <= vibrationDistance) // If the difference is lower than the vibration distance, we want to set the vibration
+                // The vibration amount is the inverse distance from the max distance over the distance. This will turn (0 to vibrationDistance degrees to 0 to 1)
+                float vibrationAmount = (vibrationDistance - DistanceFromCorrect) / vibrationDistance;
+                vibrationAmount *= vibrationAmount; // Square it, this makes the transitions feel a bit nicer a(also graph like this _/\_)
+                // We want to have the vibration spike when we are within the correct position buffer
+                if (DistanceFromCorrect <= correctDistance)
                 {
-                    // The vibration amount is the inverse distance from the max distance over the distance. This will turn (0 to vibrationDistance degrees to 0 to 1)
-                    float vibrationAmount = (vibrationDistance - DistanceFromCorrect) / vibrationDistance;
-                    vibrationAmount *= vibrationAmount; // Square it, this makes the transitions feel a bit nicer a(also graph like this _/\_)
-                    // We want to have the vibration spike when we are within the correct position buffer
-                    if (DistanceFromCorrect <= correctDistance)
-                    {
-                        Debug.Log("Is in correct position");
-                        vibrationAmount = 1f;
-                    }
-                    else
-                    {
-                        vibrationAmount = Mathfx.Map(vibrationAmount, 0f, 1f, 0f, 0.3f);
-                    }
-                    gamePad.SetMotorSpeeds(vibrationAmount, vibrationAmount); // Set it brother
+                    Debug.Log("Is in correct position");
+                    //vibrationAmount = 1f;
+                    leftVibration = 1f;
+                    rightVibration = 1f;
                 }
                 else
                 {
-                    gamePad.SetMotorSpeeds(0f, 0f);
+                    rightVibration = vibrationAmount;
                 }
+
+                Debug.Log($"Vibration {vibrationAmount}");
+                // Set it brother
+                //player.SetVibration(0, vibrationAmount);
+                player.SetVibration(0, leftVibration);
+                player.SetVibration(1, rightVibration);
+            }
+            else
+            {
+                player.SetVibration(0, 0f);
+                player.SetVibration(1, 0f);
             }
 
-            // Move to the wanted rotation with the maximum step being delta time by speed (degrees per second)
+            // Lerp the rotation to the inputted
             currentRotationRight += Mathf.Clamp(Mathf.DeltaAngle(currentRotationRight, rotationRight), -Time.deltaTime * speed, Time.deltaTime * speed);
             currentRotationLeft += Mathf.Clamp(Mathf.DeltaAngle(currentRotationLeft, rotationLeft), -Time.deltaTime * speed, Time.deltaTime * speed);
 
@@ -286,16 +301,65 @@ public class LockpickController : MonoBehaviour
         //gamePad.SetMotorSpeeds(leftVibration * maxVibration, rightVibration * maxVibration);
     }
 
+    private void GetInput()
+    {
+        Vector2 leftAxis = new Vector2(player.GetAxisRaw("LeftMoveX"), player.GetAxisRaw("LeftMoveY"));
+        Vector2 rightAxis = new Vector2(player.GetAxisRaw("RightMoveX"), player.GetAxisRaw("RightMoveY"));
+
+        if (leftAxis.sqrMagnitude > 0.25f)
+            rotationLeft = leftAxis.Angle();
+        if (rightAxis.sqrMagnitude > 0.25f)
+            rotationRight = rightAxis.Angle();
+        if (player.GetButtonDown("Fire"))
+        {
+            CheckLock();
+        }
+        Debug.Log($"{rotationLeft} {rotationRight} {player.GetButtonDown("Fire")}"); // player.GetAxisRaw("Fire") > 0.25f || 
+    }
+
+    private void CheckLock()
+    {
+        // Check if we are allowed to open
+        if (!canOpen) return;
+
+        if (DistanceFromCorrect <= correctDistance)
+        {
+            // Move pin by the offset for that pin-set
+            if (currentPin < chests[currentChest].pins.Length)
+            {
+                Pin pin = chests[currentChest].pins[currentPin];
+                foreach (var p in pin.pins)
+                {
+                    p.transform.position += Vector3.up * pin.heightOffsetWhenComplete;
+                }
+            }
+
+            // Increment pin
+            currentPin++;
+
+            // If we have finished all pins then we open the chest
+            if (currentPin >= chests[currentChest].pins.Length)
+            {
+                currentPin = 0;
+                currentChest++;
+                animator.SetTrigger("Open");
+            }
+
+            if (currentLock < NumberOfPins - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)
+            SetCorrectLockRotations();
+        }
+    }
+
     private void DisableVibrations()
     {
         // Get the gamepad associated with the player
         //TODO Don't do this everytime
-        var gamePad = Gamepad.all.FirstOrDefault(g => playerInput.devices.Any(d => d.deviceId == g.deviceId));
-        if (gamePad != null)
-        {
-            gamePad.SetMotorSpeeds(0f, 0f);
-            gamePad.ResetHaptics();
-        }
+        //var gamePad = Gamepad.all.FirstOrDefault(g => playerInput.devices.Any(d => d.deviceId == g.deviceId));
+        //if (gamePad != null)
+        //{
+        //    gamePad.SetMotorSpeeds(0f, 0f);
+        //    gamePad.ResetHaptics();
+        //}
     }
 
     /// <summary>

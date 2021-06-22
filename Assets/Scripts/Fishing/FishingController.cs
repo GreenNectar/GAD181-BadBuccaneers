@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
+//using UnityEngine.InputSystem;
+//using static UnityEngine.InputSystem.InputAction;
 
 public class FishingController : MonoBehaviour
 {
@@ -34,7 +34,7 @@ public class FishingController : MonoBehaviour
     void Start()
     {
         // Move ourselves away from the other players
-        transform.position += Vector3.left * 50f * (FindObjectsOfType<PlayerInput>(false).Length - 1f);
+        //transform.position += Vector3.left * 50f * (FindObjectsOfType<PlayerInput>(false).Length - 1f);
 
         // Add this controller to the manager
         FindObjectOfType<FishingManager>().Add(this);
@@ -55,14 +55,14 @@ public class FishingController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Gets the players input and sets the movement to the vertical value
-    /// </summary>
-    /// <param name="value"></param>
-    public void OnMove(InputValue value)
-    {
-        movement = value.Get<Vector2>().y;
-    }
+    ///// <summary>
+    ///// Gets the players input and sets the movement to the vertical value
+    ///// </summary>
+    ///// <param name="value"></param>
+    //public void OnMove(InputValue value)
+    //{
+    //    movement = value.Get<Vector2>().y;
+    //}
 
     /// <summary>
     /// Adds an object to the players bucket
