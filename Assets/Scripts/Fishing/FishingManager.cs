@@ -70,15 +70,6 @@ public class FishingManager : MonoBehaviour
         }
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    foreach (var controller in controllers)
-    //    {
-    //        Vector3 offset = new Vector3(0, controller.transform.position.y - Random.Range(4f, controller.startingHeight - controller.depth), 0);
-    //        Gizmos.DrawWireSphere(controller.transform.position - offset, 0.25f);
-    //    }
-    //}
-
     public void ClearAllBuckets()
     {
         foreach (var controller in controllers)

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 
 public class CameraSwitcher : MonoBehaviour
 {
     public bool doSwitch;
     public bool autoAdjust = false;
-    public PlayerInputManager playerInputManager;
+    //public PlayerInputManager playerInputManager;
 
     public void OnPlayerJoined()
     {
@@ -27,13 +27,13 @@ public class CameraSwitcher : MonoBehaviour
         {
             doSwitch = false;
 
-            playerInputManager.splitScreen = !playerInputManager.splitScreen;
+            //playerInputManager.splitScreen = !playerInputManager.splitScreen;
 
-            FindObjectsOfType<Camera>(true).First(c => c.tag == "MainCamera").enabled = !playerInputManager.splitScreen;
-            foreach (var camera in FindObjectsOfType<Camera>(true).Where(c => c.tag != "MainCamera"))
-            {
-                camera.enabled = playerInputManager.splitScreen;
-            }
+            //FindObjectsOfType<Camera>(true).First(c => c.tag == "MainCamera").enabled = !playerInputManager.splitScreen;
+            //foreach (var camera in FindObjectsOfType<Camera>(true).Where(c => c.tag != "MainCamera"))
+            //{
+            //    camera.enabled = playerInputManager.splitScreen;
+            //}
         }
     }
 
@@ -41,6 +41,7 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (!autoAdjust) return;
 
+        /*
         Camera[] cameras = FindObjectsOfType<PlayerInput>(true).Select(p => p.GetComponentInChildren<Camera>()).ToArray();
         int count = cameras.Length;
 
@@ -58,5 +59,6 @@ public class CameraSwitcher : MonoBehaviour
 
             }
         }
+        */
     }
 }

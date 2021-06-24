@@ -1,13 +1,16 @@
+using Rewired;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
+//using UnityEngine.InputSystem;
+//using static UnityEngine.InputSystem.InputAction;
 
 public class FishingController : MonoBehaviour
 {
     [Tooltip("Player Values")]
+    [SerializeField]
+    private int playerId = 0;
     [SerializeField]
     private float speed = 5f;
     [SerializeField]
@@ -29,12 +32,12 @@ public class FishingController : MonoBehaviour
 
     private float movement;
 
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Move ourselves away from the other players
-        transform.position += Vector3.left * 50f * (FindObjectsOfType<PlayerInput>(false).Length - 1f);
+        player = ReInput.players.GetPlayer(playerId);
 
         // Add this controller to the manager
         FindObjectOfType<FishingManager>().Add(this);
@@ -43,6 +46,8 @@ public class FishingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetInput();
+
         // Player movement
         position -= movement * Time.deltaTime * speed;
         position = Mathf.Clamp(position, 0f, depth);
@@ -55,13 +60,9 @@ public class FishingController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Gets the players input and sets the movement to the vertical value
-    /// </summary>
-    /// <param name="value"></param>
-    public void OnMove(InputValue value)
+    private void GetInput()
     {
-        movement = value.Get<Vector2>().y;
+        movement = player.GetAxis("LeftMoveY");
     }
 
     /// <summary>
