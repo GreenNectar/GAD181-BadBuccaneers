@@ -8,6 +8,7 @@ public class ButtonMash : MonoBehaviour
     public float mashDelay = .5f;
     public float flagSpeed = 1f;
     public float dropSpeed = 0.5f;
+    public int knockback;
 
     float mash;
     bool pressed;
@@ -33,6 +34,8 @@ public class ButtonMash : MonoBehaviour
             //text.SetActive(true);
             mash -= Time.deltaTime;
 
+            
+            // if the space bar is not pressed within the delay time, the flag moves down
             if (Input.GetKeyDown(KeyCode.Space) && !pressed)
             {
                 pressed = true;
