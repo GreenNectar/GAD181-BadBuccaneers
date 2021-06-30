@@ -1,3 +1,6 @@
+using Rewired;
+using Rewired.ControllerExtensions;
+using Rewired.Platforms.PS4;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +10,7 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     // Store the players (key is the player number, value is the ReInput id of the controller/player)
     private static Dictionary<int, int> players = new Dictionary<int, int>();
+
 
     // Just so we can check the player count
     public static int PlayerCount
@@ -20,6 +24,7 @@ public class PlayerManager : Singleton<PlayerManager>
     /// <summary>
     /// Shifts the players so the player numbers start from 0 and increment by 1 in order
     /// </summary>
+    //TODO Remove the need for this
     public static void ShiftPlayers()
     {
         // We don't need to shift players if we have the maximum amount of players
@@ -42,6 +47,7 @@ public class PlayerManager : Singleton<PlayerManager>
             players = shiftedPlayers;
         }
 
+        SetPlayersLEDs();
         //// This was for debugging
         //foreach (var player in players)
         //{
@@ -73,6 +79,8 @@ public class PlayerManager : Singleton<PlayerManager>
             players.Remove(playerNumber);
             players.Add(playerNumber, playerId);
         }
+
+        SetPlayersLEDs();
     }
 
     /// <summary>
@@ -82,6 +90,8 @@ public class PlayerManager : Singleton<PlayerManager>
     public static void RemovePlayer(int playerNumber)
     {
         players.Remove(playerNumber);
+
+        SetPlayersLEDs();
     }
 
     /// <summary>
@@ -164,5 +174,84 @@ public class PlayerManager : Singleton<PlayerManager>
         }
 
         return -1;
+    }
+
+    #region LEDS
+
+    private static Color Default = new Color(1f, 1f, 1f, 0.1f);
+
+    /// <summary>
+    /// Sets all the controllers connected LEDs to their corresponding colour based on the player number
+    /// </summary>
+    private static void SetPlayersLEDs()
+    {
+        // Change the leds for all players
+        for (int i = 0; i < ReInput.players.playerCount; i++)
+        {
+            // We check to see if the player we are looping through has been added to the manager
+            var player = ReInput.players.GetPlayer(i);
+            // If we are in the manager, then we set our colour based on our player number
+            if (HasPlayerId(player.id))
+            {
+                int playerNumber = GetPlayerNumber(i);
+                //TODO Make these colours be based on the selected colours in the character selection screen (right now it's just default playstation colours)
+                switch (playerNumber)
+                {
+                    case 0: // Player 1
+                        SetPlayerLED(player, Color.blue);
+                        break;
+                    case 1: // Player 2
+                        SetPlayerLED(player, Color.red);
+                        break;
+                    case 2: // Player 3
+                        SetPlayerLED(player, Color.green);
+                        break;
+                    case 3: // Player 4
+                        SetPlayerLED(player, new Color(1f, 0f, 1f)); // Pink
+                        break;
+                    default: // Player ?
+                        SetPlayerLED(player, Default);
+                        break;
+                }
+            }
+            // If the player is not added to the manager, we set the led's to grey
+            else
+            {
+                SetPlayerLED(player, Default);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Set the player's controller LED colour
+    /// </summary>
+    /// <param name="player"></param>
+    /// <param name="color"></param>
+    private static void SetPlayerLED(Player player, Color color)
+    {
+        // Set the led colour of all the extensions associated with the player
+        foreach (var stick in player.controllers.Joysticks)
+        {
+            // DualShock 4 support
+            var ds4 = stick.GetExtension<DualShock4Extension>();
+            if (ds4 != null)
+                ds4.SetLightColor(color);
+
+            // DualSense support
+            var ds = stick.GetExtension<DualSenseExtension>();
+            if (ds != null)
+                ds.SetLightColor(color);
+        }
+    }
+
+    #endregion
+
+    private void OnApplicationQuit()
+    {
+        // ReInput is off by the time it gets to here ;-;
+        for (int i = 0; i < ReInput.players.playerCount; i++)
+        {
+            SetPlayerLED(ReInput.players.GetPlayer(i), Default);
+        }
     }
 }
