@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,5 +40,17 @@ public static class Extensions
     public static float StepFloor(this float value, float max, int steps)
     {
         return Mathf.Floor(value / (max / steps)) * (max / steps);
+    }
+
+    /// <summary>
+    /// Performs an action on all array elements
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="source"></param>
+    /// <param name="action"></param>
+    public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+    {
+        foreach (T item in source)
+            action(item);
     }
 }
