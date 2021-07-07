@@ -20,10 +20,23 @@ public class PoopDeckTesting : MonoBehaviour
     [SerializeField, Tooltip("These are the textures of the poo, these will be added to the albedo when a bird poo lands on the surface")]
     private Texture2D[] birdPoo;
 
+    [SerializeField]
+    private bool debugMode = false;
 
-    [Header("To be removed")]
-    public int score = 0;
+    public static PoopDeckTesting current
+    {
+        get
+        {
+            var curr = FindObjectOfType<PoopDeckTesting>();
 
+            if (curr == null)
+            {
+                throw new System.Exception($"No {typeof(PoopDeckTesting).Name} found in scene, please add one and set it up");
+            }
+
+            return curr;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,46 +49,9 @@ public class PoopDeckTesting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (debugMode && Input.GetMouseButton(0))
         {
-            // Create a ray from the mouse position
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            // Cast that shit
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                // If we don't hit the renderer associated with this, then we don't want to do anything
-                if (hit.collider.GetComponent<MeshRenderer>() != meshRenderer) return;
-
-                // Get the coordinates on the texture
-                Vector2Int textureCoordsAlpha = new Vector2Int((int)(hit.textureCoord.x * scoreTexture.width), (int)(hit.textureCoord.y * scoreTexture.height));
-                Vector2Int textureCoordsAlbedo = new Vector2Int((int)(hit.textureCoord.x * albedoTexture.width), (int)(hit.textureCoord.y * albedoTexture.height));
-
-                Color[] changedColours = SetCircle(scoreTexture, textureCoordsAlpha.x, textureCoordsAlpha.y, circleSize, Color.clear);
-                SetCircle(albedoTexture, textureCoordsAlbedo.x, textureCoordsAlbedo.y, (int)(((float)circleSize / (float)scoreTexture.width) * (float)albedoTexture.width), Color.clear);
-
-
-                foreach (var color in changedColours)
-                {
-                    if (color == Color.black)
-                    {
-                        score += 1;
-                    }
-                    else if (color == Color.yellow)
-                    {
-                        score += 2;
-                    }
-                }
-                
-
-                //if (texture.GetPixel(textureCoords.x, textureCoords.y) == Color.black)
-                //{
-                //    score++;
-
-                //    texture.SetPixel(textureCoords.x, textureCoords.y, Color.white);
-                //    texture.Apply();
-                //}
-            }
+            Mop(Camera.main.ScreenPointToRay(Input.mousePosition));
         }
     }
 
@@ -105,6 +81,7 @@ public class PoopDeckTesting : MonoBehaviour
         Texture2D original = meshRenderer.material.mainTexture as Texture2D;
         albedoTexture = new Texture2D(original.width, original.height);
         albedoTexture.SetPixels(original.GetPixels());
+        albedoTexture.wrapMode = TextureWrapMode.Clamp; // We don't want the edges to repeat on the other side!
         albedoTexture.Apply();
         meshRenderer.material.mainTexture = albedoTexture;
 
@@ -219,5 +196,47 @@ public class PoopDeckTesting : MonoBehaviour
     float MergeColourComponent(float a, float b, float alphaa, float alphab)
     {
         return (a * (1 - alphab)) + (b * (alphab));
+    }
+
+
+
+
+
+
+
+
+
+    public int Mop(Ray ray)
+    {
+        int score = 0;
+
+        // Cast that shit
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            // If we don't hit the renderer associated with this, then we don't want to do anything
+            if (hit.collider.GetComponent<MeshRenderer>() != meshRenderer) return 0;
+
+            // Get the coordinates on the texture
+            Vector2Int textureCoordsAlpha = new Vector2Int((int)(hit.textureCoord.x * scoreTexture.width), (int)(hit.textureCoord.y * scoreTexture.height));
+            Vector2Int textureCoordsAlbedo = new Vector2Int((int)(hit.textureCoord.x * albedoTexture.width), (int)(hit.textureCoord.y * albedoTexture.height));
+
+            Color[] changedColours = SetCircle(scoreTexture, textureCoordsAlpha.x, textureCoordsAlpha.y, circleSize, Color.clear);
+            SetCircle(albedoTexture, textureCoordsAlbedo.x, textureCoordsAlbedo.y, (int)(((float)circleSize / (float)scoreTexture.width) * (float)albedoTexture.width), Color.clear);
+
+
+            foreach (var color in changedColours)
+            {
+                if (color == Color.black)
+                {
+                    score += 1;
+                }
+                else if (color == Color.yellow)
+                {
+                    score += 2;
+                }
+            }
+        }
+
+        return score;
     }
 }

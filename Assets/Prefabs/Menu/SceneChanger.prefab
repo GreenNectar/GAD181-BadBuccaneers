@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3860886b5cbaf42b3b9bc12421cb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _persistent: 1
   sceneNames:
   - CharacterSelection
   - LockpickingScene
   - FIshGameScene
+  - PoopDeckScene
