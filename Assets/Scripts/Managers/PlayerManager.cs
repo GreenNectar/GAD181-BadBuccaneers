@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerManager : Singleton<PlayerManager>
+public static class PlayerManager
 {
     // Store the players (key is the player number, value is the ReInput id of the controller/player)
     private static Dictionary<int, int> players = new Dictionary<int, int>();
@@ -245,13 +245,4 @@ public class PlayerManager : Singleton<PlayerManager>
     }
 
     #endregion
-
-    private void OnApplicationQuit()
-    {
-        // ReInput is off by the time it gets to here ;-;
-        for (int i = 0; i < ReInput.players.playerCount; i++)
-        {
-            SetPlayerLED(ReInput.players.GetPlayer(i), Default);
-        }
-    }
 }

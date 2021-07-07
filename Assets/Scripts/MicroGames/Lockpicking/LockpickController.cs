@@ -293,7 +293,7 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
 
     private void DisableVibrations()
     {
-        if (player != null)
+        if (ReInput.isReady)
         {
             player.SetVibration(0, 0f);
             player.SetVibration(1, 0f);
