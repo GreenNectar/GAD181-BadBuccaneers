@@ -1,14 +1,19 @@
+using Rewired;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonMash : MonoBehaviour
 {
+    [SerializeField]
+    private int playerNumber = 0;
+    private Player player;
 
     public float mashDelay = .5f;
     public float flagSpeed = 1f;
     public float dropSpeed = 0.5f;
     public int knockback;
+    public float verticalSpeed;
 
     float mash;
     bool pressed;
@@ -17,14 +22,17 @@ public class ButtonMash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get the player
+        player = ReInput.players.GetPlayer(playerNumber);
         mash = mashDelay;
     }
+
 
     // Update is called once per frame
     // flag moves up with each space bar
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (player.GetButtonDown("SouthButtonVertical"))
         {
             started = true;
         }
@@ -36,13 +44,14 @@ public class ButtonMash : MonoBehaviour
 
             
             // if the space bar is not pressed within the delay time, the flag moves down
-            if (Input.GetKeyDown(KeyCode.Space) && !pressed)
+            if (player.GetButtonDown("SouthButtonVertical") && !pressed)
             {
                 pressed = true;
                 mash = mashDelay;
-                this.transform.position += transform.up * flagSpeed;
+                // transform.position += verticalSpeed * flagSpeed;
+                verticalSpeed = flagSpeed;
             }
-            else if (Input.GetKeyUp(KeyCode.Space))
+            else if (player.GetButtonDown("SouthButtonVertical"))
             {
                 pressed = false;
             }
@@ -50,9 +59,14 @@ public class ButtonMash : MonoBehaviour
             //Flag moves down
             if (mash <= 0)
             {
-                this.transform.position -= transform.up * dropSpeed;
+                // transform.position -= transform.up * dropSpeed;
+                verticalSpeed -= dropSpeed * Time.deltaTime;
             }
-           
+
+            transform.position += transform.up * verticalSpeed * Time.deltaTime;
+
         }
+
+
     }
 }

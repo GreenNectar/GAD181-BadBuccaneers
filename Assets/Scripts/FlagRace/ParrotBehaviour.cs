@@ -24,6 +24,8 @@ public class ParrotBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.transform.position -= transform.up * knockback;
+
+
         }
 
     }
