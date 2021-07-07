@@ -7,6 +7,7 @@ public class ParrotBehaviour : MonoBehaviour
 
     public int speed = 5;
     public float knockback;
+    public float knockbackTime;
   
     // Update is called once per frame
     // Moves the parrots across the screen smoothly
@@ -23,7 +24,15 @@ public class ParrotBehaviour : MonoBehaviour
         // Check if collision is with Player
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.transform.position -= transform.up * knockback;
+
+            //collision.gameObject.transform.position -= transform.up * knockback;
+           
+                //When this object collides with Player, check if player has component (health)
+                if (collision.gameObject.GetComponent<ButtonMash>() == true)
+                {
+                    //If player has Health, take biteDamage from health
+                    collision.gameObject.GetComponent<ButtonMash>().TakeDamage(knockbackTime);
+                }
 
 
         }
