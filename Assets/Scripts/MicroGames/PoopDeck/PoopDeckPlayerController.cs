@@ -32,7 +32,7 @@ public class PoopDeckPlayerController : MicroGamePlayerController
         Vector3 movement = new Vector3(player.GetAxis("LeftMoveX"), 0f, player.GetAxis("LeftMoveY"));
 
         // Movement, we only want to do it if we are pressing a button
-        if (movement.sqrMagnitude > 0f)
+        if (movement.magnitude > 0f)
         {
             // Get the rotations
             Quaternion wantedRotation = Quaternion.LookRotation(movement, Vector3.up); // Movement direction
@@ -42,16 +42,19 @@ public class PoopDeckPlayerController : MicroGamePlayerController
             // Get the difference in angle
             float difference = Mathf.DeltaAngle(currentEuler.y, wantedRotation.eulerAngles.y);
 
+            // We want the rotation delta to be based on how much we are moving
+            float offset = rotationSpeed * Time.deltaTime * movement.magnitude;
+
             // Move towards the target angle, this is basically lerping between the current to the wanted
-            if (Mathf.Abs(difference) > rotationSpeed * Time.deltaTime)
+            if (Mathf.Abs(difference) > offset)
             {
                 if (difference > 0)
                 {
-                    currentEuler.y += rotationSpeed * Time.deltaTime;
+                    currentEuler.y += offset;
                 }
                 else
                 {
-                    currentEuler.y -= rotationSpeed * Time.deltaTime;
+                    currentEuler.y -= offset;
                 }
             }
             else

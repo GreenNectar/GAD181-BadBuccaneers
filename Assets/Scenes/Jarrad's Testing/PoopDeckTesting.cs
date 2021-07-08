@@ -20,8 +20,10 @@ public class PoopDeckTesting : MonoBehaviour
     [SerializeField, Tooltip("These are the textures of the poo, these will be added to the albedo when a bird poo lands on the surface")]
     private Texture2D[] birdPoo;
 
-    [SerializeField]
+#if UNITY_EDITOR
+    [SerializeField, Tooltip("Enable this to see the score texture")]
     private bool debugMode = false;
+#endif
 
     public static PoopDeckTesting current
     {
@@ -46,6 +48,7 @@ public class PoopDeckTesting : MonoBehaviour
         InvokeRepeating("RandomBirdPoo", 1f, 0.25f);
     }
 
+#if UNITY_EDITOR
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +57,7 @@ public class PoopDeckTesting : MonoBehaviour
             Mop(Camera.main.ScreenPointToRay(Input.mousePosition));
         }
     }
+#endif
 
     void SetupTexture()
     {
@@ -83,7 +87,20 @@ public class PoopDeckTesting : MonoBehaviour
         albedoTexture.SetPixels(original.GetPixels());
         albedoTexture.wrapMode = TextureWrapMode.Clamp; // We don't want the edges to repeat on the other side!
         albedoTexture.Apply();
-        meshRenderer.material.mainTexture = albedoTexture;
+
+        // Added UnityEditor stuff here so we don't accidently build with debug mode enabled
+#if UNITY_EDITOR
+        if (debugMode)
+        {
+            meshRenderer.material.mainTexture = scoreTexture;
+        }
+        else
+        {
+#endif
+            meshRenderer.material.mainTexture = albedoTexture;
+#if UNITY_EDITOR
+        }
+#endif
 
         // Old rendering stuff
         // Set the renderer's texture to the one we created
