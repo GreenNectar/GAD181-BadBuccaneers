@@ -215,14 +215,6 @@ public class PoopDeckTesting : MonoBehaviour
         return (a * (1 - alphab)) + (b * (alphab));
     }
 
-
-
-
-
-
-
-
-
     public int Mop(Ray ray)
     {
         int score = 0;

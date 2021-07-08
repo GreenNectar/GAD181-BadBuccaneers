@@ -405,8 +405,20 @@ PrefabInstance:
       value: Player (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: isDualStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: playerNumber
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: rotationSpeed
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203129, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: m_RootOrder
@@ -523,8 +535,20 @@ PrefabInstance:
       value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: isDualStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: playerNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: rotationSpeed
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203129, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: m_RootOrder
@@ -608,7 +632,7 @@ MonoBehaviour:
   albedoTexture: {fileID: 0}
   birdPoo:
   - {fileID: 2800000, guid: 10403630a47c21b43b76ebf3affd40e9, type: 3}
-  debugMode: 1
+  debugMode: 0
 --- !u!4 &654246525
 Transform:
   m_ObjectHideFlags: 0
@@ -847,8 +871,20 @@ PrefabInstance:
       value: Player (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: isDualStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: playerNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: rotationSpeed
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203129, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: m_RootOrder
@@ -903,9 +939,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3996531968881065855, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531968881065855, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531968881065855, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203124, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: isDualStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996531969473203125, guid: dac64294ea51cbf49af13843edf73943, type: 3}
+      propertyPath: rotationSpeed
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 3996531969473203129, guid: dac64294ea51cbf49af13843edf73943, type: 3}
       propertyPath: m_RootOrder
