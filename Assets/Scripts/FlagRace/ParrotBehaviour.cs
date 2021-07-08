@@ -28,10 +28,10 @@ public class ParrotBehaviour : MonoBehaviour
             //collision.gameObject.transform.position -= transform.up * knockback;
            
                 //When this object collides with Player, check if player has component (health)
-                if (collision.gameObject.GetComponent<ButtonMash>() == true)
+                if (collision.gameObject.GetComponent<FlagMovement>() == true)
                 {
                     //If player has Health, take biteDamage from health
-                    collision.gameObject.GetComponent<ButtonMash>().TakeDamage(knockbackTime);
+                    collision.gameObject.GetComponent<FlagMovement>().TakeDamage(knockbackTime);
                 }
 
 
