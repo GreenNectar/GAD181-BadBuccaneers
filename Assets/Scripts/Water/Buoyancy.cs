@@ -13,6 +13,7 @@ public class Buoyancy : MonoBehaviour
     public float buoyancy = 10f;
 
     public bool realtime;
+    public bool usesNormal;
 
     public Vector3[] positions = new Vector3[1];
     Vector3[] prevPositions;
@@ -65,6 +66,13 @@ public class Buoyancy : MonoBehaviour
             Vector3 velocity = (position - prevPositions[i]) / Time.deltaTime;
             Vector3 waterPosition = finder.GetWaterSurfacePosition(position);
 
+            Vector3 normal = Vector3.up;
+
+            if (usesNormal)
+            {
+                normal = finder.GetWaterNormal(position);
+            }
+
             float difference = position.y - waterPosition.y;
             if (difference < 0)
             {
@@ -72,7 +80,7 @@ public class Buoyancy : MonoBehaviour
                 difference = Mathf.Clamp(-difference, 0f, 3f);
 
                 rb.AddForceAtPosition(((drag * rb.mass) * -velocity / positions.Length) * Time.deltaTime * 60f, position);
-                rb.AddForceAtPosition(((buoyancy * rb.mass) * Vector3.up * difference / positions.Length) * Time.deltaTime * 60f, position);
+                rb.AddForceAtPosition(((buoyancy * rb.mass) * normal * difference / positions.Length) * Time.deltaTime * 60f, position);
             }
 
 

@@ -144,7 +144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &136528111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   drag: 1
   buoyancy: 10
   realtime: 0
+  usesNormal: 0
   positions:
   - {x: 0, y: 0, z: 0}
   drawGizmos: 1
@@ -383,6 +384,7 @@ MonoBehaviour:
   drag: 1
   buoyancy: 10
   realtime: 0
+  usesNormal: 0
   positions:
   - {x: 0.5, y: 0, z: 0}
   - {x: -0.5, y: 0, z: 0}
@@ -436,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -508,6 +510,7 @@ MonoBehaviour:
   drag: 1
   buoyancy: 10
   realtime: 0
+  usesNormal: 0
   positions:
   - {x: 6, y: 2.5, z: 0}
   - {x: -6, y: 2.5, z: 0}
@@ -573,6 +576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrel_02
       objectReference: {fileID: 0}
+    - target: {fileID: 135506, guid: 49ac8d74f72892a41ad9c149db7e9e5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 434298, guid: 49ac8d74f72892a41ad9c149db7e9e5f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -636,14 +643,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5600fbebffe4a3647b84ce7aed3de5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drag: 1
-  buoyancy: 10
+  drag: 2
+  buoyancy: 35
   realtime: 0
+  usesNormal: 0
   positions:
   - {x: 0.4, y: 0.5, z: 0}
   - {x: 0, y: 0.5, z: 0.4}
   - {x: -0.4, y: 0.5, z: 0}
   - {x: 0, y: 0.5, z: -0.4}
+  - {x: 0.3, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0.3}
+  - {x: -0.3, y: 0, z: 0}
+  - {x: 0, y: 0, z: -0.3}
+  - {x: 0.3, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0.3}
+  - {x: -0.3, y: 1, z: 0}
+  - {x: 0, y: 1, z: -0.3}
   drawGizmos: 1
   gizmoSize: 0.1
   submersed: 0
@@ -869,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 461704, guid: 1e0f5f02bf25ef14d8b4e1d9b148d9fd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 461704, guid: 1e0f5f02bf25ef14d8b4e1d9b148d9fd, type: 3}
       propertyPath: m_LocalScale.x
@@ -930,7 +946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_LocalPosition.x

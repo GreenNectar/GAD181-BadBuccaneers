@@ -26,4 +26,15 @@ public class WaterLevelFinder : MonoBehaviour
     {
         return Vector3.zero;
     }
+
+    public virtual Vector3 GetWaterNormal(Vector3 position)
+    {
+        Vector3 a = GetWaterSurfacePosition(position + new Vector3(0.01f, 0f, 0.01f));
+        Vector3 b = GetWaterSurfacePosition(position + new Vector3(0.01f, 0f, -0.01f));
+        Vector3 c = GetWaterSurfacePosition(position + new Vector3(-0.01f, 0f, 0f));
+
+        Plane plane = new Plane(a, b, c);
+
+        return plane.normal;
+    }
 }
