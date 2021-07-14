@@ -163,16 +163,21 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Wave1Height: 3
+    - _Wave1Height: 8.39
     - _Wave1Power: 1.25
     - _Wave1Rotation: 0
-    - _Wave1Scale: 0.2
+    - _Wave1Scale: 0.05
     - _Wave1Speed: 0.5
     - _Wave2Height: 1
     - _Wave2Power: 1
-    - _Wave2Rotation: 0
-    - _Wave2Scale: 1
-    - _Wave2Speed: 1
+    - _Wave2Rotation: 277
+    - _Wave2Scale: 0.1
+    - _Wave2Speed: -1
+    - _Wave3Height: 1
+    - _Wave3Power: 1
+    - _Wave3Rotation: 207
+    - _Wave3Scale: 0.44
+    - _Wave3Speed: 0.5
     - _WaveMultiplier: 1
     - _WorkflowMode: 1
     - _ZWrite: 1

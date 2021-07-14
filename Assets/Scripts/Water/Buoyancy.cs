@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -9,17 +10,22 @@ public class Buoyancy : MonoBehaviour
 {
     [Range(0, 15)]
     public float drag = 1f;
-    [Range(0, 35)]
+    [SerializeField, Range(0, 35)]
     public float buoyancy = 10f;
 
-    public bool realtime;
-    public bool usesNormal;
+    [SerializeField] private bool realtime;
+    [SerializeField] private bool usesNormal;
 
-    public Vector3[] positions = new Vector3[1];
+    [SerializeField, ShowIf("usesNormal"), Range(0f, 1f)]
+    private float normalStrength = 1f;
+
+    [SerializeField]
+    private Vector3[] positions = new Vector3[1];
     Vector3[] prevPositions;
 
-    public bool drawGizmos;
-    public float gizmoSize = 0.1f;
+    [SerializeField]
+    private bool drawGizmos;
+    private float gizmoSize = 0.1f;
 
     public int submersed = 0;
     public float SubmersedPercentage
@@ -70,7 +76,12 @@ public class Buoyancy : MonoBehaviour
 
             if (usesNormal)
             {
-                normal = finder.GetWaterNormal(position);
+                //normal = finder.GetWaterNormal(position);
+                normal = (finder.GetWaterNormal(position) * normalStrength) + (Vector3.up * (1f - normalStrength));
+                //if (normal == Quaternion.FromToRotation(Vector3.zero, normal) * Vector3.forward)
+                //{
+                //    Debug.Log("Bruh");
+                //}
             }
 
             float difference = position.y - waterPosition.y;
