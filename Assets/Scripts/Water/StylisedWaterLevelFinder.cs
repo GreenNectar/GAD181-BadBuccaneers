@@ -13,7 +13,7 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
     public override Vector3 GetWaterSurfacePosition(Vector3 position)
     {
         float waveMultiplier = material.GetFloat("_WaveMultiplier");//1f;
-        float gradientSpeed = material.GetFloat("_GradientSpeed");//1f;
+        Vector2 gradientSpeed = material.GetVector("_GradientSpeed");//1f;
         float gradientScale = material.GetFloat("_GradientScale");//1f;
 
 
@@ -38,7 +38,8 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         float wave2Rotation = material.GetFloat("_Wave2Rotation");// 277f;
         float wave2Power = material.GetFloat("_Wave2Power");// 1f;
 
-        a = time * wave2Speed;
+        float g = GetGradient(position, gradientSpeed, gradientScale);
+        a = (time * wave2Speed) + g;
         b = GetPosition(position, wave2Rotation) * wave2Scale;
         float wave2Final = WaterHeight(b, a, wave2Power);
 
@@ -51,7 +52,8 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         float wave3Rotation = material.GetFloat("_Wave3Rotation");// 207f;
         float wave3Power = material.GetFloat("_Wave3Power");// 1f;
 
-        a = time * wave3Speed;
+        g = GetGradient(position, gradientSpeed * 0.8f, gradientScale * 1.2f);
+        a = (time * wave3Speed) + g;
         b = GetPosition(position, wave3Rotation) * wave3Scale;
         float wave3Final = WaterHeight(b, a, wave3Power);
 
@@ -62,9 +64,13 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         return new Vector3(position.x, height, position.z);// base.GetWaterSurfacePosition(position);
     }
 
-    float GetGradient(Vector2 position, float speed, float scale)
+    float GetGradient(Vector2 position, Vector2 speed, float scale)
     {
-        return 0;
+        Vector2 offset = new Vector2(_Time * speed.x, _Time * speed.y);
+
+        //return Mathf.PerlinNoise(position.x + offset.x, position.y + offset.y);
+
+        return UnityGradientNoiseFloat(position + offset, scale);
     }
 
     float GetPosition(Vector3 position, float rotation)
