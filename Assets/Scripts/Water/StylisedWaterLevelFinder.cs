@@ -38,8 +38,7 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         float wave2Rotation = material.GetFloat("_Wave2Rotation");// 277f;
         float wave2Power = material.GetFloat("_Wave2Power");// 1f;
 
-        float g = 0f;//GetWaterGradientNoise(position, gradientSpeed * 0.8f, gradientScale * 1.2f);
-        t = (time * wave2Speed) + g;
+        t = time * wave2Speed;
         p = GetPosition(position, wave2Rotation) * wave2Scale;
         float wave2Final = WaterHeight(p, t, wave2Power);
 
@@ -52,8 +51,7 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         float wave3Rotation = material.GetFloat("_Wave3Rotation");// 207f;
         float wave3Power = material.GetFloat("_Wave3Power");// 1f;
 
-        g = 0f;//GetWaterGradientNoise(position, gradientSpeed, gradientScale);
-        t = (time * wave3Speed) + g;
+        t = time * wave3Speed;
         p = GetPosition(position, wave3Rotation) * wave3Scale;
         float wave3Final = WaterHeight(p, t, wave3Power);
 
@@ -64,6 +62,24 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         return new Vector3(position.x, height, position.z);// base.GetWaterSurfacePosition(position);
     }
 
+
+
+    float GetPosition(Vector3 position, float rotation)
+    {
+        float x = Mathf.Sin(Mathf.Deg2Rad * rotation) * position.x;
+        float z = Mathf.Cos(Mathf.Deg2Rad * rotation) * position.z;
+        return x + z;
+    }
+
+    float WaterHeight(float position, float time, float power)
+    {
+        return Mathf.Pow(1f - Mathf.Abs(Mathf.Sin(position + time)), power);
+    }
+
+
+    // The GRAVEYARD ;-;
+
+    /*
     Vector2 TilingAndOffset(Vector2 uv, Vector2 Tiling, Vector2 Offset)
     {
         return uv * Tiling + Offset;
@@ -79,18 +95,7 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
 
         //return Noise(TilingAndOffset(p, new Vector2(1f, 1f), offset), scale);//gradientNoise(TilingAndOffset(p, new Vector2(1f, 1f), offset), scale);//UnityGradientNoise(TilingAndOffset(p, new Vector2(1f, 1f), offset), scale);
     }
-
-    float GetPosition(Vector3 position, float rotation)
-    {
-        float x = Mathf.Sin(Mathf.Deg2Rad * rotation) * position.x;
-        float z = Mathf.Cos(Mathf.Deg2Rad * rotation) * position.z;
-        return x + z;
-    }
-
-    float WaterHeight(float position, float time, float power)
-    {
-        return Mathf.Pow(1f - Mathf.Abs(Mathf.Sin(position + time)), power);
-    }
+    */
 
     /*
     #region SimpleNoise
@@ -245,10 +250,4 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
     //}
 
     //#endregion
-
-    #region Tiling and Offset
-
-
-
-    #endregion
 }

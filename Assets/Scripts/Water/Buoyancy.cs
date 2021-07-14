@@ -8,10 +8,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Buoyancy : MonoBehaviour
 {
-    [Range(0, 15)]
-    public float drag = 1f;
-    [SerializeField, Range(0, 35)]
-    public float buoyancy = 10f;
+    [SerializeField, Range(0, 20)]
+    private float drag = 1f;
+    [SerializeField, Range(0, 100)]
+    private float buoyancy = 10f;
+    [SerializeField]
+    private float heightOffset = 0f;
 
     [SerializeField] private bool realtime;
     [SerializeField] private bool usesNormal;
@@ -45,7 +47,7 @@ public class Buoyancy : MonoBehaviour
         finder = GetComponent<WaterLevelFinder>();
         rb = GetComponent<Rigidbody>();
 
-        prevPositions = new Vector3[positions.Length];
+        SetNodePositions();
     }
 
     void OnEnable()
@@ -70,7 +72,7 @@ public class Buoyancy : MonoBehaviour
         {
             Vector3 position = transform.TransformPoint(positions[i]);
             Vector3 velocity = (position - prevPositions[i]) / Time.deltaTime;
-            Vector3 waterPosition = finder.GetWaterSurfacePosition(position);
+            Vector3 waterPosition = finder.GetWaterSurfacePosition(position) + Vector3.up * heightOffset;
 
             Vector3 normal = Vector3.up;
 
@@ -121,7 +123,7 @@ public class Buoyancy : MonoBehaviour
                 Gizmos.DrawSphere(transform.TransformPoint(position), gizmoSize);
 
                 Gizmos.color = Color.green;
-                Gizmos.DrawSphere(finder.GetWaterSurfacePosition(transform.TransformPoint(position)), gizmoSize);
+                Gizmos.DrawSphere(finder.GetWaterSurfacePosition(transform.TransformPoint(position)) + Vector3.up * heightOffset, gizmoSize);
             }
 
             //Gizmos.DrawSphere(finder.GetWaterSurfacePosition(transform.position), 0.1f);

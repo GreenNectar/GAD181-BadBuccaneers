@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterSined
+  m_Name: WaterSined 1
   m_Shader: {fileID: -6465566751694194690, guid: 25938f2cbb40e5e43a44bc210fd4fd11, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -117,7 +117,7 @@ Material:
     - Vector1_6DA97D7: 35
     - Vector1_722CB011: 0
     - Vector1_745ba2c7d34f419ea7d6005d0e227694: 1
-    - Vector1_755a31c40d08498ab0377692e9dd0abc: 0
+    - Vector1_755a31c40d08498ab0377692e9dd0abc: 0.5
     - Vector1_7FB5584F: 0.5
     - Vector1_8BF7F1BF: 1
     - Vector1_905986FC: 1
@@ -141,11 +141,11 @@ Material:
     - Vector1_FABC47E4: 0.5
     - Vector1_abaa5f4359c44f02bf8a474deab9a3f7: 1
     - Vector1_b619cfd098d04f1ebdf0e2dd80cd5e97: 0.1
-    - Vector1_b6cc3c37591346b5a90b54b20c98796b: 0.23
+    - Vector1_b6cc3c37591346b5a90b54b20c98796b: 0.19
     - Vector1_b7ce939495e944899c0f3071b6280daf: 1
-    - Vector1_c091a5f56f3f47559e7cc339bb7abf5b: 1.37
+    - Vector1_c091a5f56f3f47559e7cc339bb7abf5b: 2.46
     - Vector1_cb44491da5be42e38d055c3c725308d8: 0
-    - Vector1_d9653e4de4ce4d0189a167923ca59a8a: 0.075
+    - Vector1_d9653e4de4ce4d0189a167923ca59a8a: 0.1
     - Vector1_e70df522eca54e93900fa0a7aeec40dc: 78
     - Vector1_e7e66707b3b44bbbb85462c1087b15b6: 0
     - Vector1_ec49dae09d084b88944c459a02da38c4: 0
@@ -164,13 +164,14 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FoamOverlayScale: 2.54
-    - _FoamScale: 90
-    - _FoamSpeed: 0.1
+    - _FoamOverlayScale: 2.22
+    - _FoamScale: 22
+    - _FoamSpeed: 0.01
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GradientScale: 0.46
+    - _GradientAmount: 0.25
+    - _GradientScale: 3
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -181,21 +182,21 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Wave1Height: 4.98
-    - _Wave1Power: 1.25
-    - _Wave1Rotation: 0
-    - _Wave1Scale: 0.04
+    - _Wave1Height: 0.1
+    - _Wave1Power: 1
+    - _Wave1Rotation: 52
+    - _Wave1Scale: 1
     - _Wave1Speed: 0.25
-    - _Wave2Height: 1.77
+    - _Wave2Height: 0.15
     - _Wave2Power: 1
-    - _Wave2Rotation: 277
-    - _Wave2Scale: -0.09
-    - _Wave2Speed: -0.1
-    - _Wave3Height: 1.5
-    - _Wave3Power: 1
-    - _Wave3Rotation: 207
-    - _Wave3Scale: 0.2
-    - _Wave3Speed: 0.8
+    - _Wave2Rotation: 250
+    - _Wave2Scale: 0.25
+    - _Wave2Speed: 0.5
+    - _Wave3Height: 0.2
+    - _Wave3Power: 0.5
+    - _Wave3Rotation: 105
+    - _Wave3Scale: -0.35
+    - _Wave3Speed: 0.4
     - _WaveMultiplier: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -209,12 +210,12 @@ Material:
     - Vector2_58cddf7c2e794ff6896deeebe7fc38f7: {r: 0.2, g: 0.2, b: 0, a: 0}
     - Vector2_B86025B3: {r: 0.5, g: 1, b: 0, a: 0}
     - Vector2_D494475D: {r: 0.2, g: 0.2, b: 0, a: 0}
-    - Vector2_ab4f9d510af74b9b983fdf7c50fea62b: {r: 0.5, g: 1, b: 0, a: 0}
+    - Vector2_ab4f9d510af74b9b983fdf7c50fea62b: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DeepWater: {r: 0.16220185, g: 0.4245283, b: 0.41894773, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradientSpeed: {r: 1, g: 1, b: 0, a: 0}
+    - _GradientSpeed: {r: 0.01, g: 0.2, b: 0, a: 0}
     - _MediumWater: {r: 1, g: 1, b: 1, a: 1}
     - _ShallowWater: {r: 0, g: 1, b: 0.7453065, a: 0.39607844}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
