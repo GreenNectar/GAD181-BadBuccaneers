@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoatRunController : MonoBehaviour
+public class BoatRunController : MicroGamePlayerController
 {
     public CharacterController chaCon;
-    public Player player;
     public float turnSpeed;
     public float boatSpeed;
     public float lerpSpeed;
@@ -19,9 +18,9 @@ public class BoatRunController : MonoBehaviour
     float speed;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        player = ReInput.players.GetPlayer(0);
+        base.Start();
         speed = boostSpeed;
     }
 
