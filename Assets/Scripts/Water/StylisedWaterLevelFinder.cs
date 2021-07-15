@@ -5,65 +5,67 @@ using UnityEngine;
 
 public class StylisedWaterLevelFinder : WaterLevelFinder
 {
-    //[Tooltip("Need to use the shader given, will make this a reference later so we don't have to put it in")]
-    //public Shader shader;
+    [Tooltip("The shader must be the correct shader 'StylisedWaterShader'")]
     public Material material;
 
-    //TODO 
-    public override Vector3 GetWaterSurfacePosition(Vector3 position)
+    /// <summary>
+    /// Returns the position of the water at the given position
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    public override Vector3 GetWaterSurfacePosition(Vector3 position) // Unoptimised
     {
         float waveMultiplier = material.GetFloat("_WaveMultiplier");//1f;
-        Vector2 gradientSpeed = material.GetVector("_GradientSpeed");//1f;
-        float gradientScale = material.GetFloat("_GradientScale");//1f;
+        //Vector2 gradientSpeed = material.GetVector("_GradientSpeed");//1f;
+        //float gradientScale = material.GetFloat("_GradientScale");//1f;
 
-
-
-        float wave1Speed = material.GetFloat("_Wave1Speed");// 0.5f;
-        float wave1Scale = material.GetFloat("_Wave1Scale");// 0.05f;
-        float wave1Height = material.GetFloat("_Wave1Height");// 6f;
-        float wave1Rotation = material.GetFloat("_Wave1Rotation");// 0f;
-        float wave1Power = material.GetFloat("_Wave1Power");// 1.25f;
-        float time = _Time;//Shader.GetGlobalVector("_Time").y;//Time.deltaTime;
+        // Wave 1
+        float wave1Speed = material.GetFloat("_Wave1Speed");
+        float wave1Scale = material.GetFloat("_Wave1Scale");
+        float wave1Height = material.GetFloat("_Wave1Height");
+        float wave1Rotation = material.GetFloat("_Wave1Rotation");
+        float wave1Power = material.GetFloat("_Wave1Power");
+        float time = _Time;
 
         float t = time * wave1Speed;
         float p = GetPosition(position, wave1Rotation) * wave1Scale;
-        float wave1Final = WaterHeight(p, t, wave1Power);//Mathf.Pow(1f - Mathf.Abs(Mathf.Sin(a + b)), wave1Power);
+        float wave1Final = WaveFunction(p, t, wave1Power);
 
-
-
-
-        float wave2Speed = material.GetFloat("_Wave2Speed");// -1f;
-        float wave2Scale = material.GetFloat("_Wave2Scale");// 0.1f;
-        float wave2Height = material.GetFloat("_Wave2Height");// 1f;
-        float wave2Rotation = material.GetFloat("_Wave2Rotation");// 277f;
-        float wave2Power = material.GetFloat("_Wave2Power");// 1f;
+        // Wave 2
+        float wave2Speed = material.GetFloat("_Wave2Speed");
+        float wave2Scale = material.GetFloat("_Wave2Scale");
+        float wave2Height = material.GetFloat("_Wave2Height");
+        float wave2Rotation = material.GetFloat("_Wave2Rotation");
+        float wave2Power = material.GetFloat("_Wave2Power");
 
         t = time * wave2Speed;
         p = GetPosition(position, wave2Rotation) * wave2Scale;
-        float wave2Final = WaterHeight(p, t, wave2Power);
+        float wave2Final = WaveFunction(p, t, wave2Power);
 
-
-
-
-        float wave3Speed = material.GetFloat("_Wave3Speed");// 0.5f;
-        float wave3Scale = material.GetFloat("_Wave3Scale");// 0.44f;
-        float wave3Height = material.GetFloat("_Wave3Height");// 1f;
-        float wave3Rotation = material.GetFloat("_Wave3Rotation");// 207f;
-        float wave3Power = material.GetFloat("_Wave3Power");// 1f;
+        // Wave 3
+        float wave3Speed = material.GetFloat("_Wave3Speed");
+        float wave3Scale = material.GetFloat("_Wave3Scale");
+        float wave3Height = material.GetFloat("_Wave3Height");
+        float wave3Rotation = material.GetFloat("_Wave3Rotation");
+        float wave3Power = material.GetFloat("_Wave3Power");
 
         t = time * wave3Speed;
         p = GetPosition(position, wave3Rotation) * wave3Scale;
-        float wave3Final = WaterHeight(p, t, wave3Power);
+        float wave3Final = WaveFunction(p, t, wave3Power);
 
+        // Final height!
+        float height = ((wave1Final * wave1Height) + (wave2Final * wave2Height) + (wave3Final * wave3Height)) * waveMultiplier;
 
-
-        float height = ((wave1Final * wave1Height) + (wave2Final * wave2Height) + (wave3Final * wave3Height)) * waveMultiplier;//Mathf.Lerp(0f, c * wave1Height, waveMultiplier);
-
-        return new Vector3(position.x, height, position.z);// base.GetWaterSurfacePosition(position);
+        // Return the position
+        return new Vector3(position.x, height, position.z);
     }
 
-
-
+    /// <summary>
+    /// Gets a float from vector that is based on rotation
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
     float GetPosition(Vector3 position, float rotation)
     {
         float x = Mathf.Sin(Mathf.Deg2Rad * rotation) * position.x;
@@ -71,7 +73,14 @@ public class StylisedWaterLevelFinder : WaterLevelFinder
         return x + z;
     }
 
-    float WaterHeight(float position, float time, float power)
+    /// <summary>
+    /// This is the function that determines the wave height
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="time"></param>
+    /// <param name="power"></param>
+    /// <returns></returns>
+    float WaveFunction(float position, float time, float power)
     {
         return Mathf.Pow(1f - Mathf.Abs(Mathf.Sin(position + time)), power);
     }

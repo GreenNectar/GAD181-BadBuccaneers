@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterSined 1
+  m_Name: Water_ExampleCalm
   m_Shader: {fileID: -6465566751694194690, guid: 25938f2cbb40e5e43a44bc210fd4fd11, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -117,7 +117,7 @@ Material:
     - Vector1_6DA97D7: 35
     - Vector1_722CB011: 0
     - Vector1_745ba2c7d34f419ea7d6005d0e227694: 1
-    - Vector1_755a31c40d08498ab0377692e9dd0abc: 0.5
+    - Vector1_755a31c40d08498ab0377692e9dd0abc: 0
     - Vector1_7FB5584F: 0.5
     - Vector1_8BF7F1BF: 1
     - Vector1_905986FC: 1
@@ -164,13 +164,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FoamDepth: 0.1
     - _FoamOverlayScale: 2.22
     - _FoamScale: 22
     - _FoamSpeed: 0.01
+    - _FoamStrength: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GradientAmount: 0.25
+    - _GradientAmount: 0.4
     - _GradientScale: 3
     - _Metallic: 0
     - _OcclusionStrength: 1

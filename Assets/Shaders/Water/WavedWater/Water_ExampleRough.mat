@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterSined
+  m_Name: Water_ExampleRough
   m_Shader: {fileID: -6465566751694194690, guid: 25938f2cbb40e5e43a44bc210fd4fd11, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -170,6 +170,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _GradientAmount: 0.3
     - _GradientScale: 0.46
     - _Metallic: 0
     - _OcclusionStrength: 1

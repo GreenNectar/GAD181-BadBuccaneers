@@ -709,15 +709,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 461728, guid: 64ddb092e43004748953d504e21df76e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.83
+      value: 17.95
       objectReference: {fileID: 0}
     - target: {fileID: 461728, guid: 64ddb092e43004748953d504e21df76e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.096
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 461728, guid: 64ddb092e43004748953d504e21df76e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.211
+      value: -22.57
       objectReference: {fileID: 0}
     - target: {fileID: 461728, guid: 64ddb092e43004748953d504e21df76e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -773,8 +773,9 @@ MonoBehaviour:
   usesNormal: 0
   normalStrength: 1
   positions:
-  - {x: 0.05, y: 0.18, z: 0}
-  - {x: -0.05, y: 0.12, z: 0}
+  - {x: 0.05, y: 0.22, z: 0}
+  - {x: -0.05, y: 0.16, z: 0.05}
+  - {x: -0.05, y: 0.16, z: -0.05}
   drawGizmos: 1
   submersed: 0
 --- !u!54 &551960641
