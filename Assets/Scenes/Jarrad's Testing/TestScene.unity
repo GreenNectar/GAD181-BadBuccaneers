@@ -175,10 +175,13 @@ MonoBehaviour:
   heightOffset: 0
   realtime: 0
   usesNormal: 0
+  draglessDirection: {x: 0, y: 0, z: 0}
+  draglessOneDirection: 1
   normalStrength: 1
   positions:
   - {x: 0, y: 0, z: 0}
   drawGizmos: 1
+  gizmoSize: 0.1
   submersed: 0
 --- !u!54 &136528113
 Rigidbody:
@@ -387,6 +390,8 @@ MonoBehaviour:
   heightOffset: 0
   realtime: 0
   usesNormal: 0
+  draglessDirection: {x: 0, y: 0, z: 0}
+  draglessOneDirection: 1
   normalStrength: 1
   positions:
   - {x: 0.5, y: 0, z: 0}
@@ -394,6 +399,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0.5}
   - {x: 0, y: 0, z: -0.5}
   drawGizmos: 1
+  gizmoSize: 0.1
   submersed: 0
 --- !u!54 &270690230
 Rigidbody:
@@ -448,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.91
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -579,6 +585,8 @@ MonoBehaviour:
   heightOffset: 0
   realtime: 0
   usesNormal: 1
+  draglessDirection: {x: 0, y: 0, z: 0}
+  draglessOneDirection: 1
   normalStrength: 0.5
   positions:
   - {x: 3.25, y: 1, z: 0}
@@ -590,6 +598,7 @@ MonoBehaviour:
   - {x: 2, y: 1, z: 7}
   - {x: -2, y: 1, z: -7}
   drawGizmos: 1
+  gizmoSize: 0.1
   submersed: 0
 --- !u!54 &354116159
 Rigidbody:
@@ -637,11 +646,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5600fbebffe4a3647b84ce7aed3de5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drag: 4
+  drag: 20
   buoyancy: 15
   heightOffset: 0
   realtime: 0
-  usesNormal: 1
+  usesNormal: 0
+  draglessDirection: {x: 1, y: 0, z: 0}
+  draglessOneDirection: 0
   normalStrength: 0.5
   positions:
   - {x: 6, y: 2.5, z: 0}
@@ -653,6 +664,7 @@ MonoBehaviour:
   - {x: 4, y: 2.5, z: 10}
   - {x: -4, y: 2.5, z: -10}
   drawGizmos: 1
+  gizmoSize: 0.1
   submersed: 0
 --- !u!54 &515306441
 Rigidbody:
@@ -670,19 +682,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &515306442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515306439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490dd88ff20ee0d439094d7fd1fadb77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 1babbdfca85bce1438c5952679aea4da, type: 2}
 --- !u!65 &515306443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -775,12 +774,15 @@ MonoBehaviour:
   heightOffset: 0.33
   realtime: 0
   usesNormal: 0
+  draglessDirection: {x: 0, y: 0, z: 0}
+  draglessOneDirection: 1
   normalStrength: 1
   positions:
   - {x: 0.05, y: 0.22, z: 0}
   - {x: -0.05, y: 0.16, z: 0.05}
   - {x: -0.05, y: 0.16, z: -0.05}
   drawGizmos: 1
+  gizmoSize: 0.1
   submersed: 0
 --- !u!54 &551960641
 Rigidbody:
@@ -898,6 +900,8 @@ MonoBehaviour:
   heightOffset: 0
   realtime: 0
   usesNormal: 0
+  draglessDirection: {x: 0, y: 0, z: 0}
+  draglessOneDirection: 1
   normalStrength: 1
   positions:
   - {x: 0.4, y: 0.5, z: 0}
@@ -913,6 +917,7 @@ MonoBehaviour:
   - {x: -0.3, y: 1, z: 0}
   - {x: 0, y: 1, z: -0.3}
   drawGizmos: 1
+  gizmoSize: 0.1
   submersed: 0
 --- !u!54 &595010060
 Rigidbody:
@@ -1298,7 +1303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
