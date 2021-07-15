@@ -100,7 +100,7 @@ Material:
     - Vector1_1a3bac05bf324807bbf8e0d870cfbcfc: 1
     - Vector1_23f3726f67ab48cbbc5f9263be1af742: 0
     - Vector1_24DAD7F: 0.1
-    - Vector1_27bddadbe13d45478440b3a9b112a338: -0.01
+    - Vector1_27bddadbe13d45478440b3a9b112a338: 0.01
     - Vector1_327f66bf5bf840d7b9f7a952ca3dad11: 1
     - Vector1_39047021: 0.5
     - Vector1_39222957: 0.76
@@ -141,7 +141,7 @@ Material:
     - Vector1_FABC47E4: 0.5
     - Vector1_abaa5f4359c44f02bf8a474deab9a3f7: 1
     - Vector1_b619cfd098d04f1ebdf0e2dd80cd5e97: 0.1
-    - Vector1_b6cc3c37591346b5a90b54b20c98796b: 0.23
+    - Vector1_b6cc3c37591346b5a90b54b20c98796b: 0.3
     - Vector1_b7ce939495e944899c0f3071b6280daf: 1
     - Vector1_c091a5f56f3f47559e7cc339bb7abf5b: 1.37
     - Vector1_cb44491da5be42e38d055c3c725308d8: 0
@@ -164,19 +164,22 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FoamOverlayScale: 2.54
-    - _FoamScale: 90
-    - _FoamSpeed: 0.1
+    - _FoamDepth: 1
+    - _FoamOverlayScale: 0.02
+    - _FoamScale: 0.5
+    - _FoamSpeed: 0.5
+    - _FoamStrength: 1.1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _GradientAmount: 0.3
-    - _GradientScale: 0.46
+    - _GradientAmount: 0.4
+    - _GradientScale: 0.5
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _ShallowPower: 3
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
