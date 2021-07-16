@@ -179,8 +179,10 @@ MonoBehaviour:
   draglessOneDirection: 1
   normalStrength: 1
   positions:
-  - {x: 0, y: 0, z: 0}
-  drawGizmos: 1
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
   gizmoSize: 0.1
   submersed: 0
 --- !u!54 &136528113
@@ -273,7 +275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &270690224
 GameObject:
@@ -371,7 +373,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &270690229
 MonoBehaviour:
@@ -394,11 +396,10 @@ MonoBehaviour:
   draglessOneDirection: 1
   normalStrength: 1
   positions:
-  - {x: 0.5, y: 0, z: 0}
-  - {x: -0.5, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0.5}
-  - {x: 0, y: 0, z: -0.5}
-  drawGizmos: 1
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
   gizmoSize: 0.1
   submersed: 0
 --- !u!54 &270690230
@@ -446,23 +447,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.25
+      value: 4.1742415
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.13
+      value: 8.117463
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.77
+      value: -4.1038723
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -470,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -482,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -515,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480178, guid: 08fa080060d162343b94ac13ffbe8f1e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480178, guid: 08fa080060d162343b94ac13ffbe8f1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -589,15 +590,10 @@ MonoBehaviour:
   draglessOneDirection: 1
   normalStrength: 0.5
   positions:
-  - {x: 3.25, y: 1, z: 0}
-  - {x: -3.25, y: 1, z: 0}
-  - {x: 0, y: 1, z: 7}
-  - {x: 0, y: 1, z: -7}
-  - {x: 2, y: 1, z: -7}
-  - {x: -2, y: 1, z: 7}
-  - {x: 2, y: 1, z: 7}
-  - {x: -2, y: 1, z: -7}
-  drawGizmos: 1
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
   gizmoSize: 0.1
   submersed: 0
 --- !u!54 &354116159
@@ -646,24 +642,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5600fbebffe4a3647b84ce7aed3de5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drag: 20
-  buoyancy: 15
+  drag: 7
+  buoyancy: 8
   heightOffset: 0
   realtime: 0
-  usesNormal: 0
-  draglessDirection: {x: 1, y: 0, z: 0}
+  usesNormal: 1
+  draglessDirection: {x: 0, y: 0, z: -1}
   draglessOneDirection: 0
   normalStrength: 0.5
   positions:
-  - {x: 6, y: 2.5, z: 0}
-  - {x: -6, y: 2.5, z: 0}
-  - {x: 0, y: 2.5, z: 10}
-  - {x: 0, y: 2.5, z: -10}
-  - {x: 4, y: 2.5, z: -10}
-  - {x: -4, y: 2.5, z: 10}
-  - {x: 4, y: 2.5, z: 10}
-  - {x: -4, y: 2.5, z: -10}
-  drawGizmos: 1
+  - position: {x: 6, y: 2.5, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: -6, y: 2.5, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 4, y: 2.5, z: 10}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: -4, y: 2.5, z: 10}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: -4, y: 2.5, z: -12}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 4, y: 2.5, z: -12}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
   gizmoSize: 0.1
   submersed: 0
 --- !u!54 &515306441
@@ -695,6 +706,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.323998, y: 5.46, z: 25.68}
   m_Center: {x: -0.00000047683716, y: 3.6, z: -0.9}
+--- !u!4 &515306446 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 465714, guid: 546543ec887821441bb4deff0e363c1e, type: 3}
+  m_PrefabInstance: {fileID: 288634825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &515306447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515306439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490dd88ff20ee0d439094d7fd1fadb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 1babbdfca85bce1438c5952679aea4da, type: 2}
+--- !u!114 &515306448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515306439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109faa0ecd4506d45ac21380ac23ab4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 15
+  turnSpeed: 1
+  maxmimumVelocity: 10
+  positions:
+  - {x: 0, y: 0, z: -14}
+  - {x: 0, y: 0, z: 11}
 --- !u!1001 &551960638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 461728, guid: 64ddb092e43004748953d504e21df76e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461728, guid: 64ddb092e43004748953d504e21df76e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -778,10 +825,10 @@ MonoBehaviour:
   draglessOneDirection: 1
   normalStrength: 1
   positions:
-  - {x: 0.05, y: 0.22, z: 0}
-  - {x: -0.05, y: 0.16, z: 0.05}
-  - {x: -0.05, y: 0.16, z: -0.05}
-  drawGizmos: 1
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
   gizmoSize: 0.1
   submersed: 0
 --- !u!54 &551960641
@@ -830,7 +877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 434298, guid: 49ac8d74f72892a41ad9c149db7e9e5f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 434298, guid: 49ac8d74f72892a41ad9c149db7e9e5f, type: 3}
       propertyPath: m_LocalScale.x
@@ -904,19 +951,10 @@ MonoBehaviour:
   draglessOneDirection: 1
   normalStrength: 1
   positions:
-  - {x: 0.4, y: 0.5, z: 0}
-  - {x: 0, y: 0.5, z: 0.4}
-  - {x: -0.4, y: 0.5, z: 0}
-  - {x: 0, y: 0.5, z: -0.4}
-  - {x: 0.3, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0.3}
-  - {x: -0.3, y: 0, z: 0}
-  - {x: 0, y: 0, z: -0.3}
-  - {x: 0.3, y: 1, z: 0}
-  - {x: 0, y: 1, z: 0.3}
-  - {x: -0.3, y: 1, z: 0}
-  - {x: 0, y: 1, z: -0.3}
-  drawGizmos: 1
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
   gizmoSize: 0.1
   submersed: 0
 --- !u!54 &595010060
@@ -966,7 +1004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &726826588
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1025,13 +1063,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726826587}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 40.66, z: -44.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 515306446}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &726826591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,7 +1193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1714107756
 PrefabInstance:
@@ -1174,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 461704, guid: 1e0f5f02bf25ef14d8b4e1d9b148d9fd, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 461704, guid: 1e0f5f02bf25ef14d8b4e1d9b148d9fd, type: 3}
       propertyPath: m_LocalScale.x
@@ -1235,7 +1273,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1303,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
@@ -1401,5 +1439,5 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
