@@ -1,8 +1,12 @@
 ﻿using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Buoyancy : MonoBehaviour
@@ -20,7 +24,7 @@ public class Buoyancy : MonoBehaviour
     private bool usesNormal;
 
     [SerializeField, Tooltip("This will determine which direction the object can move without drag\n(length 0 = full drag, 1 = no drag in that direction)\n(local space)")]
-    private Vector3 draglessDirection = Vector3.zero;
+    public Vector3 draglessDirection = Vector3.zero;
     //[SerializeField, Range(0f, 1f), Tooltip("The range of the drag that is dragless...")]
     //private float draglessWidth = 1f;
     [SerializeField, Tooltip("Whether or not the dragless direction applies to the opposite direction as well")]
@@ -30,18 +34,17 @@ public class Buoyancy : MonoBehaviour
     private float normalStrength = 1f;
 
     [SerializeField, Tooltip("The positions on which the bouyancy will be applied to on the object")]
-    private Vector3[] positions = new Vector3[1];
-    Vector3[] prevPositions; // To keep track of velocities
+    public BuoyantPosition[] positions = new BuoyantPosition[1];
 
-    [SerializeField, Tooltip("Allows the gizmos to be seen")]
-    private bool drawGizmos;
-    [SerializeField, ShowIf("drawGizmos"), Tooltip("The size of the gizmos")]
+    //[SerializeField, Tooltip("Allows the gizmos to be seen")]
+    //private bool drawGizmos;
+    [SerializeField, Tooltip("The size of the gizmos")] // , ShowIf("drawGizmos")
     private float gizmoSize = 0.1f;
 
     /// <summary>
     /// How many points are submersed underneath the water
     /// </summary>
-    [HideInInspector]
+    //[HideInInspector]
     public int submersed = 0;
     /// <summary>
     /// Percentage of points submersed in the water
@@ -50,12 +53,47 @@ public class Buoyancy : MonoBehaviour
     {
         get
         {
-            return submersed / positions.Length;
+            return (float)submersed / (float)positions.Length;
         }
     }
 
     WaterLevelFinder finder;
     Rigidbody rb;
+
+    #region Properties
+
+    //private int[] forcePositions;
+    //public BuoyantPosition[] ForcePositions
+    //{
+    //    get
+    //    {
+    //        if (forcePositions == null)
+    //        {
+    //            List<int> indices = new List<int>();
+    //            for (int i = 0; i < positions.Length; i++)
+    //            {
+    //                if (positions[i].isForcePoint)
+    //                {
+    //                    indices.Add(i);
+    //                }
+    //            }
+    //            forcePositions = indices.ToArray();
+    //        }
+
+    //        //List<BuoyantPosition> pos = new List<BuoyantPosition>();
+    //        //for (int i = 0; i < positions.Length; i++)
+    //        //{
+    //        //    pos.Add(ref positions[i]);
+    //        //}
+    //        //if (forcePositions == null)
+    //        //{
+    //        //    forcePositions = positions.Where(p => p.isForcePoint).Select(p => ref p).ToArray();
+    //        //}
+    //        return forcePositions.Select(p => positions[p]).ToArray();
+    //    }
+    //}
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -84,10 +122,11 @@ public class Buoyancy : MonoBehaviour
     void Step()
     {
         submersed = 0;
+
         for (int i = 0; i < positions.Length; i++)
         {
-            Vector3 position = transform.TransformPoint(positions[i]);
-            Vector3 velocity = (position - prevPositions[i]) / Time.deltaTime;
+            Vector3 position = transform.TransformPoint(positions[i].position);
+            Vector3 velocity = (position - positions[i].previous) / Time.deltaTime;
             Vector3 dragVelocity = velocity;
 
             if (draglessDirection.sqrMagnitude > 0f)
@@ -113,7 +152,9 @@ public class Buoyancy : MonoBehaviour
             float difference = position.y - waterPosition.y;
             if (difference < 0)
             {
+                positions[i].isSubmersed = true;
                 submersed++;
+
                 difference = Mathf.Clamp(-difference, 0f, 3f); // clamp the difference, I can't remember why this is...
 
                 // Drag force
@@ -123,16 +164,22 @@ public class Buoyancy : MonoBehaviour
                 // Bouyancy force
                 rb.AddForceAtPosition(((buoyancy * rb.mass) * normal * difference / positions.Length) * Time.deltaTime * 60f, position);
             }
+            else
+            {
+                positions[i].isSubmersed = false;
+            }
 
 
-            prevPositions[i] = position;
+            positions[i].previous = position;
         }
     }
 
     public void SetNodePositions()
     {
-        if (prevPositions == null) prevPositions = new Vector3[positions.Length];
-        for (int i = 0; i < positions.Length; i++) prevPositions[i] = transform.TransformPoint(positions[i]);
+        foreach (var position in positions)
+        {
+            position.previous = transform.TransformPoint(position.position);
+        }
     }
 
 #if UNITY_EDITOR
@@ -143,28 +190,85 @@ public class Buoyancy : MonoBehaviour
             finder = GetComponent<WaterLevelFinder>();
         }
 
-        if (drawGizmos)
+        //if (drawGizmos)
+        //{
+        foreach (var position in positions)
         {
-            foreach (var position in positions)
-            {
-                Gizmos.color = Color.white;
-                Gizmos.DrawSphere(transform.TransformPoint(position), gizmoSize);
+            Gizmos.color = Color.white;
+            Gizmos.DrawSphere(transform.TransformPoint(position.position), gizmoSize);
 
-                Gizmos.color = Color.green;
-                if (finder)
-                {
-                    Gizmos.DrawSphere(finder.GetWaterSurfacePosition(transform.TransformPoint(position)) + Vector3.up * heightOffset, gizmoSize);
-                }
-                else
-                {
-                    Vector3 pos = transform.TransformPoint(position);
-                    pos.y = heightOffset;
-                    Gizmos.DrawSphere(pos, gizmoSize);
-                }
+            Gizmos.color = Color.green;
+            if (finder)
+            {
+                Gizmos.DrawSphere(finder.GetWaterSurfacePosition(transform.TransformPoint(position.position)) + Vector3.up * heightOffset, gizmoSize);
             }
+            else
+            {
+                Vector3 pos = transform.TransformPoint(position.position);
+                pos.y = heightOffset;
+                Gizmos.DrawSphere(pos, gizmoSize);
+            }
+        }
 
             //Gizmos.DrawSphere(finder.GetWaterSurfacePosition(transform.position), 0.1f);
-        }
+        //}
     }
 #endif
 }
+
+[Serializable]
+public class BuoyantPosition
+{
+    public Vector3 position = Vector3.zero;
+    public Vector3 previous = Vector3.zero;
+    public bool isSubmersed = false;
+    //public bool isForcePoint = false;
+#if UNITY_EDITOR
+    public bool isEditing = false;
+#endif
+}
+
+#if UNITY_EDITOR
+
+[CustomPropertyDrawer(typeof(BuoyantPosition))]
+public class BuoyantPositionDrawer : PropertyDrawer
+{
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return base.GetPropertyHeight(property, label) * 2f;
+    }
+
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        // Using BeginProperty / EndProperty on the parent property means that
+        // prefab override logic works on the entire property.
+        EditorGUI.BeginProperty(position, label, property);
+
+        // Draw label
+        label.text = label.text.Replace("Element", "Position");
+        position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+
+        if (property.FindPropertyRelative("isEditing").boolValue)
+        {
+            GUI.backgroundColor = Color.cyan;
+        }
+
+        // Draw the position
+        position.height /= 2f;
+        EditorGUI.PropertyField(position, property.FindPropertyRelative("position"), GUIContent.none);
+
+        //// Toggles force point
+        //position.y += position.height;
+        //Rect newPosition = EditorGUI.PrefixLabel(position, new GUIContent { text = "Is Force Point" });
+        //property.FindPropertyRelative("isForcePoint").boolValue = EditorGUI.Toggle(newPosition, property.FindPropertyRelative("isForcePoint").boolValue);
+
+        // Toggles editing
+        position.y += position.height;
+        Rect newPosition = EditorGUI.PrefixLabel(position, new GUIContent { text = "Edit" });
+        property.FindPropertyRelative("isEditing").boolValue = EditorGUI.Toggle(newPosition, property.FindPropertyRelative("isEditing").boolValue);
+
+        EditorGUI.EndProperty();
+    }
+}
+
+#endif
