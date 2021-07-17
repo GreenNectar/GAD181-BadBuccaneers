@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PoopDeckPlayerController : MicroGamePlayerController
 {
-    private CharacterController characterController;
-
     [SerializeField]
     private float speed = 1f;
     [SerializeField, Tooltip("Degrees per second")]
@@ -24,17 +23,33 @@ public class PoopDeckPlayerController : MicroGamePlayerController
     protected override void Start()
     {
         base.Start();
-
-        characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+        // Move the player...
+        PlayerMovement();
+
+        // Mopping
+        Ray ray = new Ray { origin = mop.position + transform.up, direction = -transform.up };
+
+        score += PoopDeckTesting.current.Mop(ray);
+    }
+
+    /// <summary>
+    /// Handles the player input and movement
+    /// </summary>
+    private void PlayerMovement()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
             isDualStyle = !isDualStyle;
         }
+
+        //! I couldn't get the character controller to allow the player to stick to the boat ;-;
+        //TODO Add collision detection
+
+        
 
         if (!isDualStyle)
         {
@@ -46,7 +61,7 @@ public class PoopDeckPlayerController : MicroGamePlayerController
             {
                 // Get the rotations
                 Quaternion wantedRotation = Quaternion.LookRotation(movement, Vector3.up); // Movement direction
-                Quaternion currentRotation = transform.rotation;
+                Quaternion currentRotation = transform.localRotation;
                 Vector3 currentEuler = currentRotation.eulerAngles; // Get the euler so I don't have to write so much
 
                 // Get the difference in angle
@@ -73,11 +88,12 @@ public class PoopDeckPlayerController : MicroGamePlayerController
                 }
 
                 // Set the rotation
-                transform.rotation = Quaternion.Euler(currentEuler);
+                transform.localRotation = Quaternion.Euler(currentEuler);
             }
 
             // Move the player in the direction we are looking towards
-            characterController.Move(transform.forward * Time.deltaTime * speed * movement.magnitude);
+            //characterController.Move(transform.forward * Time.deltaTime * speed * movement.magnitude);
+            transform.Translate(transform.forward * Time.deltaTime * speed * movement.magnitude);
         }
         else
         {
@@ -90,7 +106,7 @@ public class PoopDeckPlayerController : MicroGamePlayerController
 
                 // Get the rotations
                 Quaternion wantedRotation = Quaternion.LookRotation(look, Vector3.up); // Movement direction
-                Quaternion currentRotation = transform.rotation;
+                Quaternion currentRotation = transform.localRotation;
                 Vector3 currentEuler = currentRotation.eulerAngles; // Get the euler so I don't have to write so much
 
                 // Get the difference in angle
@@ -117,20 +133,11 @@ public class PoopDeckPlayerController : MicroGamePlayerController
                 }
 
                 // Set the rotation
-                transform.rotation = Quaternion.Euler(currentEuler);
+                transform.localRotation = Quaternion.Euler(currentEuler);
             }
 
-            characterController.Move(movement * Time.deltaTime * speed);
-
+            //characterController.Move(movement * Time.deltaTime * speed);
+            transform.Translate(movement * Time.deltaTime * speed, transform.parent);
         }
-        
-    }
-
-    private void FixedUpdate()
-    {
-        // We don't want to keep mopping more than we have to
-        Ray ray = new Ray { origin = mop.position, direction = Vector3.down };
-
-        score += PoopDeckTesting.current.Mop(ray);
     }
 }
