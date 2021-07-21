@@ -234,8 +234,6 @@ public class PoopDeckTesting : MonoBehaviour
 
                 textureCoord.x = 1f - ((plane.InverseTransformPoint(hit.point).x + size.x / 2f) / size.x);
                 textureCoord.y = 1f - ((plane.InverseTransformPoint(hit.point).z + size.z / 2f) / size.z);
-
-                Debug.Log(textureCoord);
             }
 
 

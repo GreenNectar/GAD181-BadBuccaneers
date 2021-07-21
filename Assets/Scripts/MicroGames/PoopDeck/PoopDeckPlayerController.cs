@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CapsuleCollider))]
 public class PoopDeckPlayerController : MicroGamePlayerController
 {
     [SerializeField]
@@ -20,9 +21,13 @@ public class PoopDeckPlayerController : MicroGamePlayerController
     [SerializeField]
     private int score;
 
+    private CapsuleCollider capsule;
+
     protected override void Start()
     {
         base.Start();
+
+        capsule = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
@@ -93,7 +98,39 @@ public class PoopDeckPlayerController : MicroGamePlayerController
 
             // Move the player in the direction we are looking towards
             //characterController.Move(transform.forward * Time.deltaTime * speed * movement.magnitude);
-            transform.Translate(transform.forward * Time.deltaTime * speed * movement.magnitude);
+
+            float delta = Time.deltaTime * speed * movement.magnitude;
+            Vector3 p1 = transform.position + (capsule.center + transform.up * -capsule.height * 0.5f);
+            Vector3 p2 = p1 + transform.up * capsule.height * 0.5f;
+
+            Debug.DrawLine(p1, p2);
+
+            if (Physics.CapsuleCast(
+                p1,//transform.TransformPoint(capsule.center + capsule.height * Vector3.down),
+                p2,//transform.TransformPoint(capsule.center + capsule.height * Vector3.down),
+                capsule.radius,
+                transform.forward,
+                out RaycastHit hit,
+                delta))//,
+                //LayerMask.GetMask("Player")))
+            {
+                //transform.position = hit.point - (hit.point - transform.position).normalized * capsule.radius;//.Translate(hit.point - transform.position);
+
+                //Debug.DrawLine(transform.position, hit.point - (hit.point - (transform.position + transform.forward * delta)).normalized * capsule.radius);
+                //Debug.DrawLine(transform.position, hit.point + hit.normal * capsule.radius);
+                Vector3 newPosition = hit.point + hit.normal * (capsule.radius);
+                Vector3 localPosition = transform.localPosition;
+                transform.position = newPosition;
+                Vector3 finalPosition = transform.localPosition;
+                finalPosition.y = localPosition.y;
+                transform.localPosition = finalPosition;
+            }
+            else
+            {
+                transform.position += transform.forward * delta;
+                //Debug.DrawLine(transform.position, transform.position + transform.forward * delta);
+            }
+            //transform.Translate(transform.forward * Time.deltaTime * speed * movement.magnitude);
         }
         else
         {
@@ -137,7 +174,22 @@ public class PoopDeckPlayerController : MicroGamePlayerController
             }
 
             //characterController.Move(movement * Time.deltaTime * speed);
-            transform.Translate(movement * Time.deltaTime * speed, transform.parent);
+            if (Physics.CapsuleCast(
+                transform.TransformPoint(capsule.center + capsule.height * Vector3.down),
+                transform.TransformPoint(capsule.center + capsule.height * Vector3.down),
+                capsule.radius,
+                transform.forward,
+                out RaycastHit hit,
+                movement.magnitude * Time.deltaTime * speed,
+                LayerMask.GetMask("Player")))
+            {
+                transform.Translate(hit.point - transform.position);
+            }
+            else
+            {
+                transform.Translate(movement * Time.deltaTime * speed, transform.parent);
+            }
+            
         }
     }
 }
