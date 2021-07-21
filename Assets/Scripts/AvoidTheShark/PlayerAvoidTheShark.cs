@@ -24,11 +24,11 @@ public class PlayerAvoidTheShark : MonoBehaviour
     //  Update function every frame
     void Update()
     {
-        var moveVertical = new Vector3(0f, 0f, Input.GetAxis ("Vertical"));
+        var moveVertical = new Vector3(Input.GetAxis ("Vertical"), 0f, 0f);
         controller.Move(moveVertical * moveSpeed * Time.deltaTime);
 
-        var moveHorizontal = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        controller.Move(moveHorizontal * moveSpeed * Time.deltaTime);
+        var moveHorizontal = new Vector3(0f, 0f, Input.GetAxis("Horizontal"));
+        controller.Move(moveHorizontal * -moveSpeed * Time.deltaTime);
 
         if (Input.GetButtonDown("Fire1"))
         {
