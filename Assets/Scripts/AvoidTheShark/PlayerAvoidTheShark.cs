@@ -11,14 +11,10 @@ public class PlayerAvoidTheShark : MonoBehaviour
     // variables for player statistics
     public float moveSpeed;
     public float jumpVelocity;
+    private bool delay;
+    public float delayTime;
 
     private Vector3 velocity;
-
-    // upon start, setting variables for player
-    private void Start()
-    {
-
-    }
 
 
     //  Update function every frame
@@ -30,13 +26,21 @@ public class PlayerAvoidTheShark : MonoBehaviour
         var moveHorizontal = new Vector3(0f, 0f, Input.GetAxis("Horizontal"));
         controller.Move(moveHorizontal * -moveSpeed * Time.deltaTime);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && delay == false)
         {
             velocity = -Physics.gravity.normalized * jumpVelocity;
+            delay = true;
+            StartCoroutine(DelayAction());
         }
 
         velocity += Physics.gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        IEnumerator DelayAction()
+        {
+            yield return new WaitForSeconds(delayTime);
+            delay = false;
+        }
 
 
     }
