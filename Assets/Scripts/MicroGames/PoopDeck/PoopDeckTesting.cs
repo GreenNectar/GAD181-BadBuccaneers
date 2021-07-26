@@ -225,9 +225,22 @@ public class PoopDeckTesting : MonoBehaviour
             // If we don't hit the renderer associated with this, then we don't want to do anything
             if (hit.collider.GetComponent<MeshRenderer>() != meshRenderer) return 0;
 
+            Vector2 textureCoord = hit.textureCoord;
+
+            if (hit.collider.GetComponent<MeshCollider>() && hit.collider.GetComponent<MeshCollider>().convex)
+            {
+                Transform plane = hit.collider.transform;
+                Vector3 size = hit.collider.bounds.size;
+
+                textureCoord.x = 1f - ((plane.InverseTransformPoint(hit.point).x + size.x / 2f) / size.x);
+                textureCoord.y = 1f - ((plane.InverseTransformPoint(hit.point).z + size.z / 2f) / size.z);
+            }
+
+
+
             // Get the coordinates on the texture
-            Vector2Int textureCoordsAlpha = new Vector2Int((int)(hit.textureCoord.x * scoreTexture.width), (int)(hit.textureCoord.y * scoreTexture.height));
-            Vector2Int textureCoordsAlbedo = new Vector2Int((int)(hit.textureCoord.x * albedoTexture.width), (int)(hit.textureCoord.y * albedoTexture.height));
+            Vector2Int textureCoordsAlpha = new Vector2Int((int)(textureCoord.x * scoreTexture.width), (int)(textureCoord.y * scoreTexture.height));
+            Vector2Int textureCoordsAlbedo = new Vector2Int((int)(textureCoord.x * albedoTexture.width), (int)(textureCoord.y * albedoTexture.height));
 
             Color[] changedColours = SetCircle(scoreTexture, textureCoordsAlpha.x, textureCoordsAlpha.y, circleSize, Color.clear);
             SetCircle(albedoTexture, textureCoordsAlbedo.x, textureCoordsAlbedo.y, (int)(((float)circleSize / (float)scoreTexture.width) * (float)albedoTexture.width), Color.clear);
