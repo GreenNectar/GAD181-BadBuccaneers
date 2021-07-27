@@ -417,15 +417,35 @@ MonoBehaviour:
   heightOffset: 1
   realtime: 0
   usesNormal: 0
+  draglessDirection: {x: 0, y: 0, z: 0}
+  draglessOneDirection: 1
   normalStrength: 1
   positions:
-  - {x: 1.5, y: 1, z: 0}
-  - {x: -1.5, y: 1, z: 0}
-  - {x: 1, y: 1, z: -4}
-  - {x: -1, y: 1, z: -4}
-  - {x: 1, y: 1, z: 4}
-  - {x: -1, y: 1, z: 4}
-  drawGizmos: 1
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  - position: {x: 0, y: 0, z: 0}
+    previous: {x: 0, y: 0, z: 0}
+    isSubmersed: 0
+    isEditing: 0
+  gizmoSize: 0.1
   submersed: 0
 --- !u!114 &7268572215390810600
 MonoBehaviour:
@@ -439,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490dd88ff20ee0d439094d7fd1fadb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: eeba275f81defdc46affb95064d06430, type: 2}
+  material: {fileID: 2100000, guid: e47b1c9956a265b43abb803a132dea66, type: 2}
 --- !u!1 &3795627711764834321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,19 +1618,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -3.7493994e-33
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -6.123234e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 6.123234e-17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1625,16 +1645,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eeba275f81defdc46affb95064d06430, type: 2}
+      objectReference: {fileID: 2100000, guid: e47b1c9956a265b43abb803a132dea66, type: 2}
     - target: {fileID: 919132149155446097, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_Name
       value: WaterPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a403ddcb00161fa49a7b10e1ab681ae0, type: 3}
       propertyPath: m_StaticEditorFlags
