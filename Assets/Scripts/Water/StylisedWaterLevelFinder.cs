@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class StylisedWaterLevelFinder : WaterLevelFinder
 {
     [Tooltip("The shader must be the correct shader 'StylisedWaterShader'")]

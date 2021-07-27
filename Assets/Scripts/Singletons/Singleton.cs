@@ -56,6 +56,8 @@ public abstract class Singleton<T> : Singleton where T : MonoBehaviour
     #region  Methods
     private void Awake()
     {
+        if (Instance != this)
+            Destroy(gameObject);
         if (_persistent)
             DontDestroyOnLoad(gameObject);
         OnAwake();
