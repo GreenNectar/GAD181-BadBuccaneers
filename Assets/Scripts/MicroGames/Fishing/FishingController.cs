@@ -66,6 +66,8 @@ public class FishingController : MicroGamePlayerController
     /// <param name="fish"></param>
     public void AddFish(GameObject fish)
     {
+        EventManager.AddScoreToPlayer(PlayerNumber, 1);
+
         if (fish.GetComponent<Animator>())
         {
             fish.GetComponent<Animator>().enabled = false;

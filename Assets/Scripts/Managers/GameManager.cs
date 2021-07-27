@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField, Scene]
+    private string resultScreen;
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -16,12 +20,9 @@ public class GameManager : Singleton<GameManager>
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void ResetScores()
+    public void LoadResultsScreen()
     {
-        foreach (var score in FindObjectsOfType<PlayerScore>())
-        {
-            score.Clear();
-        }
+        SceneManager.LoadScene(resultScreen);
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
