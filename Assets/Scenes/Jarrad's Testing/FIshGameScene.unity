@@ -2370,7 +2370,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1787524972}
         m_TargetAssemblyTypeName: EventManager, GameAssembly
         m_MethodName: FinishLevel
-        m_Mode: 1
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2592,9 +2592,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  onPlayerWin:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1787524973
 Transform:
   m_ObjectHideFlags: 0

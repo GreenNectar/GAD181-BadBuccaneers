@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     private List<string> levels = new List<string>();
     private Stack<string> levelsToPlay = new Stack<string>();
 
+    private int finishedPlayers = 0;
+
     private void Start()
     {
         //? This is for testing, remove this later
@@ -33,6 +35,11 @@ public class GameManager : Singleton<GameManager>
         SceneManager.sceneLoaded -= OnSceneLoaded;
         EventManager.onResultsFinish.RemoveListener(LoadNextLevel);
     }
+
+    //public void StartTimer()
+    //{
+    //    GlobalTimer.StartTimer();
+    //}
 
     public void LoadResultsScreen()
     {
