@@ -215,7 +215,7 @@ public class ResultsManager : MonoBehaviour
             var hlg = FindObjectOfType<HorizontalLayoutGroup>();
             hlg.enabled = false;
 
-            // Lerp the element from its starting position to its ending position
+            // Lerp the ordinal element from its starting position to its ending position
             time = 0f;
             while (time < 1f)
             {
@@ -231,12 +231,6 @@ public class ResultsManager : MonoBehaviour
 
             // Reenable the layout group, we should be in the correct position by then so this should do nothing visibly
             hlg.enabled = true;
-
-            // Set the ordinal position to the new position
-            //foreach (var result in results)
-            //{
-            //    result.Value.UpdatePosition(result.Key.position);
-            //}
         }
 
         foreach (var resultController in FindObjectsOfType<ResultsController>())
@@ -258,17 +252,14 @@ public class ResultsManager : MonoBehaviour
                 yield return null;
             }
         }
-        //float time = 0f;
-        //while (time < 0.25f)
-        //{
-        //    time += Time.deltaTime;
-        //    for (int i = 0; i < resultsControllers.Length; i++)
-        //    {
-        //        resultsControllers[i].SetPositionSize(Vector2.Lerp(scales[i], Vector2.zero, time));
-        //    }
-        //    yield return null;
-        //}
 
+        // Wait before we finish with the results
+        yield return new WaitForSeconds(3f);
+
+        // FINISH HIM
+        EventManager.FinishResults();
+
+        // Null... I don't need this but it's a habit
         yield return null;
     }
 }

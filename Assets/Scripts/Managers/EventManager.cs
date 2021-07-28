@@ -14,6 +14,8 @@ public class EventManager : Singleton<EventManager>
 
     public static UnityEvent<int, int> onPlayerScore = new UnityEvent<int, int>();
 
+    public static UnityEvent onResultsFinish = new UnityEvent();
+
     public static void AddScoreToPlayer(int player, int score)
     {
         onPlayerScore.Invoke(player, score);
@@ -43,5 +45,10 @@ public class EventManager : Singleton<EventManager>
         }
 
         GameManager.Instance.LoadResultsScreen();
+    }
+
+    public static void FinishResults()
+    {
+        onResultsFinish.Invoke();
     }
 }
