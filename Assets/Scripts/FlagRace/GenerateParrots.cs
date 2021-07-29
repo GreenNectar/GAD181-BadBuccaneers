@@ -33,7 +33,7 @@ public class GenerateParrots : MonoBehaviour
     {
         while (enemyCount < enemyMax)
         {
-            yPos = Random.Range(4, 20);
+            yPos = Random.Range(0, 20);
             Instantiate(theEnemy, new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, enemyYRotation, 0));
             yield return new WaitForSeconds(enemySpawnTime);
             enemyCount += 1;
