@@ -15,11 +15,11 @@ public class FlagMovement : MonoBehaviour
     public float mashDelay = .5f;
     public float flagSpeed = 1f;
     public float dropSpeed = 0.5f;
-    public int knockback;
+    //public int knockback;
     public float verticalSpeed;
     public float topHeight;
 
-    float mash;
+    public float mash;
     bool pressed;
     bool started;
     
@@ -38,9 +38,9 @@ public class FlagMovement : MonoBehaviour
     }
 
     // increasing wait time when hit by parrot
-    public void TakeDamage(float DamageToTake)
+    public void TakeDamage(float KnockbackTime)
     {
-        mash -= DamageToTake;
+        mash += KnockbackTime;
     }
 
         // Update is called once per frame
@@ -106,7 +106,6 @@ public class FlagMovement : MonoBehaviour
             transform.position = clampedPosition;
 
         }
-
 
     }
 }
