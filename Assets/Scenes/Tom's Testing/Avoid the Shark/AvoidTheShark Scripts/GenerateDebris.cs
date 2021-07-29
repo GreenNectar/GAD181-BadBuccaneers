@@ -32,7 +32,7 @@ public class GenerateDebris : MonoBehaviour
         while (debrisCount < debrisMax)
         {
             //yPos = Random.Range(4, 20);
-            debrisSpawnTime = Random.Range(8, 15);
+            debrisSpawnTime = Random.Range(1, 3);
             Instantiate(theDebris[Random.Range(0, 3)], new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, debrisYRotation, 0));
             yield return new WaitForSeconds(debrisSpawnTime);
             debrisCount += 1;
