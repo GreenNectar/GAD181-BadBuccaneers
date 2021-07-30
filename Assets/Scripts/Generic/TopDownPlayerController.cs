@@ -11,7 +11,10 @@ public class TopDownPlayerController : MicroGamePlayerController
     private float speed = 5f;
 
     [SerializeField]
-    private float lerpSpeed = 10f;
+    protected float animatorSpeed = 1.5f;
+
+    [SerializeField]
+    protected float lerpSpeed = 10f;
 
     [SerializeField]
     private float gravity = 9.8f;
@@ -40,6 +43,8 @@ public class TopDownPlayerController : MicroGamePlayerController
 
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+
+        animator.speed = animatorSpeed;
     }
 
     // Update is called once per frame
