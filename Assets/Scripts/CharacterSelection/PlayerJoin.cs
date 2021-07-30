@@ -18,6 +18,10 @@ public class PlayerJoin : MonoBehaviour
 
     public int playerCount = 0;
 
+    public UnityEvent onReady;
+    public UnityEvent onUnReady;
+    public UnityEvent onLaunch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,15 @@ public class PlayerJoin : MonoBehaviour
                     break;
             }
         }
+
+        if (PlayerManager.PlayerCount == 0)
+        {
+            onUnReady.Invoke();
+        }
+        else
+        {
+            onReady.Invoke();
+        }
     }
 
     // Update is called once per frame
@@ -48,11 +61,19 @@ public class PlayerJoin : MonoBehaviour
     {
         if (ReInput.isReady)
         {
+            if (PlayerManager.PlayerCount > 0)
+            {
+                if (ReInput.players.GetPlayer(PlayerManager.GetPlayerId(0)).GetButtonDown("Start"))
+                {
+                    onLaunch.Invoke();
+                }
+            }
+
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
                 if (ReInput.players.GetPlayer(i).GetButtonDown("Start"))
                 {
-                    Debug.Log($"Player {i} pressed start");
+                    //Debug.Log($"Player {i} pressed start");
                     if (!PlayerManager.HasPlayerId(i))
                     {
                         if (PlayerManager.PlayerCount < 4)
@@ -60,6 +81,8 @@ public class PlayerJoin : MonoBehaviour
                             PlayerManager.AddPlayer(PlayerManager.FirstFreePosition(), i);
                         }
                     }
+
+                    if (PlayerManager.PlayerCount == 1) onReady.Invoke();
 
                     switch (PlayerManager.GetPlayerNumber(i))
                     {
@@ -82,12 +105,14 @@ public class PlayerJoin : MonoBehaviour
 
                 if (ReInput.players.GetPlayer(i).GetButtonDown("Cancel"))
                 {
-                    Debug.Log($"Player {i} pressed cancel");
+                    //Debug.Log($"Player {i} pressed cancel");
                     if (PlayerManager.HasPlayerId(i))
                     {
                         int playerNumber = PlayerManager.GetPlayerNumber(i);
 
                         PlayerManager.RemovePlayer(playerNumber);
+
+                        if (PlayerManager.PlayerCount == 0) onUnReady.Invoke();
 
                         switch (playerNumber)
                         {
