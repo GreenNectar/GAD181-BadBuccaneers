@@ -5,12 +5,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public static class PlayerManager
 {
     // Store the players (key is the player number, value is the ReInput id of the controller/player)
     private static Dictionary<int, int> players = new Dictionary<int, int>();
+    private static string[] controllerTypes = new string[]{ "Xbox", "Xbox", "Xbox", "Xbox" };
+    private static string[] playerCharacters = new string[4];
 
+    public static UnityAction onUpdateControllerType;
 
     // Just so we can check the player count
     public static int PlayerCount
@@ -48,6 +52,8 @@ public static class PlayerManager
         }
 
         SetPlayersLEDs();
+        SetControllerTypes();
+        SetSystemPlayer();
         //// This was for debugging
         //foreach (var player in players)
         //{
@@ -81,6 +87,8 @@ public static class PlayerManager
         }
 
         SetPlayersLEDs();
+        SetControllerTypes();
+        SetSystemPlayer();
     }
 
     /// <summary>
@@ -92,6 +100,8 @@ public static class PlayerManager
         players.Remove(playerNumber);
 
         SetPlayersLEDs();
+        SetControllerTypes();
+        SetSystemPlayer();
     }
 
     /// <summary>
@@ -180,6 +190,59 @@ public static class PlayerManager
 
         return -1;
     }
+
+    #region Controller Types
+
+    private static void SetControllerTypes()
+    {
+        foreach (var player in players)
+        {
+            Player p = ReInput.players.GetPlayer(player.Value);
+
+            // Default is xbox
+            string type = "Xbox";
+            if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
+            {
+                type = "Dualshock";
+            }
+            else if (p.controllers.Joysticks[0].GetExtension<DualSenseExtension>() != null)
+            {
+                type = "Dualsense";
+            }
+
+            controllerTypes[player.Key] = type;
+        }
+
+        if (onUpdateControllerType != null && onUpdateControllerType.GetInvocationList().Length > 0)
+        {
+            onUpdateControllerType.Invoke();
+        }
+    }
+
+    public static string GetControllerType(int playerNumber)
+    {
+        return controllerTypes[playerNumber];
+    }
+
+    #endregion
+
+    #region System Player
+
+    private static void SetSystemPlayer()
+    {
+        ReInput.players.SystemPlayer.controllers.ClearAllControllers();
+        if (players.Count > 0)
+        {
+            for (int i = 0; i < GetPlayer(0).controllers.Controllers.Count(); i++)
+            {
+                // Wrong, somehow, why rewired?
+                //ReInput.players.SystemPlayer.controllers.AddController(GetPlayer(0).controllers.GetController(ControllerType.Joystick, i), false);
+                ReInput.players.SystemPlayer.controllers.AddController(GetPlayer(0).controllers.Controllers.ElementAt(i), false);
+            }
+        }
+    }
+
+    #endregion
 
     #region LEDS
 
