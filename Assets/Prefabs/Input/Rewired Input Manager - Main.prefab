@@ -422,6 +422,24 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 2
+    - _id: 17
+      _name: Submit
+      _type: 1
+      _descriptiveName: Submit
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 2
+    - _id: 18
+      _name: Randomise
+      _type: 1
+      _descriptiveName: Randomise
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 2
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -443,7 +461,7 @@ MonoBehaviour:
       - categoryId: 0
         actionIds: 0000000001000000020000000300000004000000
       - categoryId: 2
-        actionIds: 06000000070000000e0000000f000000
+        actionIds: 06000000070000000e0000000f0000001100000012000000
       - categoryId: 3
         actionIds: 08000000090000000a0000000b000000
     inputBehaviors:
@@ -587,6 +605,17 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
+        _actionId: 17
+        _elementType: 1
+        _elementIdentifierId: 4
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
         _actionId: 7
         _elementType: 1
         _elementIdentifierId: 5
@@ -620,7 +649,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 18
         _elementType: 1
         _elementIdentifierId: 8
         _axisRange: 0
@@ -752,7 +781,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 15
         _elementType: 1
         _elementIdentifierId: 20
         _axisRange: 0
@@ -774,7 +803,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 14
         _elementType: 1
         _elementIdentifierId: 22
         _axisRange: 0
@@ -1146,7 +1175,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 5
-    actionIdCounter: 16
+    actionIdCounter: 19
     actionCategoryIdCounter: 4
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 3

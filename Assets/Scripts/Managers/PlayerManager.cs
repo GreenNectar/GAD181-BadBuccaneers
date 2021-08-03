@@ -11,10 +11,12 @@ public static class PlayerManager
 {
     // Store the players (key is the player number, value is the ReInput id of the controller/player)
     private static Dictionary<int, int> players = new Dictionary<int, int>();
-    private static string[] controllerTypes = new string[]{ "Xbox", "Xbox", "Xbox", "Xbox" };
+    private static string[] controllerTypes = new string[] { "", "", "", "" };
     private static string[] playerCharacters = new string[4];
 
     public static UnityAction onUpdateControllerType;
+
+    public static string DefaultControllerType => controllerTypes[0];
 
     // Just so we can check the player count
     public static int PlayerCount
@@ -195,11 +197,15 @@ public static class PlayerManager
 
     private static void SetControllerTypes()
     {
+        for (int i = 0; i < controllerTypes.Length; i++)
+        {
+            controllerTypes[i] = "Xbox";
+        }
+
         foreach (var player in players)
         {
             Player p = ReInput.players.GetPlayer(player.Value);
 
-            // Default is xbox
             string type = "Xbox";
             if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
             {
@@ -310,6 +316,20 @@ public static class PlayerManager
             if (ds != null)
                 ds.SetLightColor(color);
         }
+    }
+
+    #endregion
+
+    #region Character Skins
+
+    public static void SetPlayerModel(int playerNumber, string playerModelName)
+    {
+        playerCharacters[playerNumber] = playerModelName;
+    }
+
+    public static string GetPlayerModel(int playerNumber)
+    {
+        return playerCharacters[playerNumber];
     }
 
     #endregion

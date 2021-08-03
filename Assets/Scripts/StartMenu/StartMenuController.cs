@@ -30,11 +30,25 @@ public class StartMenuController : MonoBehaviour
         public Selectable firstSelected;
     }
 
-    private Stack<CameraCanvasPosition> undo = new Stack<CameraCanvasPosition>();
-
     private bool isMoving = false;
+    private bool canGoBack = true;
 
     private GameObject selectedObject;
+    public Registry StopBackRegister = new Registry();
+
+    private Stack<CameraCanvasPosition> undo = new Stack<CameraCanvasPosition>();
+
+    private void OnEnable()
+    {
+        StopBackRegister.onOccupied.AddListener(() => canGoBack = false);
+        StopBackRegister.onUnOccupied.AddListener(() => canGoBack = true);
+    }
+
+    private void OnDisable()
+    {
+        StopBackRegister.onOccupied.RemoveAllListeners();
+        canGoBack = true;
+    }
 
     private void Start()
     {
@@ -85,7 +99,7 @@ public class StartMenuController : MonoBehaviour
             }
             else
             {
-                if (PlayerManager.GetPlayer(0).GetButtonDown("Cancel"))
+                if (PlayerManager.GetPlayer(0).GetButtonDown("Cancel") && canGoBack)
                 {
                     GoBack();
                 }

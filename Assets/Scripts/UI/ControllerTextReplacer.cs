@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ControllerTextReplacer : MonoBehaviour
 {
-    private TextMeshProUGUI text;
-    private string startingText;
+    protected TextMeshProUGUI text;
+    protected string startingText;
 
     [SerializeField]
     private int playerNumber = 0;
@@ -30,10 +30,16 @@ public class ControllerTextReplacer : MonoBehaviour
         PlayerManager.onUpdateControllerType -= UpdateText;
     }
 
-    private void UpdateText()
+    protected virtual void UpdateText()
+    {
+        text.text = ReplaceText(startingText, playerNumber);
+    }
+
+    protected string ReplaceText(string input, int playerNumber)
     {
         string toReplace = PlayerManager.GetControllerType(playerNumber);
-        text.text = startingText.Replace("Controller", toReplace);
+        if (toReplace == "") toReplace = PlayerManager.DefaultControllerType;
+        return input.Replace("Controller", toReplace);
     }
 
     private void Initialise()

@@ -56,6 +56,9 @@ TextureImporter:
   - first:
       213: -6181075620567937697
     second: Xbox-Select
+  - first:
+      213: 9057507817432935195
+    second: Tick
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -554,6 +557,27 @@ TextureImporter:
       bones: []
       spriteID: f5d883ac878683aa0800000000000000
       internalID: -6181075620567937697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tick
+      rect:
+        serializedVersion: 2
+        x: 3655
+        y: 57
+        width: 362
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1be9680f5bb2bd70800000000000000
+      internalID: 9057507817432935195
       vertices: []
       indices: 
       edges: []
