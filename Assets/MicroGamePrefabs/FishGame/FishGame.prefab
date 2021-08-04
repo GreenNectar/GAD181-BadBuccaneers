@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3795627710987542595}
   - component: {fileID: 3795627710987542590}
-  - component: {fileID: 3795627710987542589}
-  - component: {fileID: 3795627710987542588}
   m_Layer: 0
   m_Name: FishGame
   m_TagString: Untagged
@@ -69,7 +67,7 @@ MonoBehaviour:
   onAddFish:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3795627710987542589}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerScore, Assembly-CSharp
         m_MethodName: AddScore
         m_Mode: 3
@@ -82,33 +80,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   drawGizmos: 1
---- !u!114 &3795627710987542589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795627710987542594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad2382001ca2ee49afbb20ca66d94b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
---- !u!114 &3795627710987542588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795627710987542594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a57c52dacd4914598771c85bbde25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 3795627712706665733}
-  playerScore: {fileID: 3795627710987542589}
 --- !u!1 &3795627711375016749
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +729,7 @@ GameObject:
   - component: {fileID: 3795627712706665735}
   - component: {fileID: 3795627712706665734}
   - component: {fileID: 3795627712706665733}
+  - component: {fileID: 8772349031127100061}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -881,6 +853,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8772349031127100061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795627712706665732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a57c52dacd4914598771c85bbde25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
+  faceIcon: {fileID: 0}
+  scoreText: {fileID: 3795627712706665733}
 --- !u!1 &3795627712808272620
 GameObject:
   m_ObjectHideFlags: 0

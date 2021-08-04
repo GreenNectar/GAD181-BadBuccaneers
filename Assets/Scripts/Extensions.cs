@@ -53,4 +53,37 @@ public static class Extensions
         foreach (T item in source)
             action(item);
     }
+
+    public static string Ordinal(this int number)
+    {
+        string[] ordinals = { "umm", "st", "nd", "rd", "th" };
+        string ordinal = "bruh";
+
+        if (number <= 20)
+        {
+            ordinal = number.ToString() + ordinals[Mathf.Clamp(number, 0, 4)];
+        }
+        else
+        {
+            switch (number % 10)
+            {
+                case 1:
+                    ordinal = number.ToString() + ordinals[1];
+                    break;
+                case 2:
+                    ordinal = number.ToString() + ordinals[2];
+                    break;
+                case 3:
+                    ordinal = number.ToString() + ordinals[3];
+                    break;
+                default:
+                    ordinal = number.ToString() + ordinals[4];
+                    break;
+            }
+
+            //ordinal = number.ToString() + ordinals[Mathf.Clamp((number % 10), 1, 4)];
+        }
+
+        return ordinal;
+    }
 }
