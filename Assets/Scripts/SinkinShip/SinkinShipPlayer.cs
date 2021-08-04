@@ -14,12 +14,6 @@ public class SinkinShipPlayer : MonoBehaviour
 
     private Vector3 velocity;
 
-    // upon start, setting variables for player
-    private void Start()
-    {
-       
-    }
-
 
     //  Update function every frame
     void Update()

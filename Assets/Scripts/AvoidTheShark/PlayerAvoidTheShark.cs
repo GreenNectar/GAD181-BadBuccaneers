@@ -11,14 +11,9 @@ public class PlayerAvoidTheShark : MonoBehaviour
     // variables for player statistics
     public float moveSpeed;
     public float jumpVelocity;
+    private bool isGrounded;
 
     private Vector3 velocity;
-
-    // upon start, setting variables for player
-    private void Start()
-    {
-
-    }
 
 
     //  Update function every frame
@@ -30,15 +25,28 @@ public class PlayerAvoidTheShark : MonoBehaviour
         var moveHorizontal = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         controller.Move(moveHorizontal * moveSpeed * Time.deltaTime);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity = -Physics.gravity.normalized * jumpVelocity;
         }
 
         velocity += Physics.gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
 
-
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
     }
 }
 
