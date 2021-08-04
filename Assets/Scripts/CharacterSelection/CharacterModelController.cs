@@ -18,7 +18,7 @@ public class CharacterModelController : MonoBehaviour
             // If a skin is selected, enable the corresponding object while disabling all others
             foreach (var skin in skins)
             {
-                if (skin.name != playerSkin)
+                if (skin.name.ToLower() != playerSkin.ToLower())
                 {
                     skin.SetActive(false);
                 }

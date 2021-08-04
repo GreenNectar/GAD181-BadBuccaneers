@@ -34,7 +34,10 @@ public class PlayerJoinPanel : MonoBehaviour
     public bool HasJoined => currentScreen > 0;
     public UnityEvent onReadyStateChanged;
 
+    public Registry stopRemovingPlayers = new Registry();
+
     private bool hasRegistered = false;
+    private bool willRemove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +58,9 @@ public class PlayerJoinPanel : MonoBehaviour
 
     private void OnEnable()
     {
+        stopRemovingPlayers.onOccupied.AddListener(() => willRemove = false);
+        stopRemovingPlayers.onUnOccupied.AddListener(() => willRemove = true);
+
         if (PlayerManager.HasPlayer(playerNumber))
             player = PlayerManager.GetPlayer(playerNumber);
 
@@ -64,19 +70,24 @@ public class PlayerJoinPanel : MonoBehaviour
 
     private void OnDisable()
     {
+        stopRemovingPlayers.onOccupied.RemoveAllListeners();
+        stopRemovingPlayers.onUnOccupied.RemoveAllListeners();
+
         // Stop player 1 from stopping the start menu from going back
         if (playerNumber == 0)
         {
             FindObjectOfType<StartMenuController>().StopBackRegister.UnRegister(this);
             return;
         }
-        // Throw the screen back to the press start screen
-        if (PlayerManager.HasPlayer(playerNumber))
+        if (willRemove)
         {
-            PlayerManager.RemovePlayer(playerNumber);
-            ShowScreen(0);
+            // Throw the screen back to the press start screen
+            if (PlayerManager.HasPlayer(playerNumber))
+            {
+                PlayerManager.RemovePlayer(playerNumber);
+                ShowScreen(0);
+            }
         }
-
     }
 
     private float time = 0f;

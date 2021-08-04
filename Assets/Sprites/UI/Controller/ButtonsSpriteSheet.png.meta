@@ -59,6 +59,18 @@ TextureImporter:
   - first:
       213: 9057507817432935195
     second: Tick
+  - first:
+      213: -8666098750009031174
+    second: Xbox-L1
+  - first:
+      213: 5626877212415581974
+    second: Xbox-R1
+  - first:
+      213: -111022179576767656
+    second: Thumbstick-L
+  - first:
+      213: -3545798244761900811
+    second: Thumbstick-R
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -570,7 +582,7 @@ TextureImporter:
         width: 362
         height: 414
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -578,6 +590,90 @@ TextureImporter:
       bones: []
       spriteID: b1be9680f5bb2bd70800000000000000
       internalID: 9057507817432935195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox-L1
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 1114
+        width: 472
+        height: 332
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af541411a15dbb780800000000000000
+      internalID: -8666098750009031174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox-R1
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 1114
+        width: 472
+        height: 332
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f55c0230fa61e40800000000000000
+      internalID: 5626877212415581974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thumbstick-L
+      rect:
+        serializedVersion: 2
+        x: 2057
+        y: 1107
+        width: 494
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b13287ae1957ef0800000000000000
+      internalID: -111022179576767656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thumbstick-R
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 1107
+        width: 494
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f863c7684bcacec0800000000000000
+      internalID: -3545798244761900811
       vertices: []
       indices: 
       edges: []

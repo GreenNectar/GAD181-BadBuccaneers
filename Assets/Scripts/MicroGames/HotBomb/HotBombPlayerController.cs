@@ -22,7 +22,7 @@ public class HotBombPlayerController : TopDownPlayerController
     private float extraLerpSpeedWhenHolding;
 
     [SerializeField, Tooltip("This is the model attached to the prefab/it is the skin")]
-    private GameObject playerModel;
+    private GameObject[] playerModels;
     [SerializeField, Tooltip("This is the skeleton model attached to the prefab/it is the skin")]
     private GameObject skeletonModel;
 
@@ -60,7 +60,10 @@ public class HotBombPlayerController : TopDownPlayerController
         Animator.speed = 1f;
 
         // Change the player model to the skeleton one
-        playerModel.SetActive(false);
+        foreach (var model in playerModels)
+        {
+            model.SetActive(false);
+        }
         skeletonModel.SetActive(true);
 
         // Disable this player controller component

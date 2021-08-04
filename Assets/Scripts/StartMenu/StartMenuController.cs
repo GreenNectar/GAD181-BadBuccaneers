@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class StartMenuController : MonoBehaviour
 {
     [SerializeField]
-    private Camera camera;
+    private new Camera camera;
 
     [SerializeField]
     private CameraCanvasPosition[] positions;

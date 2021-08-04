@@ -22,6 +22,7 @@ public class PlayerJoinController : MonoBehaviour
     {
         foreach (var panel in panels)
         {
+            panel.stopRemovingPlayers.Register(this);
             panel.onReadyStateChanged.AddListener(UpdateReady);
         }
         UpdateReady();
@@ -31,6 +32,7 @@ public class PlayerJoinController : MonoBehaviour
     {
         foreach (var panel in panels)
         {
+            panel.stopRemovingPlayers.UnRegister(this);
             panel.onReadyStateChanged.RemoveListener(UpdateReady);
         }
     }

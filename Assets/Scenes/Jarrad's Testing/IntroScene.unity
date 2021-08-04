@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: c79aa9ddab9981841a8d8e1b3b0de9b7, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1488,6 +1488,18 @@ PrefabInstance:
     - target: {fileID: 6952102050950988015, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
       propertyPath: playerNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
@@ -4602,6 +4614,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
+--- !u!1 &1072293855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072293857}
+  - component: {fileID: 1072293856}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1072293856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072293855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df4d44f59781e84f8d4763c6d4f9ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _persistent: 1
+  resultScreen: IntroScene
+  homeScreen: IntroScene
+  microGameOverlay: MicroGameOverlay
+  levels:
+  - name: Lock Pickin'
+    description: Move the picks until you feel a vibration. When it spikes, unlock
+      it!
+    minimumRequiredPlayers: 1
+    microGameScene: LockpickingScene
+    controls:
+    - description: Moves left pick
+      buttons: <sprite name="Thumbstick-L">
+    - description: Moves right pick
+      buttons: <sprite name="Thumbstick-R">
+    - description: Unlock
+      buttons: Right Trigger
+  - name: Potato Bombin'
+    description: Run into other players to give them the bomb, otherwise run!
+    minimumRequiredPlayers: 2
+    microGameScene: HotBomb
+    controls:
+    - description: Move player
+      buttons: <sprite name="Thumbstick-L">
+--- !u!4 &1072293857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072293855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -118.12319, y: -323.41092, z: 1028.2349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090264075
 GameObject:
   m_ObjectHideFlags: 0
@@ -7524,6 +7603,7 @@ GameObject:
   - component: {fileID: 1677535861}
   - component: {fileID: 1677535860}
   - component: {fileID: 1677535859}
+  - component: {fileID: 1677535863}
   m_Layer: 5
   m_Name: FinalLaunch
   m_TagString: Untagged
@@ -7628,6 +7708,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1677535863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677535857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4355f1f635a73cf4bb9fa35534a4d0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1677535859}
 --- !u!1 &1707242624
 GameObject:
   m_ObjectHideFlags: 0
@@ -8842,6 +8935,18 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2264151
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
 --- !u!224 &1956507713 stripped
@@ -9218,6 +9323,18 @@ PrefabInstance:
     - target: {fileID: 6952102050950988015, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
       propertyPath: playerNumber
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2830189
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
@@ -9962,6 +10079,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6952102050950988014, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.032008052
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952102051217639509, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
