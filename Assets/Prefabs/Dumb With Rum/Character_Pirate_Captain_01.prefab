@@ -5274,6 +5274,7 @@ GameObject:
   - component: {fileID: 9173071734483020139}
   - component: {fileID: 9173071734492839797}
   - component: {fileID: 9173071734297272610}
+  - component: {fileID: 96152023343338018}
   m_Layer: 0
   m_Name: Character_Pirate_Captain_01
   m_TagString: Untagged
@@ -5355,6 +5356,35 @@ MonoBehaviour:
   inebriationSmoothing: 1.2
   drunkoMetre: {fileID: 9173071735107161835}
   animator: {fileID: 9173071734492839797}
+--- !u!114 &96152023343338018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173071734483330821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89cf0422746fdcf488a2b78938d7f367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
+  skins:
+  - {fileID: 9173071734483315009}
+  - {fileID: 9173071734483332907}
+  - {fileID: 9173071734483331715}
+  - {fileID: 9173071734483272939}
+  - {fileID: 9173071734483296083}
+  - {fileID: 9173071734483272035}
+  - {fileID: 9173071734483260063}
+  - {fileID: 9173071734483272695}
+  - {fileID: 9173071734483267699}
+  - {fileID: 9173071734483273947}
+  - {fileID: 9173071734483308859}
+  - {fileID: 9173071734483289827}
+  - {fileID: 9173071734483320293}
+  - {fileID: 9173071734483330047}
+  - {fileID: 9173071734483288231}
 --- !u!1 &9173071734483331715
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,6 +59,7 @@ public class MicroGameOverlayController : MonoBehaviour
         foreach (var control in GameManager.Instance.currentMicroGame.controls)
         {
             ControlPanel panel = Instantiate(controlPanel, controlsParent);
+            panel.buttons.GetComponent<ControllerTextReplacerAllPlayers>().SetStarting(control.buttons);
             panel.buttons.text = control.buttons;
             panel.description.text = control.description;
         }

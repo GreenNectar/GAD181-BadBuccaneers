@@ -4648,8 +4648,34 @@ MonoBehaviour:
   homeScreen: IntroScene
   microGameOverlay: MicroGameOverlay
   levels:
+<<<<<<< Updated upstream
+  - name: Lock Pickin'
+    description: Move the picks until you feel a vibration. When it spikes, unlock
+      it!
+    minimumRequiredPlayers: 1
+    microGameScene: LockpickingScene
+    controls:
+    - description: Moves left pick
+      buttons: <sprite name="Thumbstick-L">
+    - description: Moves right pick
+      buttons: <sprite name="Thumbstick-R">
+    - description: Unlock
+      buttons: Right Trigger
+  - name: Potato Bombin'
+    description: Run into other players to give them the bomb, otherwise run!
+    minimumRequiredPlayers: 2
+    microGameScene: HotBomb
+    controls:
+    - description: Move player
+      buttons: <sprite name="Thumbstick-L">
+=======
+<<<<<<< Updated upstream
   - {fileID: 0}
   - {fileID: 0}
+=======
+  - {fileID: 11400000, guid: 885eba479e5d4ed48b191232bc01b789, type: 2}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!4 &1072293857
 Transform:
   m_ObjectHideFlags: 0

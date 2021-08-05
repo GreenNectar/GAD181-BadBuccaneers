@@ -47,8 +47,13 @@ public class ControllerTextReplacer : MonoBehaviour
         if (text == null)
         {
             text = GetComponent<TextMeshProUGUI>();
-            startingText = text.text;
+            SetStarting(text.text);
         }
+    }
+    
+    public void SetStarting(string text)
+    {
+        startingText = text;
     }
 
     //public override TMP_TextInfo GetTextInfo(string text)
