@@ -11,17 +11,20 @@ public class GameManager : Singleton<GameManager>
     private string resultScreen;
     [SerializeField, Scene]
     private string homeScreen;
-
     [SerializeField, Scene]
-    private List<string> levels = new List<string>();
-    private Stack<string> levelsToPlay = new Stack<string>();
+    private string microGameOverlay;
 
-    private int finishedPlayers = 0;
+    [SerializeField]
+    private List<MicroGame> levels = new List<MicroGame>();
+    private Stack<MicroGame> levelsToPlay = new Stack<MicroGame>();
+    public MicroGame currentMicroGame { get; private set; } = null;
+
+    //private int finishedPlayers = 0;
 
     private void Start()
     {
         //? This is for testing, remove this later
-        //GenerateRandomLevels();
+        GenerateRandomLevels();
     }
 
     private void OnEnable()
@@ -50,8 +53,10 @@ public class GameManager : Singleton<GameManager>
     {
         if (levelsToPlay.Count > 0)
         {
-            string level = levelsToPlay.Pop();
-            SceneManager.LoadScene(level);
+            currentMicroGame = levelsToPlay.Pop();
+            string level = currentMicroGame.microGameScene;
+            SceneManager.LoadScene(level, LoadSceneMode.Single);
+            SceneManager.LoadScene(microGameOverlay, LoadSceneMode.Additive);
         }
         else
         {
@@ -93,7 +98,7 @@ public class GameManager : Singleton<GameManager>
         // The stack we will be getting the levels from
         //string[] temp = new string[levels.Count];
         //levels.CopyTo(temp);
-        List<string> levelStack = levels.ToList();//temp.ToList();
+        List<MicroGame> levelStack = levels.ToList();//temp.ToList();
 
         // Go through each level and randomly add a level then remove it from the stack
         for (int i = 0; i < Mathf.Clamp(levelsToAdd, 0, levels.Count); i++)
