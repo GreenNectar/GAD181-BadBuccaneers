@@ -12,13 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06171928c68d8f7418896d51e3ffc062, type: 3}
   m_Name: LockPicking
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  title: 
-  description: 
-  minimumRequiredPlayers: 1
-  microGameScene: IntroScene
-  controls: []
-=======
   title: Lock Pickin'
   description: 'Move the picks until you feel a vibration.
 
@@ -33,4 +26,3 @@ MonoBehaviour:
     buttons: <sprite name="Thumbstick-R">
   - description: Unlock
     buttons: Right Trigger
->>>>>>> Stashed changes

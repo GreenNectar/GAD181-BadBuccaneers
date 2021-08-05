@@ -13,16 +13,9 @@ MonoBehaviour:
   m_Name: HotBomb
   m_EditorClassIdentifier: 
   title: 
-<<<<<<< Updated upstream
-  description: 
-  minimumRequiredPlayers: 1
-  microGameScene: IntroScene
-  controls: []
-=======
   description: Run into other players to give them the bomb, otherwise run!
   minimumRequiredPlayers: 2
   microGameScene: HotBomb
   controls:
   - description: Move
     buttons: <sprite name="Thumbstick-L">
->>>>>>> Stashed changes

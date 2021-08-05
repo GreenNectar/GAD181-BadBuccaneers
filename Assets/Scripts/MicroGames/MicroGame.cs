@@ -4,17 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< Updated upstream
-[Serializable]
-public class MicroGame
-=======
-<<<<<<< Updated upstream
-[CreateAssetMenu]
-=======
 [CreateAssetMenu(menuName = "BadBuccaneers/MicroGame Data", fileName = "MicroGameData")]
->>>>>>> Stashed changes
 public class MicroGame : ScriptableObject
->>>>>>> Stashed changes
 {
     public string title;
     [TextArea]
