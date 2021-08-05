@@ -55,6 +55,30 @@ public class CameraController : MonoBehaviour
     [SerializeField, Range(1, 4)]
     private int playersToVisualise = 1;
 
+
+    private Camera[] cameras;
+    public Camera[] Cameras
+    {
+        get
+        {
+            if (cameras == null)
+            {
+                var tempCameras = new List<Camera>();
+                if (player1Camera != null) tempCameras.Add(player1Camera);
+                if (player2Camera != null) tempCameras.Add(player2Camera);
+                if (player3Camera != null) tempCameras.Add(player3Camera);
+                if (player4Camera != null) tempCameras.Add(player4Camera);
+                if (spectatorCamera != null) tempCameras.Add(spectatorCamera);
+                if (cameraTopLeft != null) tempCameras.Add(cameraTopLeft);
+                if (cameraBottomRight != null) tempCameras.Add(cameraBottomRight);
+                if (oneScreenCamera != null) tempCameras.Add(oneScreenCamera);
+                if (spectatorCamera != null) tempCameras.Add(spectatorCamera);
+                cameras = tempCameras.ToArray();
+            }
+            return cameras;
+        }
+    }
+
 #if UNITY_EDITOR
     // A button that allows us to visualise the amount of players, this is so we can check if we have the cameras correct
     [Button]

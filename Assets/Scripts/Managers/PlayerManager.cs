@@ -5,12 +5,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public static class PlayerManager
 {
     // Store the players (key is the player number, value is the ReInput id of the controller/player)
     private static Dictionary<int, int> players = new Dictionary<int, int>();
+    private static string[] controllerTypes = new string[] { "", "", "", "" };
+    private static string[] playerCharacters = new string[4];
 
+    public static UnityAction onUpdateControllerType;
+
+    public static string DefaultControllerType => controllerTypes[0];
 
     // Just so we can check the player count
     public static int PlayerCount
@@ -48,6 +54,8 @@ public static class PlayerManager
         }
 
         SetPlayersLEDs();
+        SetControllerTypes();
+        SetSystemPlayer();
         //// This was for debugging
         //foreach (var player in players)
         //{
@@ -81,6 +89,8 @@ public static class PlayerManager
         }
 
         SetPlayersLEDs();
+        SetControllerTypes();
+        SetSystemPlayer();
     }
 
     /// <summary>
@@ -92,6 +102,8 @@ public static class PlayerManager
         players.Remove(playerNumber);
 
         SetPlayersLEDs();
+        SetControllerTypes();
+        SetSystemPlayer();
     }
 
     /// <summary>
@@ -181,6 +193,63 @@ public static class PlayerManager
         return -1;
     }
 
+    #region Controller Types
+
+    private static void SetControllerTypes()
+    {
+        for (int i = 0; i < controllerTypes.Length; i++)
+        {
+            controllerTypes[i] = "Xbox";
+        }
+
+        foreach (var player in players)
+        {
+            Player p = ReInput.players.GetPlayer(player.Value);
+
+            string type = "Xbox";
+            if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
+            {
+                type = "Dualshock";
+            }
+            else if (p.controllers.Joysticks[0].GetExtension<DualSenseExtension>() != null)
+            {
+                type = "Dualsense";
+            }
+
+            controllerTypes[player.Key] = type;
+        }
+
+        if (onUpdateControllerType != null && onUpdateControllerType.GetInvocationList().Length > 0)
+        {
+            onUpdateControllerType.Invoke();
+        }
+    }
+
+    public static string GetControllerType(int playerNumber)
+    {
+        return controllerTypes[playerNumber];
+    }
+
+    #endregion
+
+    #region System Player
+
+    private static void SetSystemPlayer()
+    {
+        ReInput.players.SystemPlayer.controllers.ClearAllControllers();
+        if (players.Count > 0)
+        {
+            for (int i = 0; i < GetPlayer(0).controllers.Controllers.Count(); i++)
+            {
+                // Wrong, somehow, why rewired?
+                //ReInput.players.SystemPlayer.controllers.AddController(GetPlayer(0).controllers.GetController(ControllerType.Joystick, i), false);
+                ReInput.players.SystemPlayer.controllers.AddController(GetPlayer(0).controllers.Controllers.ElementAt(i), false);
+            }
+        }
+    }
+
+    #endregion
+
     #region LEDS
 
     private static Color Default = new Color(1f, 1f, 1f, 0.1f);
@@ -247,6 +316,20 @@ public static class PlayerManager
             if (ds != null)
                 ds.SetLightColor(color);
         }
+    }
+
+    #endregion
+
+    #region Character Skins
+
+    public static void SetPlayerModel(int playerNumber, string playerModelName)
+    {
+        playerCharacters[playerNumber] = playerModelName;
+    }
+
+    public static string GetPlayerModel(int playerNumber)
+    {
+        return playerCharacters[playerNumber];
     }
 
     #endregion
