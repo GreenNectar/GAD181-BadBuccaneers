@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorBehabiour_SetBool : StateMachineBehaviour
+public class AnimatorBehaviour_PerformOnState : StateMachineBehaviour
 {
     public string parameterName;
-    public bool value;
 
     public EnterState enterState;
 
@@ -14,12 +13,17 @@ public class AnimatorBehabiour_SetBool : StateMachineBehaviour
         Enter, Exit
     }
 
+    virtual public void OnPerformed(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
+    }
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (enterState == EnterState.Enter)
         {
-            animator.SetBool(parameterName, value);
+            OnPerformed(animator, stateInfo, layerIndex);
         }
     }
 
@@ -34,7 +38,7 @@ public class AnimatorBehabiour_SetBool : StateMachineBehaviour
     {
         if (enterState == EnterState.Exit)
         {
-            animator.SetBool(parameterName, value);
+            OnPerformed(animator, stateInfo, layerIndex);
         }
     }
 
