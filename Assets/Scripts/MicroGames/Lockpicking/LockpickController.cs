@@ -151,12 +151,12 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
         currentRotationLeft = rotationLeft;
         currentRotationRight = rotationRight;
 
-        SetCorrectLockRotations();
-
         if (randomValues == null)
         {
             GenerateRandomRotations();
         }
+
+        SetCorrectLockRotations();
     }
 
     // Update is called once per frame
