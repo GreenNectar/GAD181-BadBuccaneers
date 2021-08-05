@@ -55,7 +55,9 @@ public class CannonController : MonoBehaviour
         Quaternion barrelToRotation = Quaternion.Euler(vertical, 0f, 0f);
         transform.rotation = Quaternion.Lerp(fromRotation, toRotation, Time.deltaTime * lerpspeed);
         barrel.rotation = Quaternion.Lerp(barrel.rotation, barrelToRotation, Time.deltaTime * lerpspeed);
-
+        //shotPos.rotation = barrel.rotation;
+ 
+            
 
         // Firing controls ensures cannon cannot be fired a second time & the man in the cannon disappears upon firing
         if (Input.GetKeyDown(KeyCode.Space) && !hasFired)
@@ -81,7 +83,7 @@ public class CannonController : MonoBehaviour
         GameObject flyingPirateCopy = Instantiate(flyingPirate, shotPos.position, shotPos.rotation) as GameObject;
         Destroy(loadedMan);
         flyingPirateRB = flyingPirateCopy.GetComponent<Rigidbody>();
-        flyingPirateRB.AddForce(transform.forward * firePower * 100f);
+        flyingPirateRB.AddForce(shotPos.up * firePower * 100f);
         Instantiate(explosion, explosionPos.position, explosionPos.rotation);
     }
 

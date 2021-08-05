@@ -4343,7 +4343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2584982255149972212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4627,7 +4627,7 @@ GameObject:
   - component: {fileID: 2584982255683351742}
   - component: {fileID: 2584982255683351741}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4680,7 +4680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 0'
+  m_text: 'Time : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4854,9 +4854,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2870036954254436856}
   - component: {fileID: 2870036954254436806}
-  - component: {fileID: 2870036954254436794}
-  - component: {fileID: 2870036954254436795}
   - component: {fileID: 2870036954254436807}
+  - component: {fileID: 1193298160995386399}
   m_Layer: 0
   m_Name: LockPickingGame
   m_TagString: Untagged
@@ -4901,33 +4900,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2870036954254436794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2870036954254436805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad2382001ca2ee49afbb20ca66d94b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
---- !u!114 &2870036954254436795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2870036954254436805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a57c52dacd4914598771c85bbde25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  playerScore: {fileID: 2870036954254436794}
 --- !u!114 &2870036954254436807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4940,6 +4912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5c7804985a58c4497f19ee7acad533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   speed: 360
   correctDistance: 30
   vibrationDistance: 90
@@ -4986,6 +4959,21 @@ MonoBehaviour:
       - {fileID: 1772951490}
       heightOffsetWhenComplete: 0.03
       isOpened: 0
+--- !u!114 &1193298160995386399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870036954254436805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ed6ecfa5b348c49a8993c9ae5b2fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
+  faceIcon: {fileID: 0}
+  timerText: {fileID: 2584982255683351741}
 --- !u!1001 &670231488801689516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5345,14 +5333,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5e1235b2e417983469723d36f05de88d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
---- !u!4 &2584982255034854562 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8989131291628080993, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
-  m_PrefabInstance: {fileID: 6872630344741118915}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2584982255034837842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8989131291628095633, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
+  m_PrefabInstance: {fileID: 6872630344741118915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2584982255034854562 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8989131291628080993, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
   m_PrefabInstance: {fileID: 6872630344741118915}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8635503238843894228

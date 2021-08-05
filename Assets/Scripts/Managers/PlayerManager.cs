@@ -114,6 +114,11 @@ public static class PlayerManager
         return value;
     }
 
+    public static Player GetPlayer(int playerNumber)
+    {
+        return ReInput.players.GetPlayer(GetPlayerId(playerNumber));
+    }
+
     /// <summary>
     /// Returns true if the player is in the registery
     /// </summary>
