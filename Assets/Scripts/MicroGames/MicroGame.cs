@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class MicroGame
+[CreateAssetMenu]
+public class MicroGame : ScriptableObject
 {
-    public string name;
+    public string title;
     [TextArea]
     public string description;
     public int minimumRequiredPlayers = 1;

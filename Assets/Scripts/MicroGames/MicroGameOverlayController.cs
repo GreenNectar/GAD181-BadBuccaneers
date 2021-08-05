@@ -50,7 +50,7 @@ public class MicroGameOverlayController : MonoBehaviour
     private void InitialiseUI()
     {
         GenerateControls();
-        title.text = GameManager.Instance.currentMicroGame.name;
+        title.text = GameManager.Instance.currentMicroGame.title;
         description.text = GameManager.Instance.currentMicroGame.description;
     }
 
