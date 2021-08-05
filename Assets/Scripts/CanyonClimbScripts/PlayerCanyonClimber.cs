@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCanyonClimber : MonoBehaviour
+public class PlayerCanyonClimber : MicroGamePlayerController
 {
     [SerializeField]
     private CharacterController controller;
 
     // variables for player statistics
-    public float moveSpeed;
-    public float jumpVelocity;
-    public float gravMultiplier;
-    private bool isGrounded;
+    public float moveSpeed = 5f;
+    public float jumpVelocity = 5f;
+    public float gravMultiplier = 1f;
+    public float rotationSpeed = 1f;
+    private Vector3 startingPosition;
+    private Vector3 move;
 
     //private bool facingRight = true;
     // private bool isJumping = false;
@@ -20,66 +23,56 @@ public class PlayerCanyonClimber : MonoBehaviour
 
     private Vector3 velocity;
 
+    protected override void Start()
+    {
+        base.Start();
+        startingPosition = transform.position;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        var move = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        move = new Vector3(player.GetAxis("LeftMoveX"), 0f, 0f);
         controller.Move(move * moveSpeed * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity = -Physics.gravity.normalized * jumpVelocity;
-        }
-
         velocity += Physics.gravity * Time.deltaTime * gravMultiplier;
-        controller.Move(velocity * Time.deltaTime);
+        CollisionFlags flags = controller.Move(velocity * Time.deltaTime);
 
-
-       /* 
-        if (move > 0 && !facingRight)
+        if (controller.isGrounded)
         {
-            FlipCharacter();
+            if (player.GetButtonDown("Fire"))
+            {
+                velocity = -Physics.gravity.normalized * jumpVelocity;
+            }
         }
 
-        else if (move < 0 && facingRight)
+        if (flags == CollisionFlags.Above)
         {
-            FlipCharacter();
+            velocity = Physics.gravity * Time.deltaTime * gravMultiplier;
         }
-       */
 
-       /* if (Input.GetButtonDown("Jump"))
-        {
-            isJumping = true;
-        }
-       */
+        controller.enabled = false;
+        Vector3 temp = transform.position;
+        transform.position = new Vector3(temp.x, temp.y, startingPosition.z);
+        controller.enabled = true;
 
-        //isGrounded = Physics.OverlapSphere(groundCheck.position, checkRadius, groundObjects);
-
+        SetCharacterRotation();
     }
 
-    void OnTriggerEnter(Collider other)
+    private void SetCharacterRotation()
     {
-        if (other.gameObject.CompareTag("Ground"))
+        Vector3 wantedMove = move;
+        if (wantedMove.magnitude == 0f)
         {
-            isGrounded = true;
+            wantedMove = Vector3.back;
         }
+
+        Quaternion wantedRotation = Quaternion.LookRotation(wantedMove, Vector3.up);
+        Vector3 wantedEuler = wantedRotation.eulerAngles;
+        wantedEuler.x = 0f;
+        wantedEuler.z = 0f;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(wantedEuler), Time.deltaTime * rotationSpeed);
+
     }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
-    }
-
-
-    /*
-     private void FlipCharacter()
-     {
-         facingRight = !facingRight;
-         transform.Rotate(0f, 180f, 0f);
-     }
-    */
 }
+
+
