@@ -5616,7 +5616,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
   maxTime: 30
-  startOnPlayerFinish: 0
   onStart:
     m_PersistentCalls:
       m_Calls: []
@@ -6585,6 +6584,9 @@ MonoBehaviour:
   jumpVelocity: 12
   gravMultiplier: 2
   rotationSpeed: 30
+  startingPosition: {x: 0, y: 0, z: 0}
+  move: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1837111209
 GameObject:
   m_ObjectHideFlags: 0
@@ -11511,6 +11513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1837228643}
   camSpeed: 1
+  Vec3: {x: 0, y: 0, z: 0}
 --- !u!1001 &2110353172
 PrefabInstance:
   m_ObjectHideFlags: 0
