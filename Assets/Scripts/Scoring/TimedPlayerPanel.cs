@@ -13,13 +13,13 @@ public class TimedPlayerPanel : PlayerPanelController
 
     private void OnEnable()
     {
-        EventManager.onTimerStart.AddListener(StartTime);
+        EventManager.onPlayerTimerStart.AddListener(StartTime);
         EventManager.onPlayerFinish.AddListener(StopTime);
     }
 
     private void OnDisable()
     {
-        EventManager.onTimerStart.RemoveListener(StartTime);
+        EventManager.onPlayerTimerStart.RemoveListener(StartTime);
         EventManager.onPlayerFinish.RemoveListener(StopTime);
     }
 

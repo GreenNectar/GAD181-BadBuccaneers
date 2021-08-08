@@ -20,6 +20,6 @@ public static class GlobalTimer
     public static void StartTimer()
     {
         startingTime = UnityEngine.Time.timeAsDouble;
-        EventManager.onTimerStart.Invoke();
+        EventManager.onPlayerTimerStart.Invoke();
     }
 }
