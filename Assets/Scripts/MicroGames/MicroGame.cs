@@ -10,6 +10,7 @@ public class MicroGame : ScriptableObject
     public string title;
     [TextArea]
     public string description;
+    public string credits;
     public int minimumRequiredPlayers = 1;
     [Scene]
     public string microGameScene;
