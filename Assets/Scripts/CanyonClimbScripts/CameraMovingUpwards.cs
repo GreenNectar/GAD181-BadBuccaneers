@@ -5,15 +5,19 @@ using UnityEngine;
 public class CameraMovingUpwards : MonoBehaviour
 {
 
-    public CharacterController cam;
-    public float camSpeed;
-    private Vector3 Vec3 = Vector3.zero;
+    public float upSpeed = 2f;
+    public float topHeight = 50f;
+
 
     // Update is called once per frame
     void Update()
     {
-        cam.Move(Vec3 * Time.deltaTime);
-        cam.Move(Vector3.up * Time.deltaTime * camSpeed);
+        transform.Translate(Vector3.up * Time.deltaTime * upSpeed);
 
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, 0f, topHeight);
+        transform.position = clampedPosition;
     }
+
+    
 }

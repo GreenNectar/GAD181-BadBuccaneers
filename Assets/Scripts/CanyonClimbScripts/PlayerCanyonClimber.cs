@@ -8,6 +8,8 @@ public class PlayerCanyonClimber : MicroGamePlayerController
     [SerializeField]
     private CharacterController controller;
 
+    Animator animator;
+
     // variables for player statistics
     public float moveSpeed = 5f;
     public float jumpVelocity = 5f;
@@ -27,6 +29,7 @@ public class PlayerCanyonClimber : MicroGamePlayerController
     {
         base.Start();
         startingPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,11 +40,24 @@ public class PlayerCanyonClimber : MicroGamePlayerController
         velocity += Physics.gravity * Time.deltaTime * gravMultiplier;
         CollisionFlags flags = controller.Move(velocity * Time.deltaTime);
 
+        //if (player.GetAxis("LeftMoveX"))
+        //{
+        //    animator.SetBool("Running", true);
+        //}
+
+        //else
+        //{
+        //    animator.SetBool("Running", false);
+        //}
+
+
+
         if (controller.isGrounded)
         {
             if (player.GetButtonDown("Fire"))
             {
                 velocity = -Physics.gravity.normalized * jumpVelocity;
+                animator.SetTrigger("Jumping");
             }
         }
 
