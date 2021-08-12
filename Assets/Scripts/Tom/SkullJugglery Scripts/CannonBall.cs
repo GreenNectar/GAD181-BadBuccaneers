@@ -10,11 +10,14 @@ public class CannonBall : MonoBehaviour
     public float frontBarrier;
     public float backBarrier;
 
+
+    // Update is called once per frame
     void Update()
     {
-        // This clamps the flag on the z axis
+        // This clamps the flag on the x axis
         Vector3 clampedPosition = transform.position;
-        clampedPosition.z = Mathf.Clamp(clampedPosition.z, frontBarrier, backBarrier);
+        //clampedPosition.z = Mathf.Clamp(clampedPosition.z, farLeft, farRight);
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, frontBarrier, backBarrier);
         transform.position = clampedPosition;
     }
 }
