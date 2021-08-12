@@ -7,7 +7,8 @@ public class GenerateDebris : MonoBehaviour
     public GameObject[] theDebris;
 
     // Positions for the parrots to spawn at
-    public float xPos;
+    public float xPosMin;
+    public float xPosMax;
     public float yPos;
     public float zPos;
     public float debrisYRotation;
@@ -33,7 +34,7 @@ public class GenerateDebris : MonoBehaviour
         {
             //yPos = Random.Range(4, 20);
             debrisSpawnTime = Random.Range(1, 3);
-            Instantiate(theDebris[Random.Range(0, 3)], new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, debrisYRotation, 0));
+            Instantiate(theDebris[Random.Range(0, 3)], new Vector3(Random.Range(xPosMin, xPosMax), yPos, zPos), Quaternion.Euler(0, debrisYRotation, 0));
             yield return new WaitForSeconds(debrisSpawnTime);
             debrisCount += 1;
         }
