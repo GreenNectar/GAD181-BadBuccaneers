@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8835cb01568c9114ba122f447e702273, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -224,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96152023343338018, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9173071733854443626, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -232,6 +236,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1234843010}
+    - target: {fileID: 9173071734297272610, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9173071734483020139, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -293,6 +301,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96152023343338018, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9173071733854443626, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -301,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1234843010}
+    - target: {fileID: 9173071734297272610, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9173071734483020139, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -655,6 +671,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b021ca9ebdf78b3428c32c2aab1ed578, type: 3}
+--- !u!1 &502957220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 502957222}
+  - component: {fileID: 502957221}
+  m_Layer: 0
+  m_Name: CameraController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &502957221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502957220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba19ef8d3807dd3429852171abf66369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitScreenStyle: 0
+  oneScreenCamera: {fileID: 1234843010}
+  cameraTopLeft: {fileID: 0}
+  cameraBottomRight: {fileID: 0}
+  player1Camera: {fileID: 0}
+  player2Camera: {fileID: 0}
+  player3Camera: {fileID: 0}
+  player4Camera: {fileID: 0}
+  spectatorCamera: {fileID: 0}
+  isTwoPlayerVertical: 1
+  playersToVisualise: 1
+--- !u!4 &502957222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502957220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.666218, y: -0.4263024, z: 10.204315}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &510808204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 451718, guid: 56d42b6a8fcff5341b37bd8899d53b10, type: 3}
@@ -1620,6 +1690,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 96152023343338018, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
+      propertyPath: playerNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9173071733854443626, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1628,6 +1702,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1234843010}
+    - target: {fileID: 9173071734297272610, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
+      propertyPath: playerNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9173071734483020139, guid: 85b091d062a1f6d4aadda6b15c4fef97, type: 3}
       propertyPath: m_RootOrder
       value: 8
