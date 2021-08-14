@@ -6,14 +6,8 @@ using UnityEngine.UI;
 
 public class MicroGameOverlayController : MonoBehaviour
 {
-    //[SerializeField]
-    private CameraController cameraController;
-
     [SerializeField]
-    private RenderTexture renderTexture;
-
-    [SerializeField]
-    private RawImage renderImage;
+    private RenderTexture cameraRenderTexture;
 
     [SerializeField]
     private TextMeshProUGUI title;
@@ -75,13 +69,10 @@ public class MicroGameOverlayController : MonoBehaviour
             yield return null;
         }
 
-        cameraController = FindObjectOfType<CameraController>();
-
+        CameraController cameraController = FindObjectOfType<CameraController>();
         foreach (var camera in cameraController.Cameras)
         {
-            Debug.LogWarning($"Setting render texture on {camera.name}");
-
-            camera.targetTexture = renderTexture;
+            camera.targetTexture = cameraRenderTexture;
         }
     }
 }

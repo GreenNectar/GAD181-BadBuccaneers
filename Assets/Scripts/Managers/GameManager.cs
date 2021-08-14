@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
     private string homeScreen;
     [SerializeField, Scene]
     private string microGameOverlay;
+    [SerializeField, Scene]
+    private string playerUIOverlay;
 
     [SerializeField]
     private List<MicroGame> levels = new List<MicroGame>();
@@ -57,6 +59,7 @@ public class GameManager : Singleton<GameManager>
             string level = currentMicroGame.microGameScene;
             SceneManager.LoadScene(level, LoadSceneMode.Single);
             SceneManager.LoadScene(microGameOverlay, LoadSceneMode.Additive);
+            SceneManager.LoadScene(playerUIOverlay, LoadSceneMode.Additive);
         }
         else
         {
