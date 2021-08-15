@@ -4644,13 +4644,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  resultScreen: IntroScene
+  resultScreen: ResultsScreen
   homeScreen: IntroScene
   microGameOverlay: PracticeOverlay
   playerUIOverlay: PlayerUIOverlay
   levels:
-  - {fileID: 11400000, guid: 84b9e14c791e95d4bbe8d9cd291a123b, type: 2}
-  - {fileID: 11400000, guid: 761c7fa1cc2d2314f941d11856698d5b, type: 2}
+  - {fileID: 11400000, guid: 7d35a1a9d1aa38246954abb8c53a78e8, type: 2}
   - {fileID: 11400000, guid: c6b0ce620600cea48abaacffd90f2ebe, type: 2}
 --- !u!4 &1072293857
 Transform:

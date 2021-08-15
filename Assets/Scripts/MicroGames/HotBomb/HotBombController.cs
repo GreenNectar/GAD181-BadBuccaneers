@@ -83,7 +83,7 @@ public class HotBombController : MonoBehaviour
         }
     }
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (isTransferring) return; // We only want to transfer once we've finished transferring
 
@@ -121,7 +121,7 @@ public class HotBombController : MonoBehaviour
 
             //Vector3 fromPosition = previousPlayer ? previousPlayer.BombPosition.position : oldPosition;
             //Quaternion fromRotation = previousPlayer ? previousPlayer.BombPosition.rotation : transform.rotation;
-            
+
             transform.position = Vector3.Lerp(oldPosition, currentPlayer.BombPosition.position, time) + Vector3.up * transferHeight * Mathf.Sin(time * Mathf.PI);
             Quaternion newRotation = Quaternion.Lerp(oldRotation, currentPlayer.BombPosition.rotation, time);
 
@@ -137,7 +137,7 @@ public class HotBombController : MonoBehaviour
         allowVibration = true;
 
         // Start the throb
-        yield return new WaitForSeconds(timeUntilFirstThrob + Random.Range(-randomTimeOffset/2f, randomTimeOffset/2f));
+        yield return new WaitForSeconds(timeUntilFirstThrob + Random.Range(-randomTimeOffset / 2f, randomTimeOffset / 2f));
         pulse.enabled = true;
 
         // Start the harsh throb
@@ -175,7 +175,7 @@ public class HotBombController : MonoBehaviour
         oldPosition = transform.position;
         oldRotation = transform.rotation;
         // Reset the previous player
-        previousPlayer = null; 
+        previousPlayer = null;
 
         // Reset the pulsing
         pulse.ResetScale();
@@ -193,10 +193,11 @@ public class HotBombController : MonoBehaviour
             StartCoroutine(CountDown());
         }
         // Otherwise end the game
-        //TODO End the game
         else
         {
+            yield return new WaitForSeconds(3f);
 
+            GameManager.Instance.EndGame();
         }
     }
 

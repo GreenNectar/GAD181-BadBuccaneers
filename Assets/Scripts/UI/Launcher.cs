@@ -12,6 +12,7 @@ public class Launcher : MonoBehaviour
     {
         if (canvasGroup.alpha == 1 && PlayerManager.GetPlayer(0).GetButtonDown("Submit"))
         {
+            GameManager.Instance.GenerateRandomLevels();
             GameManager.Instance.LoadNextLevel();
         }
     }

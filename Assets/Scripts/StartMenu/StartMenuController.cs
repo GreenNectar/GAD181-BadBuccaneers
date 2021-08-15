@@ -54,13 +54,19 @@ public class StartMenuController : MonoBehaviour
     {
         current = starting;
 
+        // Haha ccp... Pooh Bear
         foreach (var ccp in positions)
         {
             if (ccp != current)
             {
-                ccp.canvasGroup.gameObject.SetActive(false);
                 ccp.canvasGroup.alpha = 0f;
+                ccp.canvasGroup.gameObject.SetActive(false);
             }
+        }
+
+        if (PlayerManager.PlayerCount > 0)
+        {
+            MoveTo(positions[0].name);
         }
     }
 
@@ -69,23 +75,7 @@ public class StartMenuController : MonoBehaviour
     {
         if (!isMoving)
         {
-            //foreach (var player in ReInput.players.AllPlayers)
-            //{
-            //    if (player.GetButtonDown("Start"))
-            //    {
-            //        if (PlayerManager.PlayerCount == 0) PlayerManager.AddPlayer(0, player.id);
-            //        MoveTo(positions[cur].name);
-            //        cur++;
-            //    }
-            //}
-            //{
-            //    if (PlayerManager.GetPlayer(0).GetButtonDown("Cancel"))
-            //    {
-            //        cur--;
-            //        GoBack();
-            //    }
-            //}
-
+            // Add the first player to the game and move to the first menu screen
             if (PlayerManager.PlayerCount == 0)
             {
                 foreach (var player in ReInput.players.AllPlayers)
@@ -97,6 +87,7 @@ public class StartMenuController : MonoBehaviour
                     }
                 }
             }
+            // Go back...
             else
             {
                 if (PlayerManager.GetPlayer(0).GetButtonDown("Cancel") && canGoBack)
@@ -106,6 +97,7 @@ public class StartMenuController : MonoBehaviour
             }
         }
 
+        // Hard setting of the position as the transform might be moving so we want to constantly follow it
         if (!isMoving)
         {
             camera.transform.position = current.transform.position;
@@ -125,6 +117,10 @@ public class StartMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move to the screen with the given name
+    /// </summary>
+    /// <param name="name"></param>
     public void MoveTo(string name)
     {
         previous = current;
@@ -165,6 +161,9 @@ public class StartMenuController : MonoBehaviour
         isMoving = false;
     }
 
+    /// <summary>
+    /// Go back to the previous window
+    /// </summary>
     public void GoBack()
     {
         previous = current;

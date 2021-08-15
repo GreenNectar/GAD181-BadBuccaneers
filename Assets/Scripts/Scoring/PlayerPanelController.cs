@@ -9,7 +9,4 @@ public class PlayerPanelController : MonoBehaviour
     private int playerNumber;
 
     public int PlayerNumber => playerNumber;
-
-    [SerializeField]
-    private Image faceIcon;
 }

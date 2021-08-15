@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Dumb with Rum
   description: 
+  developers: Rowan
   minimumRequiredPlayers: 1
   microGameScene: Dumb with Rum
   controls:
   - description: Drink
     buttons: <sprite name="Controller-S">
+  scoreType: 0
+  scoreLayout: 0

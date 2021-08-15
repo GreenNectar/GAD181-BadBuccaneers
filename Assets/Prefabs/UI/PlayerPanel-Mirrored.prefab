@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1397916630584724765, guid: 54abae5587631f640880b7da9aa8e2b4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -35.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7571656838377742823, guid: 54abae5587631f640880b7da9aa8e2b4, type: 3}
       propertyPath: m_Name
       value: PlayerPanel-Mirrored

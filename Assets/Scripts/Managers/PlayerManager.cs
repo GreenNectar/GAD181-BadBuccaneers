@@ -207,15 +207,17 @@ public static class PlayerManager
             Player p = ReInput.players.GetPlayer(player.Value);
 
             string type = "Xbox";
-            if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
+            if (p.controllers.joystickCount > 0)
             {
-                type = "Dualshock";
+                if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
+                {
+                    type = "Dualshock";
+                }
+                else if (p.controllers.Joysticks[0].GetExtension<DualSenseExtension>() != null)
+                {
+                    type = "Dualsense";
+                }
             }
-            else if (p.controllers.Joysticks[0].GetExtension<DualSenseExtension>() != null)
-            {
-                type = "Dualsense";
-            }
-
             controllerTypes[player.Key] = type;
         }
 

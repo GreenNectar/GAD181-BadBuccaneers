@@ -182,10 +182,11 @@ public class ShellController : MonoBehaviour
         {
             StartCoroutine(RoundSequence());
         }
-        //TODO Stop the game
+        // Finish the game
         else
         {
-
+            yield return new WaitForSeconds(2f);
+            GameManager.Instance.EndGame();
         }
 
         yield return null;
@@ -234,7 +235,7 @@ public class ShellController : MonoBehaviour
 
                 if (scoresToGive[i] > 0)
                 {
-                    EventManager.AddScoreToPlayer(i, scoresToGive[i]);
+                    ScoreManager.Instance.AddScoreToPlayer(i, scoresToGive[i]);
                     hasVotedCorrectly = true;
                 }
             }

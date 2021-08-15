@@ -126,6 +126,20 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
 
     #endregion
 
+    #region Animator Methods
+
+    public void StartTimer()
+    {
+        ScoreManager.Instance.StartTimer();
+    }
+
+    public void Finish()
+    {
+        ScoreManager.Instance.EndPlayer(PlayerNumber);
+    }
+
+    #endregion
+
     public void OnMicroGameLoad()
     {
         // Generate the random values babbyy, that way they're different each time

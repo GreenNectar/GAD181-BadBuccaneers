@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Hot Potato
   description: Run into other players to give them the bomb, otherwise run!
+  developers: Jarrad
   minimumRequiredPlayers: 2
   microGameScene: HotBomb
   controls:
   - description: Move
     buttons: <sprite name="Thumbstick-L">
+  scoreType: 2
+  scoreLayout: 1
