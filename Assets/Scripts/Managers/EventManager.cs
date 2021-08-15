@@ -26,6 +26,7 @@ public class EventManager : Singleton<EventManager>
     public static void StartTimer(float time)
     {
         onTimerStart.Invoke(time);
+        Instance.StopAllCoroutines();
         Instance.StartCoroutine(CountDownTimer(time));
     }
 

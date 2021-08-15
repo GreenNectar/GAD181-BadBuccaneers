@@ -46,7 +46,7 @@ public class ShellController : MonoBehaviour
     {
         get
         {
-            return playersVoted == PlayerManager.PlayerCount;
+            return PlayerManager.PlayerCount > 0 && playersVoted == PlayerManager.PlayerCount;
         }
     }
 
