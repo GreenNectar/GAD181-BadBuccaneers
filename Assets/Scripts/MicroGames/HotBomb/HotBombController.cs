@@ -195,9 +195,11 @@ public class HotBombController : MonoBehaviour
         // Otherwise end the game
         else
         {
+            yield return new WaitForSeconds(0.5f);
+
             ScoreManager.Instance.EndFinalPlayers();
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2.5f);
 
             GameManager.Instance.EndGame();
         }

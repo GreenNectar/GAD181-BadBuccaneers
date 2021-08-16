@@ -878,9 +878,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<line-height=-50%>
+  m_text: '<line-height=-80%>
 
-    <size=150%><b>Developers</b></size>
+    <size=130%><b>Developers</b></size>
 
     </line-height>
 
@@ -898,9 +898,9 @@ MonoBehaviour:
     </font>
 
 
-    <line-height=-50%>
+    <line-height=-80%>
 
-    <size=150%><b>Assets</b></size>
+    <size=130%><b>Assets</b></size>
 
     </line-height>
 
@@ -953,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1789,9 +1789,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<line-height=-50%>\n<size=150%><b>Voice Actors</b></size>\n</line-height>\n<font=\"TreasureMapDeadhand-UI-1\">\nRowan
+  m_text: "<line-height=-80%>\n<size=130%><b>Voice Actors</b></size>\n</line-height>\n<font=\"TreasureMapDeadhand-UI-1\">\nRowan
     Koch\r\nMitchell Heath\r\nThomas Lorenti\r\nPatrick Gage\r\nJacob Shulze\r\nElizabeth
-    O\u2019Connor\r\n</font>\n\n<line-height=-50%>\n<size=150%><b>Special Thnx</b></size>\n</line-height>\n<font=\"TreasureMapDeadhand-UI-1\">\nHarrison
+    O\u2019Connor\r\n</font>\n\n<line-height=-80%>\n<size=130%><b>Special Thnx</b></size>\n</line-height>\n<font=\"TreasureMapDeadhand-UI-1\">\nHarrison
     May - Mastered our Sea Shanty\nOur families\nThank you Unity\nAnd thank YOU for
     Playing\nUwU\n</font>"
   m_isRightToLeft: 0
@@ -1820,8 +1820,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3497,7 +3497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite name="Controller-E">Back
+  m_text: <sprite name="Controller-E"> Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
@@ -4161,7 +4161,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 928958736}
   m_OnClick:
     m_PersistentCalls:
@@ -4797,9 +4797,9 @@ MonoBehaviour:
   microGameOverlay: PracticeOverlay
   playerUIOverlay: PlayerUIOverlay
   levels:
-  - {fileID: 11400000, guid: 7d35a1a9d1aa38246954abb8c53a78e8, type: 2}
-  - {fileID: 11400000, guid: c6b0ce620600cea48abaacffd90f2ebe, type: 2}
   - {fileID: 11400000, guid: 84b9e14c791e95d4bbe8d9cd291a123b, type: 2}
+  - {fileID: 11400000, guid: c6b0ce620600cea48abaacffd90f2ebe, type: 2}
+  - {fileID: 11400000, guid: 7d35a1a9d1aa38246954abb8c53a78e8, type: 2}
 --- !u!4 &1072293857
 Transform:
   m_ObjectHideFlags: 0
@@ -9982,7 +9982,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2111924852}
   m_OnClick:
     m_PersistentCalls:

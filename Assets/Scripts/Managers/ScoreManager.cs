@@ -38,15 +38,13 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         GlobalTimer.StartTimer();
     }
 
-
-
     public void FinaliseScores()
     {
         //TODO Give points to players from the level outcome
 
         if (GameManager.Instance.currentMicroGame)
         {
-            // Get the scores
+            // Get the scores (some are negative as the scores are sorted from highest to lowest, so we want to do the opposite)
             Dictionary<int, float> roundScores = new Dictionary<int, float>();
             switch (GameManager.Instance.currentMicroGame.scoreType)
             {
@@ -61,11 +59,6 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
                     break;
                 case MicroGame.ScoreType.Elimination:
                     // Give the positions to the player
-                    //int position = PlayerManager.PlayerCount;
-                    //foreach (var player in playersEnded)
-                    //{
-                    //    roundScores.Add(player, position--);
-                    //}
                     for (int i = 0; i < PlayerManager.PlayerCount; i++)
                     {
                         roundScores.Add(i, -playerPositions[i]);
@@ -131,7 +124,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         // Reset the values
         GlobalTimer.StopTimer();
         GlobalTimer.ResetTimer();
-        playersEnded.Clear();
+        playersEnded = new List<int>();
         playerPoints = new int[4];
         playerStartTime = new float[4];
         playerTime = new float[4];
