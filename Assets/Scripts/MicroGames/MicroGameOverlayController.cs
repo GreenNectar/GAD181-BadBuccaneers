@@ -1,5 +1,7 @@
+using Rewired;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,37 +19,62 @@ public class MicroGameOverlayController : MonoBehaviour
     private ControlPanel controlPanel;
     [SerializeField]
     private Transform controlsParent;
+    [SerializeField]
+    private TextMeshProUGUI developers;
+
+    [SerializeField]
+    private GameObject[] readyObjects;
+
+    private bool[] isReady;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SetCamera());
+        SetCamera();
         InitialiseUI();
+
+        isReady = new bool[PlayerManager.PlayerCount];
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        
+        for (int i = 0; i < PlayerManager.PlayerCount; i++)
+        {
+            if (!isReady[i] && PlayerManager.GetPlayer(i).GetButtonDown("Ready"))
+            {
+                isReady[i] = true;
+                readyObjects[i].SetActive(true);
+                CheckReady();
+            }
+        }
     }
 
-    private void OnDisable()
+    /// <summary>
+    /// If everyone is ready it loads out of practice
+    /// </summary>
+    private void CheckReady()
     {
-        
+        bool allReady = !isReady.Contains(false);
+        if (allReady)
+        {
+            GameManager.Instance.LoadOutOfPractice();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Sets all the text to the current microgame
+    /// </summary>
     private void InitialiseUI()
     {
         GenerateControls();
         title.text = GameManager.Instance.currentMicroGame.title;
         description.text = GameManager.Instance.currentMicroGame.description;
+        developers.text = "Developers - " + GameManager.Instance.currentMicroGame.developers;
     }
 
+    /// <summary>
+    /// Generates all the text objects for each control set by the scriptable object
+    /// </summary>
     private void GenerateControls()
     {
         foreach (var control in GameManager.Instance.currentMicroGame.controls)
@@ -59,7 +86,16 @@ public class MicroGameOverlayController : MonoBehaviour
         }
     }
 
-    IEnumerator SetCamera()
+    public void SetCamera()
+    {
+        StartCoroutine(SetCameraSequence());
+    }
+
+    /// <summary>
+    /// Sets the render texture to the camera/s in the scene
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SetCameraSequence()
     {
         Debug.LogWarning("Trying to set camera");
 

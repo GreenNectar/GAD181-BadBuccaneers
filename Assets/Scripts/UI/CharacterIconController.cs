@@ -18,9 +18,19 @@ public class CharacterIconController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // We want to remove this icon if the player isn't joined
-        if (!PlayerManager.HasPlayer(playerNumber)) gameObject.SetActive(false);
+        if (PlayerManager.PlayerCount > 0)
+        {
+            // We want to remove this icon if the player isn't joined
+            if (!PlayerManager.HasPlayer(playerNumber)) gameObject.SetActive(false);
 
-        playerIcon.sprite = playerIcons.First(p => p.name.ToLower() == PlayerManager.GetPlayerModel(playerNumber).ToLower());
+            if (PlayerManager.HasPlayer(playerNumber))
+            {
+                playerIcon.sprite = playerIcons.First(p => p.name.ToLower() == PlayerManager.GetPlayerModel(playerNumber).ToLower());
+            }
+            else
+            {
+                playerIcon.sprite = playerIcons[0];
+            }
+        }
     }
 }

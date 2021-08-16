@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SkullScoreManager : PlayerPanelController
 {
-
+    /*
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
@@ -37,4 +37,5 @@ public class SkullScoreManager : PlayerPanelController
     {
         scoreText.text = score.ToString();
     }
+    */
 }

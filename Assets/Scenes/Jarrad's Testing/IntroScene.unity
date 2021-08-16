@@ -612,8 +612,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5 Rounds
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 200277572}
   - component: {fileID: 200277571}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: Credits-Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,7 +854,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -878,46 +878,55 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=150%><b>Developers</b></size>
+  m_text: '<line-height=-80%>
 
-    Mitchell Heath
+    <size=130%><b>Developers</b></size>
+
+    </line-height>
+
+    <font="TreasureMapDeadhand-UI-1">
+
+    Mitchell
+    Heath
 
     Rowan Koch
 
-    Thomas
-    Lorenti
+    Thomas Lorenti
 
     Jarrad Zuks
 
+    </font>
 
-    <size=150%><b>Assets</b></size>
 
-    Synty Studios
-    - Pirate Pack
+    <line-height=-80%>
 
-    Guavaman - Rewired
+    <size=130%><b>Assets</b></size>
 
-    Unluck Software - FX Mega Pack 2
+    </line-height>
 
-    Kevin
-    Iglesias - Basic Motions
+    <font="TreasureMapDeadhand-UI-1">
+
+    Synty
+    Studios - Pirate Pack
+
+    Guavaman Enterprises - Rewired
+
+    Unluck Software
+    - FX Mega Pack 2
+
+    Kevin Iglesias - Basic Motions
 
     Adobe - Mixamo Animations
 
+    Max
+    Infeld - PiratesBay Font
 
-    <size=150%><b>Special
-    Thnx</b></size>
+    GemFonts - Treasure Map Deadhand
 
-    Harrison May - Mastered our Sea Shanty
+    Loopmasters
+    - Ceilidh: Celtic Folk Songs
 
-    Our families
-
-    Thank
-    you Unity
-
-    And thank YOU for Playing
-
-    UwU'
+    </font>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
   m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
@@ -944,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1598,7 +1607,7 @@ GameObject:
   - component: {fileID: 376752127}
   - component: {fileID: 376752126}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Round-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1723,6 +1732,144 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6952102050950988014, guid: b86bcf2c3c2018441813007a9c7d30f3, type: 3}
   m_PrefabInstance: {fileID: 6952102051169284790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &395889895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395889896}
+  - component: {fileID: 395889898}
+  - component: {fileID: 395889897}
+  m_Layer: 5
+  m_Name: Credits-Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &395889896
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395889895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1036733401}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &395889897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395889895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "<line-height=-80%>\n<size=130%><b>Voice Actors</b></size>\n</line-height>\n<font=\"TreasureMapDeadhand-UI-1\">\nRowan
+    Koch\r\nMitchell Heath\r\nThomas Lorenti\r\nPatrick Gage\r\nJacob Shulze\r\nElizabeth
+    O\u2019Connor\r\n</font>\n\n<line-height=-80%>\n<size=130%><b>Special Thnx</b></size>\n</line-height>\n<font=\"TreasureMapDeadhand-UI-1\">\nHarrison
+    May - Mastered our Sea Shanty\nOur families\nThank you Unity\nAnd thank YOU for
+    Playing\nUwU\n</font>"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 27
+  m_fontSizeBase: 27
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &395889898
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395889895}
+  m_CullTransparentMesh: 1
 --- !u!1 &397829695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,8 +1929,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2411,10 +2558,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY!!! <sprite name="Controller-S">
+  m_text: Play!!! <sprite name="Controller-S">
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2621,8 +2768,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3 Rounds
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2785,8 +2932,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2933,8 +3080,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select <sprite name="Controller-S">
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3122,7 +3269,7 @@ RectTransform:
   - {fileID: 1721501899}
   - {fileID: 1813189429}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3310,7 +3457,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1036733401}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -3350,10 +3497,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite name="Controller-E">Back
+  m_text: <sprite name="Controller-E"> Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3949,7 +4096,7 @@ GameObject:
   - component: {fileID: 928958736}
   - component: {fileID: 928958735}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Round-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4014,7 +4161,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 928958736}
   m_OnClick:
     m_PersistentCalls:
@@ -4322,6 +4469,7 @@ RectTransform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 200277570}
+  - {fileID: 395889896}
   - {fileID: 1417983974}
   - {fileID: 805491283}
   m_Father: {fileID: 0}
@@ -4526,8 +4674,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sprite name="Controller-E">Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4644,14 +4792,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  resultScreen: IntroScene
+  resultScreen: ResultsScreen
   homeScreen: IntroScene
   microGameOverlay: PracticeOverlay
   playerUIOverlay: PlayerUIOverlay
   levels:
   - {fileID: 11400000, guid: 84b9e14c791e95d4bbe8d9cd291a123b, type: 2}
-  - {fileID: 11400000, guid: 761c7fa1cc2d2314f941d11856698d5b, type: 2}
   - {fileID: 11400000, guid: c6b0ce620600cea48abaacffd90f2ebe, type: 2}
+  - {fileID: 11400000, guid: 7d35a1a9d1aa38246954abb8c53a78e8, type: 2}
 --- !u!4 &1072293857
 Transform:
   m_ObjectHideFlags: 0
@@ -4726,8 +4874,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Randomise <sprite name="Controller-N">
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4827,7 +4975,7 @@ GameObject:
   - component: {fileID: 1099637327}
   - component: {fileID: 1099637326}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5939,15 +6087,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Requires Two Players!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6303,7 +6451,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1036733401}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6796,8 +6944,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6831,7 +6979,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -8.14
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -7323,7 +7471,7 @@ RectTransform:
   - {fileID: 1055188640}
   - {fileID: 734778582}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7426,8 +7574,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sprite name="Controller-E">Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7765,8 +7913,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 7 Rounds
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7922,10 +8070,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite name="Controller-E">Back
+  m_text: <sprite name="Controller-E"> Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8146,7 +8294,7 @@ GameObject:
   - component: {fileID: 1807380425}
   - component: {fileID: 1807380424}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8339,8 +8487,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select <sprite name="Controller-S">
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8427,7 +8575,7 @@ GameObject:
   - component: {fileID: 1882664823}
   - component: {fileID: 1882664822}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8608,8 +8756,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sprite name="Controller-E">Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9068,7 +9216,7 @@ GameObject:
   - component: {fileID: 1978397335}
   - component: {fileID: 1978397334}
   m_Layer: 5
-  m_Name: Background (1)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9431,8 +9579,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play <sprite name="Controller-S">
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9603,7 +9751,7 @@ RectTransform:
   - {fileID: 1140272730}
   - {fileID: 1978397333}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9681,8 +9829,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9769,7 +9917,7 @@ GameObject:
   - component: {fileID: 2111924852}
   - component: {fileID: 2111924851}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Round-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9834,7 +9982,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2111924852}
   m_OnClick:
     m_PersistentCalls:

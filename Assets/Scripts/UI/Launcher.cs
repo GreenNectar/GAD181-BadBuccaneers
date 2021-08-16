@@ -10,8 +10,9 @@ public class Launcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canvasGroup.alpha == 1 && PlayerManager.GetPlayer(0).GetButtonDown("Submit"))
+        if (isActiveAndEnabled && canvasGroup.alpha == 1 && PlayerManager.GetPlayer(0).GetButtonDown("Submit"))
         {
+            GameManager.Instance.GenerateRandomLevels();
             GameManager.Instance.LoadNextLevel();
         }
     }
