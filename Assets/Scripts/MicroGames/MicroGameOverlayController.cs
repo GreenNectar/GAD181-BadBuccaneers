@@ -19,6 +19,8 @@ public class MicroGameOverlayController : MonoBehaviour
     private ControlPanel controlPanel;
     [SerializeField]
     private Transform controlsParent;
+    [SerializeField]
+    private TextMeshProUGUI developers;
 
     [SerializeField]
     private GameObject[] readyObjects;
@@ -67,6 +69,7 @@ public class MicroGameOverlayController : MonoBehaviour
         GenerateControls();
         title.text = GameManager.Instance.currentMicroGame.title;
         description.text = GameManager.Instance.currentMicroGame.description;
+        developers.text = "Developers - " + GameManager.Instance.currentMicroGame.developers;
     }
 
     /// <summary>

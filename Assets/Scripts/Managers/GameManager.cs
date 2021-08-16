@@ -164,6 +164,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            ScoreManager.Instance.EndFinalPlayers();
             ScoreManager.Instance.FinaliseScores();
             LoadResultsScreen();
             EventManager.onGameEnd.Invoke();

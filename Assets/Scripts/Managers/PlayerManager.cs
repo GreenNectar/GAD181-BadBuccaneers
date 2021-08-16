@@ -27,6 +27,15 @@ public static class PlayerManager
         }
     }
 
+    //? I don't know what to call this. It gives 4 as players if it hasn't got any players
+    public static int PlayerCountScaled
+    {
+        get
+        {
+            return players.Count > 0 ? players.Count : 4;
+        }
+    }
+
     /// <summary>
     /// Shifts the players so the player numbers start from 0 and increment by 1 in order
     /// </summary>

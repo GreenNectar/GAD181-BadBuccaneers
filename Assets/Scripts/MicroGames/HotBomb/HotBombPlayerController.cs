@@ -68,6 +68,8 @@ public class HotBombPlayerController : TopDownPlayerController
 
         // Disable this player controller component
         enabled = false;
+
+        ScoreManager.Instance.EndPlayer(PlayerNumber);
     }
 
     public void SetHolding()

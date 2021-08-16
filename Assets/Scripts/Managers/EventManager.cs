@@ -13,7 +13,7 @@ public class EventManager : Singleton<EventManager>
     public static UnityEvent<int> onPlayerFinish = new UnityEvent<int>();
 
     //public static UnityEvent<int, int> onPlayerScore = new UnityEvent<int, int>();
-    public static UnityEvent<int> onUpdateScore = new UnityEvent<int>();
+   
 
     public static UnityEvent onResultsFinish = new UnityEvent();
 
@@ -25,6 +25,13 @@ public class EventManager : Singleton<EventManager>
     public static UnityEvent onGameEnd = new UnityEvent();
 
     private static bool isTiming = false;
+
+    #region Scoring Type Events
+
+    public static UnityEvent<int> onUpdateScore = new UnityEvent<int>();
+    //public static UnityEvent<int> onElimination = new UnityEvent<int>();
+
+    #endregion
 
     #region Microgame Time
     public static void StartTimer(float time)

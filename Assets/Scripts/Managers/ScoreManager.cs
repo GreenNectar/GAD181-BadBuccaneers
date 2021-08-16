@@ -9,6 +9,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
     // If the scoretype is elimination it will determine the losers, if it's race it'll determine the winners
     public List<int> playersEnded = new List<int>();
     public int[] playerPoints = new int[4];
+    public int[] playerPositions = new int[4];
     public float[] playerStartTime = new float[4];
     public float[] playerTime = new float[4];
     public int maximumPoints = 0; // Used for percentage
@@ -47,12 +48,10 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         {
             // Get the scores
             Dictionary<int, float> roundScores = new Dictionary<int, float>();
-            int score = 3;
-            int previousScore = 3;
             switch (GameManager.Instance.currentMicroGame.scoreType)
             {
                 case MicroGame.ScoreType.Points:
-                    // Connect the times to the player
+                    // Connect the scores to the player
                     for (int i = 0; i < PlayerManager.PlayerCount; i++)
                     {
                         roundScores.Add(i, playerPoints[i]);
@@ -61,6 +60,16 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
                 case MicroGame.ScoreType.Percentage:
                     break;
                 case MicroGame.ScoreType.Elimination:
+                    // Give the positions to the player
+                    //int position = PlayerManager.PlayerCount;
+                    //foreach (var player in playersEnded)
+                    //{
+                    //    roundScores.Add(player, position--);
+                    //}
+                    for (int i = 0; i < PlayerManager.PlayerCount; i++)
+                    {
+                        roundScores.Add(i, -playerPositions[i]);
+                    }
                     break;
                 case MicroGame.ScoreType.Race:
                     // Connect the times to the player
@@ -78,17 +87,19 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
 
             //https://stackoverflow.com/questions/289/how-do-you-sort-a-dictionary-by-value
             //var sortedTimes = roundScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-            var sortedTimes = from time in roundScores orderby time.Value ascending select time;
+            var sortedScore = from roundScore in roundScores orderby roundScore.Value descending select roundScore;
             // Use the sorted times to give the scores
-            float previous = -1f;
-            foreach (var time in sortedTimes)
+            int score = 3;
+            int previousScore = 3;
+            float previousValue = -1f;
+            foreach (var time in sortedScore)
             {
                 // 
-                if (previous == -1f)
+                if (previousValue == -1f)
                 {
                     scores[time.Key].score += score;
                     previousScore = score;
-                    previous = time.Value;
+                    previousValue = time.Value;
                 }
                 else if (time.Value == 0f)
                 {
@@ -96,7 +107,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
                 }
                 else
                 {
-                    if (time.Value == previous)
+                    if (time.Value == previousValue)
                     {
                         scores[time.Key].score += previousScore;
                     }
@@ -104,7 +115,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
                     {
                         scores[time.Key].score += score;
                         previousScore = score;
-                        previous = time.Value;
+                        previousValue = time.Value;
                     }
                 }
 
@@ -132,8 +143,27 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         ResetScores();
     }
 
+    public void EndFinalPlayers()
+    {
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            if (playerPositions[i] == 0)
+            {
+                playerPositions[i] = 1;
+                EventManager.onPlayerFinish.Invoke(i);
+            }
+            if (playerTime[i] == 0f)
+            {
+                playerTime[i] = GlobalTimer.Time;
+            }
+        }
+    }
+
     public void EndPlayer(int player)
     {
+        if (playersEnded.Contains(player)) throw new Exception("Player has already ended, please fix this!");
+
+        playerPositions[player] = PlayerManager.PlayerCountScaled - playersEnded.Count;
         playersEnded.Add(player);
         playerTime[player] = GlobalTimer.Time;
         EventManager.onPlayerFinish.Invoke(player);

@@ -249,7 +249,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ready <sprite name="Controller-S">
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &6952102050607959779
@@ -407,6 +407,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cc7bf7fed7435d14a802a3bf398be8fa, type: 3}
   - {fileID: 21300000, guid: 406c4afed39f9bd49ad0db81eb68029a, type: 3}
   - {fileID: 21300000, guid: a2c6799c695a0f04e8f41bac8c08a0a8, type: 3}
+  onReadyStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6952102051077247880
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +739,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -800,7 +803,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &6952102051766222293
@@ -922,7 +925,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: <sprite name="Tick" color=#00FF00>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -986,7 +989,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &7372943709721469581

@@ -15,11 +15,13 @@ public class PlayerUIPanelController : MonoBehaviour, IMicroGameLoad
     private void OnEnable()
     {
         EventManager.onUpdateScore.AddListener(SetPoints);
+        EventManager.onPlayerFinish.AddListener(SetElimination);
     }
 
     private void OnDisable()
     {
         EventManager.onUpdateScore.RemoveListener(SetPoints);
+        EventManager.onPlayerFinish.AddListener(SetElimination);
     }
 
     private void Update()
@@ -50,15 +52,7 @@ public class PlayerUIPanelController : MonoBehaviour, IMicroGameLoad
     {
         if (player != playerNumber) return;
 
-        int position = 4;
-
-        foreach (int p in ScoreManager.Instance.playersEnded)
-        {
-            if (p == player) break;
-            position--;
-        }
-
-        output.text = position.Ordinal();
+        output.text = ScoreManager.Instance.playerPositions[playerNumber].Ordinal();
     }
 
     private void SetFirstToEnd(int player)
@@ -87,7 +81,6 @@ public class PlayerUIPanelController : MonoBehaviour, IMicroGameLoad
         int milliseconds = (int)((time % 1f) * 1000f);
         int seconds = (int)(time % 60f);
         int minutes = (int)(time / 60f);
-        //timerText.text = $"{minutes}:{seconds.ToString("D2")}:{milliseconds.ToString("D3").Substring(0, 2)}";
 
         output.text = $"{minutes}:{seconds.ToString("D2")}:{milliseconds.ToString("D3").Substring(0, 2)}";
     }
