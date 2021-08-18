@@ -4,21 +4,31 @@ using UnityEngine;
 
 public class SandDeath : MonoBehaviour
 {
+    public GameObject[] theBalls;
 
-    public Transform cannonBallLocation;
-    public GameObject cannonBallSpawn;
+    public float xPos;
+    public float yPos;
+    public float zPos;
 
-    void OnTriggerEnter(Collider other)
+    // Amount and time for enemy to spawn at 
+    public int ballCount;
+
+
+
+    private void OnCollisionEnter(Collision collision)
     {
+        Destroy(collision.collider.gameObject);
+    }
 
-        Debug.Log("Collison");
+    private void Update()
+    {
+        ballCount = GameObject.FindGameObjectsWithTag("CannonBall").Length;
 
-        if (other.gameObject.tag == "CannonBall")
+        while (ballCount < 1)
         {
-            Destroy(other.gameObject);
-            Instantiate(cannonBallSpawn, transform.position, transform.rotation);
+            Instantiate(theBalls[Random.Range(0, 2)], new Vector3(xPos, yPos, zPos), Quaternion.Euler(0, 0, 0));
+            ballCount++;
         }
-
     }
 
 }
