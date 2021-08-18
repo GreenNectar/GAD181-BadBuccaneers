@@ -28,7 +28,7 @@ public class PlayerAvoidShark : MicroGamePlayerController
         //var moveVertical = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         //controller.Move(moveHorizontal * -moveSpeed * Time.deltaTime);
         //controller.Move(moveVertical * -moveSpeed * Time.deltaTime);
-        move = new Vector3(player.GetAxis("LeftMoveX"), 0f, 0f);
+        move = new Vector3(player.GetAxis("LeftMoveX"), 0f, player.GetAxis("LeftMoveY"));
         controller.Move(move * moveSpeed * Time.deltaTime);
         velocity += Physics.gravity * Time.deltaTime * gravMultiplier;
         CollisionFlags flags = controller.Move(velocity * Time.deltaTime);
@@ -46,10 +46,10 @@ public class PlayerAvoidShark : MicroGamePlayerController
             velocity = Physics.gravity * Time.deltaTime * gravMultiplier;
         }
 
-        controller.enabled = false;
-        Vector3 temp = transform.position;
-        transform.position = new Vector3(temp.x, temp.y, startingPosition.z);
-        controller.enabled = true;
+        //controller.enabled = false;
+        //Vector3 temp = transform.position;
+        //transform.position = new Vector3(temp.x, temp.y, startingPosition.z);
+        //controller.enabled = true;
 
         SetCharacterRotation();
     }
