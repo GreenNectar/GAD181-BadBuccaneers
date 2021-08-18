@@ -36,6 +36,8 @@ public static class PlayerManager
         }
     }
 
+    #region Handling Players
+
     /// <summary>
     /// Shifts the players so the player numbers start from 0 and increment by 1 in order
     /// </summary>
@@ -202,6 +204,8 @@ public static class PlayerManager
         return -1;
     }
 
+    #endregion
+
     #region Controller Types
 
     private static void SetControllerTypes()
@@ -341,6 +345,19 @@ public static class PlayerManager
     public static string GetPlayerModel(int playerNumber)
     {
         return playerCharacters[playerNumber];
+    }
+
+    #endregion
+
+    #region Character FMOD Events
+
+    private static CharacterEventTable allCharacterEvents;
+
+    public static CharacterFMODEvents GetPlayerFMODEvent(int playerNumber)
+    {
+        if (allCharacterEvents == null) allCharacterEvents = Resources.Load<CharacterEventTable>("CharacterEvents/CharacterEventTable");
+
+        return allCharacterEvents.GetCharacterEvents(GetPlayerModel(playerNumber));
     }
 
     #endregion

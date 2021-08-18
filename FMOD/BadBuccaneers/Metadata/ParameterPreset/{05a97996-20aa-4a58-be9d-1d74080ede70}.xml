@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{05a97996-20aa-4a58-be9d-1d74080ede70}">
+		<property name="name">
+			<value>SeaShanty</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bb14ca34-40aa-4d62-9ef5-9bebbb0f934b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{75c86238-30d5-4716-80d3-210aaf7854cf}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{75c86238-30d5-4716-80d3-210aaf7854cf}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>1</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

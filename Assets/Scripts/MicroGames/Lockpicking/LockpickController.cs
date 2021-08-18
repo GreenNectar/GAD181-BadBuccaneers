@@ -1,3 +1,4 @@
+using FMODUnity;
 using Rewired;
 using System;
 using System.Collections;
@@ -137,6 +138,18 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
     {
         ScoreManager.Instance.EndPlayer(PlayerNumber);
     }
+
+    #endregion
+
+    #region Audio
+
+    [Header("Audio")]
+    [SerializeField, EventRef]
+    private string openChestEvent;
+    [SerializeField, EventRef]
+    private string openLastChestEvent;
+    [SerializeField, EventRef]
+    private string unlockPinEvent;
 
     #endregion
 
@@ -298,6 +311,15 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
                 currentPin = 0;
                 currentChest++;
                 animator.SetTrigger("Open");
+                if (currentChest == chests.Length) // If we open last chest
+                    RuntimeManager.PlayOneShot(openLastChestEvent);
+                else // If we open normal chest
+                    RuntimeManager.PlayOneShot(openChestEvent);
+            }
+            // If we didn't open the chest, play the unlock sound
+            else
+            {
+                RuntimeManager.PlayOneShot(unlockPinEvent);
             }
 
             if (currentLock < NumberOfPins - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)

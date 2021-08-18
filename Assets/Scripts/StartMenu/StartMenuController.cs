@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using Rewired;
 using System;
 using System.Collections;
@@ -17,6 +19,20 @@ public class StartMenuController : MonoBehaviour
 
     [SerializeField]
     private CameraCanvasPosition starting;
+
+    [SerializeField, EventRef]
+    private string moveToEvent;
+    [SerializeField, EventRef]
+    private string goBackEvent;
+    [SerializeField, EventRef]
+    private string menuEvent;
+    [SerializeField, ParamRef]
+    private string ambientParameter;
+    private EventInstance menuEventInstance;
+
+
+
+
 
     private CameraCanvasPosition current;
     private CameraCanvasPosition previous;
@@ -42,12 +58,16 @@ public class StartMenuController : MonoBehaviour
     {
         StopBackRegister.onOccupied.AddListener(() => canGoBack = false);
         StopBackRegister.onUnOccupied.AddListener(() => canGoBack = true);
+        menuEventInstance = RuntimeManager.CreateInstance(menuEvent);
+        menuEventInstance.start();
     }
 
     private void OnDisable()
     {
         StopBackRegister.onOccupied.RemoveAllListeners();
         canGoBack = true;
+        menuEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        menuEventInstance.release();
     }
 
     private void Start()
@@ -82,6 +102,7 @@ public class StartMenuController : MonoBehaviour
                 {
                     if (player.GetButtonDown("Start"))
                     {
+                        RuntimeManager.StudioSystem.setParameterByName(ambientParameter, 1f); // Play ambient and music
                         PlayerManager.AddPlayer(0, player.id);
                         MoveTo(positions[0].name);
                     }
@@ -127,6 +148,9 @@ public class StartMenuController : MonoBehaviour
         undo.Push(previous);
         current = positions.First(p => p.name == name);
 
+        // Play the move to sfx
+        RuntimeManager.PlayOneShot(moveToEvent);
+
         StartCoroutine(MoveToRoutine(previous, current));
     }
 
@@ -138,6 +162,11 @@ public class StartMenuController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(EventSystem.current.gameObject);
 
         to.canvasGroup.gameObject.SetActive(true);
+
+        if (to.canvasGroup.GetComponent<StartMenuEvents>())
+            to.canvasGroup.GetComponent<StartMenuEvents>().Enter();
+        if (from.canvasGroup.GetComponent<StartMenuEvents>())
+            from.canvasGroup.GetComponent<StartMenuEvents>().Exit();
 
         float time = 0f;
         float timeBeforeAlpha = 0.5f;
@@ -169,8 +198,13 @@ public class StartMenuController : MonoBehaviour
         previous = current;
         current = undo.Pop();
 
+        // Play go back sfx
+        RuntimeManager.PlayOneShot(goBackEvent);
+
+        // If we made it back to the title menu
         if (undo.Count == 0)
         {
+            RuntimeManager.StudioSystem.setParameterByName(ambientParameter, 0f); // Play the ambient only
             PlayerManager.RemovePlayer(0);
         }
 

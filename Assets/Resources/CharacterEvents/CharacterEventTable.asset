@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e84dac9ad261940b87dc5e13027963, type: 3}
+  m_Name: CharacterEventTable
+  m_EditorClassIdentifier: 
+  characterFMODEvents:
+  - characterName: Character_English_Captain_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_English_Govenor_02
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_Female_Pirate_01
+    characterFMODEvents: {fileID: 11400000, guid: 1bfdf04ec1eda5e45b1ad3a59092ed99, type: 2}
+  - characterName: Character_Female_Wench_01
+    characterFMODEvents: {fileID: 11400000, guid: 1bfdf04ec1eda5e45b1ad3a59092ed99, type: 2}
+  - characterName: Character_Gentleman_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_Governors_Daughter_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_Pirate_Blackbeard_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_Pirate_Captain_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_Pirate_First_Mate_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
+  - characterName: Character_Pirate_Seaman_01
+    characterFMODEvents: {fileID: 11400000, guid: c8154d61b45566842b5443f520d206fb, type: 2}
