@@ -12,10 +12,11 @@ public class PlayerBruceyBites : MicroGamePlayerController
     // variables for player statistics
     public float moveSpeed = 5f;
     public float jumpVelocity = 5f;
-    public float gravMultiplier = 1f;
+    public float gravMultiplier = 2f;
     public float rotationSpeed = 1f;
     private Vector3 startingPosition;
     private Vector3 move;
+
     private Vector3 velocity;
 
     protected override void Start()
@@ -48,6 +49,7 @@ public class PlayerBruceyBites : MicroGamePlayerController
         {
             velocity = Physics.gravity * 0.5f;
         }
+
 
         animator.SetFloat("Movement", move.magnitude);
         animator.SetBool("Grounded", controller.isGrounded);
