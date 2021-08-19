@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using Rewired;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +29,8 @@ public class MicroGameOverlayController : MonoBehaviour
 
     private bool[] isReady;
 
+    private EventInstance voiceOverInstance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,20 @@ public class MicroGameOverlayController : MonoBehaviour
         InitialiseUI();
 
         isReady = new bool[PlayerManager.PlayerCount];
+        voiceOverInstance = RuntimeManager.CreateInstance(GameManager.Instance.currentMicroGame.voiceOverEvent);
+        Invoke("StartVoiceOver", 1.5f); // Delay the vo
+    }
+
+    private void StartVoiceOver()
+    {
+        voiceOverInstance.start();
+    }
+
+    private void OnDisable()
+    {
+        // Fade out the vo when we close the overlay
+        voiceOverInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        voiceOverInstance.release();
     }
 
     private void Update()

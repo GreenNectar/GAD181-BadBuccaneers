@@ -168,4 +168,9 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         EventManager.onUpdateScore.Invoke(player);
     }
 
+
+    public void PlayScoreSoundEffect()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(SFXTable.Get("CoinDrop"));
+    }
 }

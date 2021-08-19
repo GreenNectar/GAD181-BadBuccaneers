@@ -4723,6 +4723,9 @@ MonoBehaviour:
       - {fileID: 1772951490}
       heightOffsetWhenComplete: 0.03
       isOpened: 0
+  openChestEvent: event:/SFX/Lockpicking/OpenChest
+  openLastChestEvent: event:/SFX/Lockpicking/OpenLootChest
+  unlockPinEvent: event:/SFX/Lockpicking/UnlockPin
 --- !u!1001 &670231488801689516
 PrefabInstance:
   m_ObjectHideFlags: 0

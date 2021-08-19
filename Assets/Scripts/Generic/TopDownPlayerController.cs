@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +37,11 @@ public class TopDownPlayerController : MicroGamePlayerController
 
     private Vector3 movement;
 
-    //private float currentSpeed;
+    [Header("Audio")]
+    [SerializeField, EventRef]
+    private string walkEvent;
+    private float walkDistance;
+    private float maxWalk = 0.8f;
 
     protected override void Start()
     {
@@ -69,10 +75,20 @@ public class TopDownPlayerController : MicroGamePlayerController
         // Apply gravity to the player
         characterController.Move(Vector3.down * gravity * Time.deltaTime);
 
+        Vector3 moveVector = movement * speed * Time.deltaTime;
+
         // If we are not using root motion, we use the speed to move the player
         if (!UsesRootMotion)
         {
-            characterController.Move(movement * speed * Time.deltaTime);
+            characterController.Move(moveVector);
+        }
+
+        // Play the walk sound
+        walkDistance += moveVector.magnitude;
+        if (walkDistance > maxWalk)
+        {
+            walkDistance %= maxWalk;;
+            RuntimeManager.PlayOneShotAttached(walkEvent, gameObject);
         }
     }
 }

@@ -1,10 +1,11 @@
+using FMODUnity;
 using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "BadBuccaneers/MicroGame Data", fileName = "MicroGameData")]
+[CreateAssetMenu(menuName = "Bad Buccaneers/MicroGame Data", fileName = "MicroGameData")]
 public class MicroGame : ScriptableObject
 {
     public string title;
@@ -22,6 +23,9 @@ public class MicroGame : ScriptableObject
 
     public ScoreType scoreType = ScoreType.Points;
     public ScoreLayout scoreLayout = ScoreLayout.Corners;
+
+    [EventRef]
+    public string voiceOverEvent;
 
     [Serializable]
     public class Control

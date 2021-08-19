@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,8 +26,13 @@ public class HotBombController : MonoBehaviour
     [SerializeField]
     private float timeUntilNextRound = 3;
 
+    [Header("Visual FX")]
     [SerializeField]
     private ParticleSystem bombFX;
+
+    [Header("Sound")]
+    [SerializeField, EventRef]
+    private string explosionEvent;
 
     // Position switching and player management
     private Vector3 initialPosition;
@@ -106,6 +112,10 @@ public class HotBombController : MonoBehaviour
     {
         isTransferring = true;
 
+
+        // Play startled effect on the new player
+        PlayerManager.GetPlayerFMODEvent(currentPlayer.PlayerNumber).Startled(currentPlayer.gameObject);
+
         float time = 0;
         while (time < 1f)
         {
@@ -156,6 +166,9 @@ public class HotBombController : MonoBehaviour
         // Feel the explosion!
         Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 0, 0.5f);
         Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 1, 0.5f);
+
+        // Hear the explosion!
+        RuntimeManager.PlayOneShot(explosionEvent, transform.position);
 
         yield return new WaitForSeconds(0.2f); // Allow the fx to go for a bit
 
