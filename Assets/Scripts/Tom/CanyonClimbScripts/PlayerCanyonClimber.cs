@@ -1,49 +1,73 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAvoidShark : MicroGamePlayerController
+public class PlayerCanyonClimber : MicroGamePlayerController
 {
     [SerializeField]
     private CharacterController controller;
 
+    Animator animator;
+
+    // variables for player statistics
     public float moveSpeed = 5f;
     public float jumpVelocity = 5f;
     public float gravMultiplier = 1f;
     public float rotationSpeed = 1f;
     private Vector3 startingPosition;
     private Vector3 move;
-    private Vector3 velocity;
 
+    //private bool facingRight = true;
+    // private bool isJumping = false;
+
+
+
+    private Vector3 velocity;
 
     protected override void Start()
     {
         base.Start();
         startingPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        //var moveHorizontal = new Vector3(0f, 0f, Input.GetAxis("Horizontal"));
-        //var moveVertical = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        //controller.Move(moveHorizontal * -moveSpeed * Time.deltaTime);
-        //controller.Move(moveVertical * -moveSpeed * Time.deltaTime);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Victory"))
+        {
+            float rotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position, Vector3.up).eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0f, rotation, 0f);
+            return;
+        }
+
         move = new Vector3(player.GetAxis("LeftMoveX"), 0f, 0f);
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        //controller.Move(move * moveSpeed * Time.deltaTime);
+        CollisionFlags flags = controller.Move(((move * moveSpeed) + velocity) * Time.deltaTime);
         velocity += Physics.gravity * Time.deltaTime * gravMultiplier;
-        CollisionFlags flags = controller.Move(velocity * Time.deltaTime);
+
+        if (flags == CollisionFlags.Above)
+        {
+            velocity = Physics.gravity * Time.deltaTime * gravMultiplier;
+        }
+
+        if (controller.isGrounded)
+        {
+            velocity = Physics.gravity * 0.5f;
+        }
+
+
+        animator.SetFloat("Movement", move.magnitude);
+        animator.SetBool("Grounded", controller.isGrounded);
 
         if (controller.isGrounded)
         {
             if (player.GetButtonDown("Fire"))
             {
                 velocity = -Physics.gravity.normalized * jumpVelocity;
+                animator.SetTrigger("Jump");
             }
-        }
-
-        if (flags == CollisionFlags.Above)
-        {
-            velocity = Physics.gravity * Time.deltaTime * gravMultiplier;
         }
 
         controller.enabled = false;
@@ -70,3 +94,5 @@ public class PlayerAvoidShark : MicroGamePlayerController
 
     }
 }
+
+

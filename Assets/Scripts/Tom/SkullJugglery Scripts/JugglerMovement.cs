@@ -3,21 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCanyonClimber : MicroGamePlayerController
+
+public class JugglerMovement : MicroGamePlayerController
+
 {
     [SerializeField]
     private CharacterController controller;
 
+    Animator animator;
+
     // variables for player statistics
     public float moveSpeed = 5f;
-    public float jumpVelocity = 5f;
+    //public float jumpVelocity = 5f;
     public float gravMultiplier = 1f;
     public float rotationSpeed = 1f;
     private Vector3 startingPosition;
     private Vector3 move;
 
-    //private bool facingRight = true;
-    // private bool isJumping = false;
+    public float farRight;
+    public float farLeft;
+
 
 
 
@@ -27,33 +32,56 @@ public class PlayerCanyonClimber : MicroGamePlayerController
     {
         base.Start();
         startingPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        move = new Vector3(player.GetAxis("LeftMoveX"), 0f, 0f);
-        controller.Move(move * moveSpeed * Time.deltaTime);
-        velocity += Physics.gravity * Time.deltaTime * gravMultiplier;
-        CollisionFlags flags = controller.Move(velocity * Time.deltaTime);
-
-        if (controller.isGrounded)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Victory"))
         {
-            if (player.GetButtonDown("Fire"))
-            {
-                velocity = -Physics.gravity.normalized * jumpVelocity;
-            }
+            float rotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position, Vector3.up).eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0f, rotation, 0f);
+            return;
         }
+
+        move = new Vector3(player.GetAxis("LeftMoveX"), 0f, 0f);
+        //controller.Move(move * moveSpeed * Time.deltaTime);
+        CollisionFlags flags = controller.Move(((move * moveSpeed) + velocity) * Time.deltaTime);
+        velocity += Physics.gravity * Time.deltaTime * gravMultiplier;
 
         if (flags == CollisionFlags.Above)
         {
             velocity = Physics.gravity * Time.deltaTime * gravMultiplier;
         }
 
+        if (controller.isGrounded)
+        {
+            velocity = Physics.gravity * 0.5f;
+        }
+
+
+        animator.SetFloat("Movement", move.magnitude);
+        animator.SetBool("Grounded", controller.isGrounded);
+
+        //if (controller.isGrounded)
+        //{
+        //    if (player.GetButtonDown("Fire"))
+        //    {
+        //        velocity = -Physics.gravity.normalized * jumpVelocity;
+        //        animator.SetTrigger("Jump");
+        //    }
+        //}
+
         controller.enabled = false;
         Vector3 temp = transform.position;
         transform.position = new Vector3(temp.x, temp.y, startingPosition.z);
         controller.enabled = true;
+
+        // This clamps the flag on the x axis 
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, farLeft, farRight);
+        transform.position = clampedPosition;
 
         SetCharacterRotation();
     }
@@ -74,5 +102,3 @@ public class PlayerCanyonClimber : MicroGamePlayerController
 
     }
 }
-
-
