@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.5377358, g: 0.39090165, b: 0.32720718, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -244,10 +244,10 @@ MonoBehaviour:
   oneScreenCamera: {fileID: 0}
   cameraTopLeft: {fileID: 0}
   cameraBottomRight: {fileID: 0}
-  player1Camera: {fileID: 3795627711305949053}
-  player2Camera: {fileID: 2110361642}
-  player3Camera: {fileID: 1276131546}
-  player4Camera: {fileID: 1329128235}
+  player1Camera: {fileID: 0}
+  player2Camera: {fileID: 0}
+  player3Camera: {fileID: 0}
+  player4Camera: {fileID: 0}
   spectatorCamera: {fileID: 0}
   isTwoPlayerVertical: 1
   playersToVisualise: 4
@@ -523,7 +523,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1402216
+  m_Name: pb_Mesh-40980
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -687,7 +687,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1403592
+  m_Name: pb_Mesh-42540
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -877,6 +877,8 @@ MonoBehaviour:
   _persistent: 1
   resultScreen: ResultsScreen
   homeScreen: 
+  microGameOverlay: 
+  playerUIOverlay: 
   levels: []
 --- !u!4 &990651351
 Transform:
@@ -1136,11 +1138,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3795627710987542595, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
   m_PrefabInstance: {fileID: 1276131544}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &1276131546 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3795627711603859957, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
-  m_PrefabInstance: {fileID: 1276131544}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1276131547 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3795627710987542590, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
@@ -1304,11 +1301,6 @@ PrefabInstance:
 --- !u!224 &1329128234 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3795627710987542595, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
-  m_PrefabInstance: {fileID: 1329128233}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &1329128235 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3795627711603859957, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
   m_PrefabInstance: {fileID: 1329128233}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1329128236 stripped
@@ -1893,7 +1885,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1401558
+  m_Name: pb_Mesh-40230
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2057,7 +2049,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1402928
+  m_Name: pb_Mesh-41784
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2360,25 +2352,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1547178530}
-  maxTime: 5
+  maxTime: 30
+  startOnPlayerFinish: 0
   onStart:
     m_PersistentCalls:
       m_Calls: []
   onFinish:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787524972}
-        m_TargetAssemblyTypeName: EventManager, GameAssembly
-        m_MethodName: FinishLevel
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3795627711305949054}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -2959,11 +2940,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3795627710987542595, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
   m_PrefabInstance: {fileID: 2110361640}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &2110361642 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3795627711603859957, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
-  m_PrefabInstance: {fileID: 2110361640}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2110361643 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3795627710987542590, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
@@ -3169,11 +3145,6 @@ PrefabInstance:
       objectReference: {fileID: 906939473}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
---- !u!20 &3795627711305949053 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3795627711603859957, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
-  m_PrefabInstance: {fileID: 3795627711305949052}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3795627711305949054 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3795627710987542590, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
