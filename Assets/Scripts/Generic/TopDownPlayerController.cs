@@ -7,6 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class TopDownPlayerController : MicroGamePlayerController
 {
+    [SerializeField]
+    private Camera camera;
+
     [SerializeField, HideIf("UsesRootMotion")]
     private float speed = 5f;
 
@@ -17,7 +20,9 @@ public class TopDownPlayerController : MicroGamePlayerController
     protected float lerpSpeed = 10f;
 
     [SerializeField]
-    private float gravity = 9.8f;
+    protected float gravity = 9.8f;
+
+    protected float verticalSpeed = 0f;
 
     private Animator animator;
     protected Animator Animator
@@ -29,11 +34,13 @@ public class TopDownPlayerController : MicroGamePlayerController
             return animator;
         }
     }
-    private CharacterController characterController;
+    protected CharacterController characterController;
 
     private bool UsesRootMotion => Animator.applyRootMotion;
 
-    private Vector3 movement;
+    protected Vector3 movement;
+
+    protected CollisionFlags moveFlags;
 
     //private float currentSpeed;
 
@@ -50,29 +57,72 @@ public class TopDownPlayerController : MicroGamePlayerController
     // Update is called once per frame
     protected virtual void Update()
     {
-        // Get the movement
-        Vector3 newMovement = new Vector3(player.GetAxis("LeftMoveX"), 0f, player.GetAxis("LeftMoveY"));
-        newMovement = newMovement.normalized * Mathf.Clamp(newMovement.magnitude, 0f, 1f);
-        movement = lerpSpeed > 0f ? Vector3.Lerp(movement, newMovement, lerpSpeed * Time.deltaTime) : newMovement;
+        GetInput();
 
-        // Set the animator movement
-        animator.SetFloat("Movement", movement.magnitude);
+        // Increase vertical speed by gravity
+        verticalSpeed += gravity * Time.deltaTime;
 
-        if (movement.magnitude > 0.01f)
-        {
-            //Quaternion wantedRotation = Quaternion.LookRotation(movement, Vector3.up);
-            // Rotate towards where we are walking towards
-            //transform.rotation = lerpSpeed > 0f ? Quaternion.Lerp(transform.rotation, wantedRotation, lerpSpeed) : wantedRotation;
-            transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
-        }
+        GroundCheck();
 
-        // Apply gravity to the player
-        characterController.Move(Vector3.down * gravity * Time.deltaTime);
+        PlayerLook();
 
+        MovePlayer();
+
+        SetAnimator();
+    }
+
+    protected void MovePlayer()
+    {
         // If we are not using root motion, we use the speed to move the player
         if (!UsesRootMotion)
         {
-            characterController.Move(movement * speed * Time.deltaTime);
+            moveFlags = characterController.Move(((movement * speed) + (Vector3.down * verticalSpeed)) * Time.deltaTime);
+        }
+        else
+        {
+            moveFlags = characterController.Move(Vector3.down * verticalSpeed * Time.deltaTime);
+        }
+    }
+
+    protected void PlayerLook()
+    {
+        if (movement.magnitude > 0.01f)
+        {
+            transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
+        }
+    }
+
+    protected virtual void SetAnimator()
+    {
+        // Set the animator movement
+        animator.SetFloat("Movement", movement.magnitude);
+    }
+
+    protected void GetInput()
+    {
+        // Get the movement
+        Vector3 newMovement = new Vector3(player.GetAxis("LeftMoveX"), 0f, player.GetAxis("LeftMoveY"));
+
+        // Rotate the input by the cameras rotation
+        float cos = Mathf.Cos(camera.transform.eulerAngles.y * Mathf.Deg2Rad);
+        float sin = Mathf.Sin(camera.transform.eulerAngles.y * Mathf.Deg2Rad);
+        Vector3 temp = new Vector3();
+        temp.x = newMovement.x * cos - newMovement.z * sin;
+        temp.z = newMovement.x * sin + newMovement.z * cos;
+
+        // Set the new movement
+        newMovement = temp;
+
+        newMovement = newMovement.normalized * Mathf.Clamp(newMovement.magnitude, 0f, 1f);
+        movement = lerpSpeed > 0f ? Vector3.Lerp(movement, newMovement, lerpSpeed * Time.deltaTime) : newMovement;
+    }
+
+    protected void GroundCheck()
+    {
+        // Apply gravity to the player
+        if (characterController.isGrounded)
+        {
+            verticalSpeed = gravity * 0.5f;
         }
     }
 }
