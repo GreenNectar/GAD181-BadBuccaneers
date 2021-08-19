@@ -22,7 +22,7 @@ public class SandDeath : MonoBehaviour
 
     private void Update()
     {
-        ballCount = GameObject.FindGameObjectsWithTag("CannonBall").Length;
+        ballCount = GameObject.FindGameObjectsWithTag("Skull").Length;
 
         while (ballCount < 1)
         {

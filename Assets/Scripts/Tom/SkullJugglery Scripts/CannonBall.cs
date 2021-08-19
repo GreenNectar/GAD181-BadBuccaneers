@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
-    [SerializeField]
-    public float farRight;
-    public float farLeft;
+    //[SerializeField]
+    //public float farRight;
+    //public float farLeft;
     public float frontBarrier;
     public float backBarrier;
 

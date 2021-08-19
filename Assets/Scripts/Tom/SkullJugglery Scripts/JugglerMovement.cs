@@ -20,8 +20,8 @@ public class JugglerMovement : MicroGamePlayerController
     private Vector3 startingPosition;
     private Vector3 move;
 
-    public float farRight;
-    public float farLeft;
+    //public float farRight;
+    //public float farLeft;
 
 
 
@@ -78,10 +78,10 @@ public class JugglerMovement : MicroGamePlayerController
         transform.position = new Vector3(temp.x, temp.y, startingPosition.z);
         controller.enabled = true;
 
-        // This clamps the flag on the x axis 
-        Vector3 clampedPosition = transform.position;
-        clampedPosition.x = Mathf.Clamp(clampedPosition.x, farLeft, farRight);
-        transform.position = clampedPosition;
+        //// This clamps the flag on the x axis 
+        //Vector3 clampedPosition = transform.position;
+        //clampedPosition.x = Mathf.Clamp(clampedPosition.x, farLeft, farRight);
+        //transform.position = clampedPosition;
 
         SetCharacterRotation();
     }

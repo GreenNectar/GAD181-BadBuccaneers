@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3637141480133761850}
   m_Layer: 0
   m_Name: Skull
-  m_TagString: CannonBall
+  m_TagString: Skull
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,7 +140,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ee58e6a6056ee4fa450ebf05099b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  farRight: 0
-  farLeft: 0
   frontBarrier: -0.1
   backBarrier: 0.1

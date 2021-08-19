@@ -8,7 +8,7 @@ public class Buckets : PlayerPanelController
     public Vector3 startPosition;
     public float magnitude;
 
-    public int Points = 1;
+    //public int Points = 1;
 
     //GameObject Score; 
     //GameObject Canvas; 
@@ -38,10 +38,10 @@ public class Buckets : PlayerPanelController
     }
 
 
-    void OnCollisionEnter(Collision collision)
-    {
+    //void OnCollisionEnter(Collision collision)
+    //{
 
 
-        Destroy(collision.collider.gameObject);
-    }
+    //    Destroy(collision.collider.gameObject);
+    //}
 }
