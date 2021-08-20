@@ -1,3 +1,4 @@
+using FMODUnity;
 using Rewired;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,11 @@ using UnityEngine.Events;
 
 public class FishingController : MicroGamePlayerController
 {
-    [Tooltip("Player Values")]
+    [Header("Object References")]
+    [SerializeField]
+    private Animator animator;
+
+    [Header("Player Values")]
     [SerializeField]
     private float speed = 5f;
     [SerializeField]
@@ -19,16 +24,20 @@ public class FishingController : MicroGamePlayerController
     public float fishSpawnDepth = 0.5f;
     public float depth = 5f;
 
-    [Tooltip("Fish")]
+    [Header("Fish")]
+    [SerializeField]
+    private GameObject hook;
     [SerializeField]
     private Transform bucket;
     [SerializeField]
     private int maxFishStackHeight = 10;
 
-    [Tooltip("Events")]
-    public UnityEvent onAddFish;
+    [Header("Audio")]
+    [SerializeField, EventRef]
+    private string fishAddEvent;
 
     private float movement;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -49,9 +58,9 @@ public class FishingController : MicroGamePlayerController
         line.transform.position = new Vector3(line.transform.position.x, startingHeight - position, line.transform.position.z);
 
         // If the hook is broken, and we are at the top, fix the hook
-        if (!line.hook.activeSelf && position == 0f)
+        if (position == 0f)
         {
-            line.hook.SetActive(true);
+            ReplaceHook();
         }
     }
 
@@ -66,6 +75,8 @@ public class FishingController : MicroGamePlayerController
     /// <param name="fish"></param>
     public void AddFish(GameObject fish)
     {
+        RuntimeManager.PlayOneShot(fishAddEvent, hook.transform.position);
+
         ScoreManager.Instance.AddScoreToPlayer(PlayerNumber, 1);
 
         if (fish.GetComponent<Animator>())
@@ -78,8 +89,6 @@ public class FishingController : MicroGamePlayerController
         fish.transform.rotation = bucket.rotation;
         fish.transform.position += Vector3.up * ((bucket.childCount - 1) % maxFishStackHeight) * 0.1f;
         fish.transform.position += Vector3.forward * Mathf.Floor((bucket.childCount - 1) / maxFishStackHeight) * 0.25f;
-
-        onAddFish.Invoke();
     }
 
     /// <summary>
@@ -121,5 +130,24 @@ public class FishingController : MicroGamePlayerController
         Gizmos.DrawWireSphere(starting + Vector3.down * fishSpawnDepth, 0.25f);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(starting + Vector3.down * depth, 0.25f);
+    }
+
+    public void RemoveHook()
+    {
+        if (hook.activeSelf)
+        {
+            hook.SetActive(false);
+            PlayerManager.GetPlayerFMODEvent(PlayerNumber).Sad(animator.gameObject);
+            animator.SetTrigger("Upset");
+        }
+    }
+
+    public void ReplaceHook()
+    {
+        if (!hook.activeSelf)
+        {
+            hook.SetActive(true);
+            animator.SetTrigger("Cast");
+        }
     }
 }

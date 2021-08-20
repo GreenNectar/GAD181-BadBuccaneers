@@ -7,82 +7,39 @@ using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI timerText;
-    [SerializeField]
-    private float maxTime = 30f;
-
-    private float currentTime = 0f;
+    private float time = 30f;
 
     [SerializeField]
-    private bool startOnPlayerFinish = false;
+    private bool onStart = true;
 
-    public UnityEvent onStart;
-    public UnityEvent onFinish;
-    public UnityEvent onStop;
-
-    private bool isTiming;
+    [SerializeField]
+    private bool finishLevelOnComplete = false;
 
     private void OnEnable()
     {
-        if (startOnPlayerFinish)
-        {
-            EventManager.onPlayerFinish.AddListener((a) => StartTimer());
-        }
+        if (finishLevelOnComplete) EventManager.onTimerEnd.AddListener(EndGame);
     }
 
     private void OnDisable()
     {
-        if (startOnPlayerFinish)
-        {
-            EventManager.onPlayerFinish.RemoveListener((a) => StartTimer());
-        }
+        if (finishLevelOnComplete) EventManager.onTimerEnd.RemoveListener(EndGame);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        if (!startOnPlayerFinish)
+        if (onStart)
         {
             StartTimer();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartTimer()
     {
-        if (isTiming)
-        {
-            if (currentTime < maxTime)
-            {
-                currentTime += Time.deltaTime;
-            }
-            else
-            {
-                onFinish.Invoke();
-            }
-
-            currentTime = Mathf.Clamp(currentTime, 0f, maxTime);
-
-            timerText.text = $"{Mathf.Ceil(maxTime - currentTime)}";
-        }
+        TimeManager.StartTimer(time);
     }
 
-    public void ResetTimer()
+    private void EndGame()
     {
-        currentTime = 0f;
-    }
-
-    private void StopTimer()
-    {
-        isTiming = false;
-        onStop.Invoke();
-    }
-
-    private void StartTimer()
-    {
-        isTiming = true;
-        timerText.gameObject.SetActive(true);
-        timerText.transform.parent.gameObject.SetActive(true);
-        onStart.Invoke();
+        GameManager.EndGameStatic();
     }
 }

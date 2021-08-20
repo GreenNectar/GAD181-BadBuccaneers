@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{5165a8bb-f89d-4573-96c9-7e29727caa2d}">
+	<object class="AudioFile" id="{ad0db333-f40a-453b-8b85-7bbd89295885}">
 		<property name="assetPath">
-			<value>VO/PracticeVO_BarrelRoll.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>SFX/Fish/Fish-Slap-05.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="length">
-			<value>18.102857142857143</value>
+			<value>0.64079166666666665</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{0dbf73ce-1eb4-4363-80a4-d8b93edb64ed}</destination>

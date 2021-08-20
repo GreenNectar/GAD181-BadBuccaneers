@@ -185,7 +185,7 @@ public class ShellController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Start the timer
-        EventManager.StartTimer(roundLength);
+        TimeManager.StartTimer(roundLength);
 
         // Wait until the timer has finished, or until everyone has voted
         bool hasTimerFinished = false;
@@ -197,7 +197,7 @@ public class ShellController : MonoBehaviour
         DisallowVoting();
         EventManager.onTimerEnd.RemoveListener(() => hasTimerFinished = true);
         // Stop the timer
-        EventManager.StopTimer();
+        TimeManager.StopTimer();
 
         yield return new WaitForSeconds(0.5f);
 
