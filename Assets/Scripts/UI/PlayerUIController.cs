@@ -22,6 +22,11 @@ public class PlayerUIController : MonoBehaviour, IMicroGameLoad
     [SerializeField]
     private GameObject LeftPanels;
 
+    [SerializeField]
+    private GameObject topTimer;
+    [SerializeField]
+    private GameObject middleTimer;
+
     public void OnMicroGameLoad()
     {
         Setup();
@@ -54,6 +59,8 @@ public class PlayerUIController : MonoBehaviour, IMicroGameLoad
         cornerPanels.SetActive(false);
         bottomPanels.SetActive(false);
         LeftPanels.SetActive(false);
+        topTimer.SetActive(false);
+        middleTimer.SetActive(false);
 
         if (GameManager.Instance.currentMicroGame != null)
         {
@@ -78,7 +85,22 @@ public class PlayerUIController : MonoBehaviour, IMicroGameLoad
             bottomPanels.SetActive(true);
 
             Debug.LogError("Micro game was not initialised before this scene was loaded, this should only occur in the editor!");
-            //throw new System.Exception("Micro game was not initialised before this scene was loaded, this should only occur in the editor!");
+        }
+
+        if (PlayerManager.PlayerCountScaled > 1)
+        {
+            if (FindObjectOfType<CameraController>().CurrentSplitScreenStyle == CameraController.SplitScreenStyle.OneScreen)
+            {
+                topTimer.SetActive(true);
+            }
+            else
+            {
+                middleTimer.SetActive(true);
+            }
+        }
+        else
+        {
+            topTimer.SetActive(true);
         }
     }
 }

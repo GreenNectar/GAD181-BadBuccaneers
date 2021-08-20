@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private SplitScreenStyle splitScreenStyle = SplitScreenStyle.FourScreen;
 
+    public SplitScreenStyle CurrentSplitScreenStyle => splitScreenStyle;
+
     // One Screen
     [SerializeField, BoxGroup("Cameras"), ShowIf("IsOneScreen"), Tooltip("Honestly bro, you don't even need this in if it's one-screen")]
     private Camera oneScreenCamera;
