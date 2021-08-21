@@ -111,10 +111,20 @@ public class HeistTheBootyController : MonoBehaviour
         }
     }
 
-    public void ChickenOut(int playerNumber)
+    public bool ChickenOut(int playerNumber)
     {
-        chicken[playerNumber] = true;
-        Vibrator.Instance.Vibrate(playerNumber, 0, 0f);
-        Vibrator.Instance.Vibrate(playerNumber, 1, 0f);
+        if (chicken[playerNumber] == false)
+        {
+            chicken[playerNumber] = true;
+            Vibrator.Instance.Vibrate(playerNumber, 0, 0f);
+            Vibrator.Instance.Vibrate(playerNumber, 1, 0f);
+            return true;
+
+        }
+        else
+        {
+            return false;
+        }
+      
     }
 }
