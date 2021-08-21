@@ -57,6 +57,14 @@ public class Buoyancy : MonoBehaviour
         }
     }
 
+    public Vector3[] SubmersedPoints
+    {
+        get
+        {
+            return positions.Where(p => p.isSubmersed).Select(p => p.position).ToArray();
+        }
+    }
+
     WaterLevelFinder finder;
     Rigidbody rb;
 
