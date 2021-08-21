@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class TimeManager : Singleton<TimeManager>
 {
-    private float currentTime;
+    public float currentTime { get; private set; }
     public bool isTiming { get; private set; } = false;
 
     public string TimeText
