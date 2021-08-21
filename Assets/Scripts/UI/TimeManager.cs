@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TimeManager : Singleton<TimeManager>
+public class TimeManager : Singleton<TimeManager>, IMicroGameLoad
 {
     public float currentTime { get; private set; }
     public bool isTiming { get; private set; } = false;
@@ -30,8 +30,13 @@ public class TimeManager : Singleton<TimeManager>
         {
             Instance.StopAllCoroutines();
             Instance.isTiming = false;
+            EventManager.onTimerStop.Invoke();
         }
-        EventManager.onTimerStop.Invoke();
+    }
+
+    public void OnMicroGameLoad()
+    {
+        StopTimer();
     }
 
     private IEnumerator CountDownTimer(float time)

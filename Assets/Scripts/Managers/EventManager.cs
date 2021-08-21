@@ -10,7 +10,7 @@ public class EventManager : Singleton<EventManager>
     //[SerializeField, Scene]
     //private string scoreScene;
 
-    public static UnityEvent<int> onPlayerFinish = new UnityEvent<int>();
+    public static UnityEvent onPlayerFinish = new UnityEvent();
 
     //public static UnityEvent<int, int> onPlayerScore = new UnityEvent<int, int>();
    
@@ -26,7 +26,8 @@ public class EventManager : Singleton<EventManager>
 
     #region Scoring Type Events
 
-    public static UnityEvent<int> onUpdateScore = new UnityEvent<int>();
+    public static UnityEvent onUpdateScore = new UnityEvent();
+    public static UnityEvent onUpdateMaximum = new UnityEvent();
     //public static UnityEvent<int> onElimination = new UnityEvent<int>();
 
     #endregion

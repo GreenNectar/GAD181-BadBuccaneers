@@ -58,6 +58,11 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
                     }
                     break;
                 case MicroGame.ScoreType.Percentage:
+                    // Connect the scores to the player
+                    for (int i = 0; i < PlayerManager.PlayerCount; i++)
+                    {
+                        roundScores.Add(i, playerPoints[i]);
+                    }
                     break;
                 case MicroGame.ScoreType.Elimination:
                     // Give the positions to the player
@@ -142,11 +147,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
     {
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
-            if (playerPositions[i] == 0)
-            {
-                playerPositions[i] = 1;
-                EventManager.onPlayerFinish.Invoke(i);
-            }
+            EventManager.onPlayerFinish.Invoke();
             if (playerTime[i] == 0f)
             {
                 playerTime[i] = GlobalTimer.Time;
@@ -161,15 +162,20 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         playerPositions[player] = PlayerManager.PlayerCountScaled - playersEnded.Count;
         playersEnded.Add(player);
         playerTime[player] = GlobalTimer.Time;
-        EventManager.onPlayerFinish.Invoke(player);
+        EventManager.onPlayerFinish.Invoke();
     }
 
     public void AddScoreToPlayer(int player, int score)
     {
         playerPoints[player] += score;
-        EventManager.onUpdateScore.Invoke(player);
+        EventManager.onUpdateScore.Invoke();
     }
 
+    public void SetMaximumPoints(int score)
+    {
+        maximumPoints = score;
+        EventManager.onUpdateScore.Invoke();
+    }
 
     public void PlayScoreSoundEffect()
     {
