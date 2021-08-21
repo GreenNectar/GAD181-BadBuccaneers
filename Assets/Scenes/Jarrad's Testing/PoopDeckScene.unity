@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &19735569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19735571}
+  - component: {fileID: 19735570}
+  m_Layer: 0
+  m_Name: Ambience
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &19735570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19735569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Ambient/Ocean
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!4 &19735571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19735569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5975761, y: 11.441381, z: -3.1687853}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50976157
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +437,10 @@ PrefabInstance:
     - target: {fileID: 6783103477143969533, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_Name
       value: PoopDeckPlayer (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: mopAnimator
@@ -910,11 +968,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.43327212
+      value: -0.4333496
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 85.08835
+      value: 85.08797
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1498,7 +1556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7924366
+      value: 2.7924347
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1588,6 +1646,8 @@ GameObject:
   - component: {fileID: 250074282}
   - component: {fileID: 250074281}
   - component: {fileID: 250074280}
+  - component: {fileID: 250074284}
+  - component: {fileID: 250074285}
   m_Layer: 0
   m_Name: PoopDeck
   m_TagString: Untagged
@@ -1673,9 +1733,205 @@ Transform:
   - {fileID: 1573809023}
   - {fileID: 441661283}
   - {fileID: 1291714048}
+  - {fileID: 1603792104}
+  - {fileID: 269921453}
   m_Father: {fileID: 284093469}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &250074284
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250074279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41b9d843b2f18bb4ca54b821c2997d50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &250074285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250074279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c027670c2fae8f14486788b2569590fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1623122393}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 521086271}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1070249982}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 476720532}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 269921454}
+        m_TargetAssemblyTypeName: Timer, GameAssembly
+        m_MethodName: StartTimer
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1623122393}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 521086271}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1070249982}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 476720532}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!1 &269921452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269921453}
+  - component: {fileID: 269921454}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269921453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269921452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 250074283}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269921454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269921452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1802d114f438c0b43bce1bf8d24e947f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 30
+  onStart: 0
+  finishLevelOnComplete: 1
+  stopTimerOnPlayersFinished: 0
+  onTimerFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &284093468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2079,11 +2335,33 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5945895675966034146, guid: 44096f4f5d2fadf4d9f9d53f60933558, type: 3}
   m_PrefabInstance: {fileID: 441661282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &476720532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+  m_PrefabInstance: {fileID: 241752974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916768a63d2fe1243b1949b755981864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &481066709 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4817503534562676595, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
   m_PrefabInstance: {fileID: 6783103477944861482}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &521086271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+  m_PrefabInstance: {fileID: 1772252285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916768a63d2fe1243b1949b755981864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &551038430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,6 +2652,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5945895676631085609, guid: 44096f4f5d2fadf4d9f9d53f60933558, type: 3}
   m_PrefabInstance: {fileID: 5945895675736100615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1070249982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+  m_PrefabInstance: {fileID: 1148114052}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916768a63d2fe1243b1949b755981864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1148114052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2392,6 +2681,10 @@ PrefabInstance:
     - target: {fileID: 6783103477143969533, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_Name
       value: PoopDeckPlayer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: mopAnimator
@@ -2919,11 +3212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.43327212
+      value: -0.4333496
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 85.08835
+      value: 85.08797
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3507,7 +3800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7924366
+      value: 0.7924347
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3909,12 +4202,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603792101}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 19, z: 1.23}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 9.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 284093469}
-  m_RootOrder: 10
+  m_Father: {fileID: 250074283}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1603792105
 MonoBehaviour:
@@ -3948,6 +4241,17 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1623122393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+  m_PrefabInstance: {fileID: 6783103477944861482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916768a63d2fe1243b1949b755981864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1636703490
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,6 +4304,10 @@ PrefabInstance:
     - target: {fileID: 6783103477143969533, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_Name
       value: PoopDeckPlayer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: mopAnimator
@@ -4527,11 +4835,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.43327212
+      value: -0.4333496
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 85.08835
+      value: 85.08797
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5115,7 +5423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9575634
+      value: -0.9575653
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5464,6 +5772,10 @@ PrefabInstance:
     - target: {fileID: 6783103477143969533, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_Name
       value: PoopDeckPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144070745, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: mopAnimator
@@ -5987,11 +6299,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.43327212
+      value: -0.4333496
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 85.08835
+      value: 85.08797
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144159273, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6575,7 +6887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7075634
+      value: -2.7075653
       objectReference: {fileID: 0}
     - target: {fileID: 6783103477144218735, guid: 8636a3694ace08b4c90ffc21a6be1de2, type: 3}
       propertyPath: m_LocalPosition.y

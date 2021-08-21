@@ -37,7 +37,7 @@ public class Timer : MonoBehaviour
     {
         if (onStart)
         {
-            StartTimer();
+            StartTimer(true);
         }
     }
 
@@ -57,7 +57,7 @@ public class Timer : MonoBehaviour
         onTimerFinish.Invoke();
     }
 
-    private void CheckPlayersFinish(int player)
+    private void CheckPlayersFinish()
     {
         if (stopTimerOnPlayersFinished)
         {

@@ -7,6 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class Vibrator : Singleton<Vibrator>
 {
+    List<Vibration> vibrations = new List<Vibration>();
+
+    private class Vibration
+    {
+        public float vibration;
+        public int player;
+        public int motor;
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -15,6 +24,27 @@ public class Vibrator : Singleton<Vibrator>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void Update()
+    {
+        // Get the totals
+        float[] playerLeftVibrations = new float[4];
+        float[] playerRightVibrations = new float[4];
+        foreach (var vibration in vibrations)
+        {
+            playerLeftVibrations[vibration.player] += vibration.vibration * (1 - vibration.motor);
+            playerRightVibrations[vibration.player] += vibration.vibration * vibration.motor;
+        }
+
+        // Set the vibrations
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            Player p = PlayerManager.GetPlayer(i);
+
+            p.SetVibration(0, Mathf.Clamp(playerLeftVibrations[i], 0f, 1f));
+            p.SetVibration(1, Mathf.Clamp(playerRightVibrations[i], 0f, 1f));
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -41,23 +71,26 @@ public class Vibrator : Singleton<Vibrator>
     /// <param name="motor"></param>
     /// <param name="time"></param>
     /// <returns></returns>
-    public void PulseVibration(int playerNumber, int motor, float time)
+    public void PulseVibration(int playerNumber, int motor, float time, float strength = 1f)
     {
-        StartCoroutine(PulseVibrationRoutine(playerNumber, motor, time));
+        StartCoroutine(PulseVibrationRoutine(playerNumber, motor, time, strength));
     }
 
 
-    private IEnumerator PulseVibrationRoutine(int playerNumber, int motor, float time)
+    private IEnumerator PulseVibrationRoutine(int playerNumber, int motor, float time, float strength = 1f)
     {
-        Player p = PlayerManager.GetPlayer(playerNumber);
+        Vibration vibe = new Vibration { player = playerNumber, vibration = strength, motor = motor };
+        vibrations.Add(vibe);
         float t = 0;
         while (t < time)
         {
             t += Time.deltaTime;
             t = Mathf.Clamp(t, 0f, time);
-            p.SetVibration(motor, Mathf.Sin(t / time * Mathf.PI));
+            vibe.vibration = Mathf.Sin(t / time * Mathf.PI) * strength;
+            
             yield return null;
         }
+        vibrations.Remove(vibe);
     }
 
     /// <summary>
@@ -67,23 +100,25 @@ public class Vibrator : Singleton<Vibrator>
     /// <param name="motor"></param>
     /// <param name="time"></param>
     /// <returns></returns>
-    public void ImpactVbration(int playerNumber, int motor, float time)
+    public void ImpactVbration(int playerNumber, int motor, float time, float strength = 1f)
     {
-        StartCoroutine(ImpactVbrationRoutine(playerNumber, motor, time));
+        StartCoroutine(ImpactVbrationRoutine(playerNumber, motor, time, strength));
     }
 
-    private IEnumerator ImpactVbrationRoutine(int playerNumber, int motor, float time)
+    private IEnumerator ImpactVbrationRoutine(int playerNumber, int motor, float time, float strength = 1f)
     {
-        Player p = PlayerManager.GetPlayer(playerNumber);
+        Vibration vibe = new Vibration { player = playerNumber, vibration = strength, motor = motor };
+        vibrations.Add(vibe);
         float t = 0;
         while (t < time)
         {
             t += Time.deltaTime;
             t = Mathf.Clamp(t, 0f, time);
-            float vibration = Mathf.Sin((1f - (t / time)) * (Mathf.PI / 2f));
-            p.SetVibration(motor, vibration);
+            vibe.vibration = Mathf.Sin((1f - (t / time)) * (Mathf.PI / 2f)) * strength;
+
             yield return null;
         }
+        vibrations.Remove(vibe);
     }
 
     /// <summary>
@@ -91,6 +126,7 @@ public class Vibrator : Singleton<Vibrator>
     /// </summary>
     private void StopVibrations()
     {
+        vibrations.Clear();
         for (int i = 0; i < PlayerManager.PlayerCount; i++)
         {
             Vibrate(i, 0, 0f);

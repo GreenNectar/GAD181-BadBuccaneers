@@ -272,6 +272,7 @@ public class PoopDeckManager : MonoBehaviour
         }
 
         totalMoppedScore += score;
+        ScoreManager.Instance.maximumPoints = totalMoppedScore;
         return score;
     }
 }

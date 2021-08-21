@@ -32,6 +32,12 @@ public class PoopDeckPlayerController : MicroGamePlayerController
 
     protected override void Start()
     {
+        // Deactivate the mirrored player the player is not joined
+        if (PlayerNumber > PlayerManager.PlayerCount - 1 && PlayerManager.PlayerCount != 0)
+        {
+            mirroredPlayer.gameObject.SetActive(false);
+        }
+
         base.Start();
 
         animator = GetComponent<Animator>();
@@ -41,10 +47,22 @@ public class PoopDeckPlayerController : MicroGamePlayerController
         Mop();
     }
 
+    private void OnDisable()
+    {
+        movement = Vector3.zero;
+        SetAnimator();
+    }
+
     private void Update()
     {
+        // Get the input
+        GetPlayerInput();
+
         // Move the player...
         PlayerMovement();
+
+        // Set animator parameters
+        SetAnimator();
     }
 
     private void FixedUpdate()
@@ -62,13 +80,24 @@ public class PoopDeckPlayerController : MicroGamePlayerController
         mirroredPlayer.transform.localRotation = transform.localRotation;
     }
 
+    private void GetPlayerInput()
+    {
+        // Get the input
+        movement = new Vector3(player.GetAxis("LeftMoveX"), 0f, player.GetAxis("LeftMoveY"));
+    }
+
+    private void SetAnimator()
+    {
+        animator.SetFloat("Movement", movement.magnitude);
+        mirroredPlayer.SetFloat("Movement", movement.magnitude);
+    }
+
     /// <summary>
     /// Handles the player input and movement
     /// </summary>
     private void PlayerMovement()
     {
-        // Get the input
-        movement = new Vector3(player.GetAxis("LeftMoveX"), 0f, player.GetAxis("LeftMoveY"));
+
 
         // Movement, we only want to do it if we are pressing a button
         if (movement.magnitude > 0f)
@@ -105,11 +134,6 @@ public class PoopDeckPlayerController : MicroGamePlayerController
             transform.localRotation = Quaternion.Euler(currentEuler);
         }
 
-        // Move the player in the direction we are looking towards
-        //characterController.Move(transform.forward * Time.deltaTime * speed * movement.magnitude);
-        animator.SetFloat("Movement", movement.magnitude);
-        mirroredPlayer.SetFloat("Movement", movement.magnitude);
-
         mopAnimator.SetFloat("Horizontal", -player.GetAxis("RightMoveX"));
         mopAnimator.SetFloat("Vertical", player.GetAxis("RightMoveY"));
         mirroredMopAnimator.SetFloat("Horizontal", -player.GetAxis("RightMoveX"));
@@ -122,6 +146,11 @@ public class PoopDeckPlayerController : MicroGamePlayerController
     private void Mop()
     {
         Ray ray = new Ray { origin = mop.position + transform.up, direction = -transform.up };
-        score += PoopDeckManager.current.Mop(ray);
+        int score = PoopDeckManager.current.Mop(ray);
+        this.score += score;
+        ScoreManager.Instance.AddScoreToPlayer(PlayerNumber, score);
+
+        // Vibration
+        Vibrator.Instance.PulseVibration(PlayerNumber, 1, 0.25f, Mathf.Clamp((float)score / 50f, 0f, 1f) * 0.2f);
     }
 }
