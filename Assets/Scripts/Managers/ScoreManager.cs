@@ -25,6 +25,8 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         new Score { player = 2 },
         new Score { player = 3 }};
 
+    public bool AllPlayersFinished => playersEnded.Count >= PlayerManager.PlayerCountScaled;
+
     [Serializable]
     public class Score
     {

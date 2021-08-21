@@ -6,8 +6,7 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField]
-    private float time = 30f;
+    public float time = 30f;
 
     [SerializeField]
     private bool onStart = true;
@@ -15,14 +14,23 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private bool finishLevelOnComplete = false;
 
+    [SerializeField]
+    private bool stopTimerOnPlayersFinished = false;
+
+    public UnityEvent onTimerFinish;
+
+    public bool IsTiming => TimeManager.Instance.isTiming;
+
     private void OnEnable()
     {
-        if (finishLevelOnComplete) EventManager.onTimerEnd.AddListener(EndGame);
+        EventManager.onTimerEnd.AddListener(TimerEnd);
+        EventManager.onPlayerFinish.AddListener(CheckPlayersFinish);
     }
 
     private void OnDisable()
     {
-        if (finishLevelOnComplete) EventManager.onTimerEnd.RemoveListener(EndGame);
+        EventManager.onTimerEnd.RemoveListener(TimerEnd);
+        EventManager.onPlayerFinish.RemoveListener(CheckPlayersFinish);
     }
 
     private void Start()
@@ -33,13 +41,31 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void StartTimer()
+    public void StartTimer(bool forceStart = false)
     {
-        TimeManager.StartTimer(time);
+        if (forceStart || (!forceStart && !TimeManager.Instance.isTiming))
+            TimeManager.StartTimer(time);
     }
 
-    private void EndGame()
+    private void TimerEnd()
     {
-        GameManager.EndGameStatic();
+        if (finishLevelOnComplete)
+        {
+            GameManager.EndGameStatic();
+        }
+
+        onTimerFinish.Invoke();
+    }
+
+    private void CheckPlayersFinish(int player)
+    {
+        if (stopTimerOnPlayersFinished)
+        {
+            if (ScoreManager.Instance.AllPlayersFinished)
+            {
+                TimeManager.StopTimer();
+                if (finishLevelOnComplete) GameManager.EndGameStatic();
+            }
+        }
     }
 }

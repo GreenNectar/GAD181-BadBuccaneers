@@ -56,8 +56,12 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
 
     #region Components
 
+    [SerializeField]
+    private Timer timer;
+
     //private PlayerInput playerInput;
     private Animator animator;
+
 
     #endregion
 
@@ -132,6 +136,7 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
     public void StartTimer()
     {
         ScoreManager.Instance.StartTimer();
+        timer.StartTimer();
     }
 
     public void Finish()

@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001E720081CD8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001D065C21348 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -16,13 +16,287 @@
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 589824
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28608
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF2FC6FFD8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Chest opening 2', format=5, channels=2, frequency=48000, lengthbytes=21344, lengthpcm=67072, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.596222.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 589824
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28608
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF2FC6FFD8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Chest opening 1', format=5, channels=2, frequency=48000, lengthbytes=21184, lengthpcm=62784, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.457764.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 589824
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28608
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF7313DBC8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magical Chest opening 1', format=5, channels=2, frequency=48000, lengthbytes=35168, lengthpcm=115518, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.581116.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 3', format=5, channels=2, frequency=48000, lengthbytes=4160, lengthpcm=16384, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.131317.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 6', format=5, channels=2, frequency=48000, lengthbytes=6368, lengthpcm=22016, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.154449.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 7', format=5, channels=2, frequency=48000, lengthbytes=5280, lengthpcm=18944, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.164764.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 5', format=5, channels=2, frequency=48000, lengthbytes=9632, lengthpcm=35072, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.237183.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 4', format=5, channels=2, frequency=48000, lengthbytes=4896, lengthpcm=15779, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.179993.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 1', format=5, channels=2, frequency=48000, lengthbytes=5600, lengthpcm=23552, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.123322.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 10', format=5, channels=2, frequency=48000, lengthbytes=6432, lengthpcm=22528, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.224609.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 8', format=5, channels=2, frequency=48000, lengthbytes=9312, lengthpcm=31488, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.215240.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 9', format=5, channels=2, frequency=48000, lengthbytes=7104, lengthpcm=25268, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.218353.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000008EE72AEF18
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFC766B7D70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFC766B7D40
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFC766B7E40
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFC766B7F00
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001CF30638E18
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Bird tweet 2', format=5, channels=2, frequency=48000, lengthbytes=4256, lengthpcm=17536, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.128052.
+[LOG] SystemI::createSound                     : filename = FMOD/BadBuccaneers/Build\Desktop/Ambient.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x8000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] SystemI::createSound                     : setdata soundi = 000001CF2F2C6F98 : node = 000001CF204E6320
+[LOG] SystemI::createSound                     : add node to async list : head = 000001CF2DABC818.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001CF2F2C6F98
+[LOG] SystemI::createSound                     : filename = FMOD/BadBuccaneers/Build\Desktop/Menu.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/BadBuccaneers/Build\Desktop/Ambient.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSound                     :     setdata soundi = 000001CF2FC98248 : node = 000001CF204E6460
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4888960
+[LOG] SystemI::createSound                     :     add node to async list : head = 000001CF2DABC818.  list count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3392
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001CF204E6430
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Waves Crashing on rocks', format=5, channels=2, frequency=48000, lengthbytes=1675968, lengthpcm=5924570, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.178894.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFC, Stack Size: 49152, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001CF2F2C6F98
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001CF2FC98248
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/BadBuccaneers/Build\Desktop/Menu.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 4269056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 48064
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001CF204E6570
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambiance Ocean waves', format=5, channels=2, frequency=48000, lengthbytes=730144, lengthpcm=2884608, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.498383.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001CF2FC98248
+[LOG] SoundI::release                          : Ambiance Ocean waves (000001CF2FC98248)
+[LOG] SoundI::release                          :     Ambiance Ocean waves (000001CF72A20B18)
+[LOG] SoundI::release                          :     Ambiance Ocean waves (000001CF2E86B258)
+[LOG] SoundI::release                          : Waves Crashing on rocks (000001CF2F2C6F98)
+[LOG] SoundI::release                          :     Waves Crashing on rocks (000001CF72A219B8)
+[LOG] SoundI::release                          :     Waves Crashing on rocks (000001CF2E86B0A8)
+[LOG] SoundI::release                          :  (000001CF2C512058)
+[LOG] SoundI::release                          :     Bird tweet 1 (000001CF72A185D8)
+[LOG] SoundI::release                          :  (000001CF2C512EB8)
+[LOG] SoundI::release                          :     Bird tweet 10 (000001CF72A18918)
+[LOG] SoundI::release                          :  (000001CF2C5138C8)
+[LOG] SoundI::release                          :     Bird tweet 2 (000001CF72A1F118)
+[LOG] SoundI::release                          :  (000001CF2C51DB38)
+[LOG] SoundI::release                          :     Bird tweet 3 (000001CF72A17738)
+[LOG] SoundI::release                          :  (000001CF2C513478)
+[LOG] SoundI::release                          :     Bird tweet 4 (000001CF72A180F8)
+[LOG] SoundI::release                          :  (000001CF2C51EB08)
+[LOG] SoundI::release                          :     Bird tweet 5 (000001CF72A17DB8)
+[LOG] SoundI::release                          :  (000001CF2C51F7F8)
+[LOG] SoundI::release                          :     Bird tweet 6 (000001CF72A178D8)
+[LOG] SoundI::release                          :  (000001CF2C51E998)
+[LOG] SoundI::release                          :     Bird tweet 7 (000001CF72A17C18)
+[LOG] SoundI::release                          :  (000001CF2C513758)
+[LOG] SoundI::release                          :     Bird tweet 8 (000001CF72A20CB8)
+[LOG] SoundI::release                          :  (000001CF2C5111F8)
+[LOG] SoundI::release                          :     Bird tweet 9 (000001CF72A1D098)
+[LOG] SoundI::release                          :  (000001CF2C5170D8)
+[LOG] SoundI::release                          :     Chest opening 1 (000001CF72A18438)
+[LOG] SoundI::release                          :  (000001CF2C516F68)
+[LOG] SoundI::release                          :     Chest opening 2 (000001CF72A16898)
+[LOG] SoundI::release                          :  (000001CF2C520938)
+[LOG] SoundI::release                          :     Magical Chest opening 1 (000001CF72A17258)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
