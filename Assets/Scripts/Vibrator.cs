@@ -2,6 +2,7 @@ using Rewired;
 using Rewired.ControllerExtensions;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -60,8 +61,16 @@ public class Vibrator : Singleton<Vibrator>
     /// <param name="vibration"></param>
     public void Vibrate(int playerNumber, int motor, float vibration)
     {
-        Player p = PlayerManager.GetPlayer(playerNumber);
-        p.SetVibration(motor, vibration);
+        if (PlayerManager.HasPlayer(playerNumber))
+        {
+            Player p = PlayerManager.GetPlayer(playerNumber);
+            p.SetVibration(motor, vibration);
+        }
+        else if (ReInput.players.Players.First(p => p.id == playerNumber) != null)//.playerCount <= playerNumber)//.AllPlayers.First(p => p.id == playerNumber) != null)
+        {
+            Player p = ReInput.players.GetPlayer(playerNumber);
+            p.SetVibration(motor, vibration);
+        }
     }
 
     /// <summary>
