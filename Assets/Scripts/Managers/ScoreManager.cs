@@ -165,9 +165,20 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         EventManager.onPlayerFinish.Invoke();
     }
 
+    public int GetScore(int player)
+    {
+        return playerPoints[player];
+    }
+
     public void AddScoreToPlayer(int player, int score)
     {
         playerPoints[player] += score;
+        EventManager.onUpdateScore.Invoke();
+    }
+
+    public void SetPlayerScore(int player, int score)
+    {
+        playerPoints[player] = score;
         EventManager.onUpdateScore.Invoke();
     }
 
