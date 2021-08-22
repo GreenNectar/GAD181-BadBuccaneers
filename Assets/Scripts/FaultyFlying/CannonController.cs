@@ -12,8 +12,15 @@ public class CannonController : MonoBehaviour
     public float fuseTime = 1f; //delay on 
     float vertical;
     float horizontal;
-    Vector2 verticalRange = new Vector2(-60f, 10f);
-    Vector2 horizontalRange = new Vector2(-45f, 45f);
+
+    // Cannon tilt ranges
+    public int verticalRangeMin;
+    public int verticalRangeMax;
+    Vector2 verticalRange; 
+    public int horizontalRangeMin;
+    public int horizontalRangeMax;
+    Vector2 horizontalRange;
+    
     public Transform barrel;
     public GameObject fuse;
 
@@ -42,6 +49,10 @@ public class CannonController : MonoBehaviour
     {
         // Cannon tilt
         vertical += Time.deltaTime * gravity;
+
+        // Clamps range of cannon movement
+        Vector2 verticalRange = new Vector2(verticalRangeMin, verticalRangeMax);  //(-60f, 10f);
+        Vector2 horizontalRange = new Vector2(horizontalRangeMin, horizontalRangeMax);   //(-45f, 45f);
 
         // Directing cannon controls
         vertical -= Input.GetAxis("Vertical") * speed * friction * Time.deltaTime;
