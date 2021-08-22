@@ -9,6 +9,20 @@ using UnityEngine.SceneManagement;
 public class Vibrator : Singleton<Vibrator>
 {
     List<Vibration> vibrations = new List<Vibration>();
+    Vibration[] normalLeftVibrations = new Vibration[4]
+    { 
+        new Vibration{ player = 0, motor = 1},
+        new Vibration{ player = 1, motor = 1},
+        new Vibration{ player = 2, motor = 1},
+        new Vibration{ player = 3, motor = 1}
+    };
+    Vibration[] normalRightVibrations = new Vibration[4]
+    {
+        new Vibration{ player = 0, motor = 0},
+        new Vibration{ player = 1, motor = 0},
+        new Vibration{ player = 2, motor = 0},
+        new Vibration{ player = 3, motor = 0}
+    };
 
     private class Vibration
     {
@@ -38,6 +52,15 @@ public class Vibrator : Singleton<Vibrator>
             playerRightVibrations[vibration.player] += vibration.vibration * vibration.motor;
         }
 
+        foreach (var vibration in normalLeftVibrations)
+        {
+            playerLeftVibrations[vibration.player] += vibration.vibration;
+        }
+        foreach (var vibration in normalRightVibrations)
+        {
+            playerRightVibrations[vibration.player] += vibration.vibration;
+        }
+
         // Set the vibrations
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
@@ -61,16 +84,14 @@ public class Vibrator : Singleton<Vibrator>
     /// <param name="vibration"></param>
     public void Vibrate(int playerNumber, int motor, float vibration)
     {
-        if (PlayerManager.HasPlayer(playerNumber))
-        {
-            Player p = PlayerManager.GetPlayer(playerNumber);
-            p.SetVibration(motor, vibration);
-        }
-        else if (ReInput.players.Players.First(p => p.id == playerNumber) != null)//.playerCount <= playerNumber)//.AllPlayers.First(p => p.id == playerNumber) != null)
-        {
-            Player p = ReInput.players.GetPlayer(playerNumber);
-            p.SetVibration(motor, vibration);
-        }
+        if (motor == 1) normalLeftVibrations[playerNumber].vibration = vibration;
+        if (motor == 0) normalRightVibrations[playerNumber].vibration = vibration;
+        //if (PlayerManager.HasPlayer(playerNumber))
+        //{
+        //    if (motor == 1) normalLeftVibrations[playerNumber].vibration = vibration;
+        //    if (motor == 0) normalRightVibrations[playerNumber].vibration = vibration;
+        //}
+        //else if (ReInput.players.Players.First(p => p.id == playerNumber) != null)
     }
 
     /// <summary>

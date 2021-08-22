@@ -1,5 +1,7 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,57 +16,114 @@ using UnityEngine.UI;
 /// </summary>
 public class HeistTheBootyController : MonoBehaviour
 {
-    public float pointsPerSec = 1f;
+    [SerializeField]
+    private float rounds = 3;
 
-    public bool[] chicken = new bool[4];
+    [SerializeField]
+    private float pointsPerSecond = 1f;
+
+    [SerializeField]
+    private Animator overwatch;
+
+    [SerializeField]
+    private HeistTheBootyPlayerController[] players;
+
+    [SerializeField, EventRef]
+    private string coinPickupSound;
+
+    public bool CanChicken { get; private set; } = false;
+
+
+    private bool[] chicken = new bool[4];
     private bool isGivingPoints;
+    private float currentTimer;
 
-    public float currentTimer;
+
 
     private void Start()
     {
-        StartCoroutine(Round());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (chicken = false)
-        //{
-        //    scoreText.text = (int)score + "Score";
-        //    score += pointsPerSec * Time.deltaTime;
-        //}
+        StartCoroutine(Game());
     }
 
     private IEnumerator GiveScore()
     {
         while (isGivingPoints)
         {
-            yield return new WaitForSeconds(1f / pointsPerSec);
+            yield return new WaitForSeconds(1f / pointsPerSecond);
             GivePoints();
         }
     }
 
+    private IEnumerator Game()
+    {
+        for (int i = 0; i < rounds; i++)
+        {
+            yield return StartCoroutine(Round());
+        }
+
+        // End game 'animation'
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            players[i].RunToStart();
+        }
+
+        yield return new WaitForSeconds(5f);
+
+        GameManager.EndGameStatic();
+    }
+
     private IEnumerator Round()
     {
+        CanChicken = false;
+
+        // Wait until everyone is ready
+        bool loop = true;
+        while (loop)
+        {
+            loop = false;
+            for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+            {
+                if (!players[i].IsReadyToLoot)
+                {
+                    loop = true;
+                }
+            }
+            yield return null;
+        }
+
+        Debug.Log("Everyone's ready to loot!");
+
+        // Start looting
+        players.ForEach(p => p.Loot());
+
+        yield return new WaitForSeconds(0.3f);
+
+        // Reset chickening
+        chicken = new bool[4];
+        // Allow chickening
+        CanChicken = true;
+
+        // Generate random values
         float timeUntilLook = Random.Range(6f, 20f);
         float currentTime = timeUntilLook;
         float slightRumble = Random.Range(0.4f, 0.6f) * timeUntilLook;
         float heavyRumble = Random.Range(0.1f, 0.3f) * timeUntilLook;
-        int currentRumble = 0;
+        int currentRumblePhase = 0; // Handle which phase we are in
 
+        // Start giving points
         isGivingPoints = true;
         StartCoroutine(GiveScore());
 
+        // Handle the rumbles and countdown
         while (currentTime > 0f)
         {
             currentTime -= Time.deltaTime;
 
             currentTimer = currentTime;
 
-            if (currentRumble == 0 && currentTime < slightRumble)
+            if (currentRumblePhase == 0 && currentTime < slightRumble)
             {
-                currentRumble = 1;
+                currentRumblePhase = 1;
                 // Play rumble
                 for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
                 {
@@ -74,9 +133,9 @@ public class HeistTheBootyController : MonoBehaviour
                     }
                 }
             }
-            else if (currentRumble == 1 && currentTime < heavyRumble)
+            else if (currentRumblePhase == 1 && currentTime < heavyRumble)
             {
-                currentRumble = 2;
+                currentRumblePhase = 2;
                 // Play large rumble
                 for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
                 {
@@ -89,31 +148,90 @@ public class HeistTheBootyController : MonoBehaviour
             }
             yield return null;
         }
+        // End of round
 
+        // Stop giving points
         isGivingPoints = false;
 
-        // End of round
+        // Stop controller vibrations
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
             Vibrator.Instance.Vibrate(i, 0, 0f);
             Vibrator.Instance.Vibrate(i, 1, 0f);
         }
+
+        CanChicken = false;
+
+        // Shoot all players who haven't chickened
+        yield return StartCoroutine(ShootPlayers());
+ 
+        // Wait for a bit for the animations to settle
+        yield return new WaitForSeconds(1.5f);
+
+        // Move back to the looting position
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            players[i].MoveBackToLoot();
+        }
+    }
+
+    int playerToShoot = 0;
+    bool hasShotPlayer = false;
+    private IEnumerator ShootPlayers()
+    {
+        overwatch.SetBool("IsAiming", true);
+
+        // Wait until he is aimed, then a lil buffer
+        yield return new WaitUntil(() => overwatch.GetCurrentAnimatorStateInfo(0).IsName("Aim Pistol"));
+        yield return new WaitForSeconds(0.5f);
+
+        // Shoot players who don't chicken out
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            if (chicken[i] == false)
+            {
+                playerToShoot = i;
+                overwatch.SetTrigger("Shoot");
+                yield return new WaitUntil(() => hasShotPlayer == true);
+                hasShotPlayer = false;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+
+        // Go back to sleeping
+        overwatch.SetBool("IsAiming", false);
+
+        // Wait until he is sleeping, then a lil buffer
+        yield return new WaitUntil(() => overwatch.GetCurrentAnimatorStateInfo(0).IsName("Sitting-LookingDown"));
+        //yield return new WaitForSeconds(0.5f);
+    }
+
+    public void ShootPlayer()
+    {
+        players[playerToShoot].GetShot();
+        hasShotPlayer = true;
     }
 
     private void GivePoints()
     {
+        bool playSound = false;
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
             if (!chicken[i])
             {
                 ScoreManager.Instance.AddScoreToPlayer(i, 1);
+                playSound = true;
             }
+        }
+        if (playSound)
+        {
+            RuntimeManager.PlayOneShot(coinPickupSound);
         }
     }
 
     public bool ChickenOut(int playerNumber)
     {
-        if (chicken[playerNumber] == false)
+        if (CanChicken && chicken[playerNumber] == false)
         {
             chicken[playerNumber] = true;
             Vibrator.Instance.Vibrate(playerNumber, 0, 0f);
@@ -125,6 +243,5 @@ public class HeistTheBootyController : MonoBehaviour
         {
             return false;
         }
-      
     }
 }
