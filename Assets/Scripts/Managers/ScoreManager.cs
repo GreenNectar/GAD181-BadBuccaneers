@@ -147,10 +147,17 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
     {
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
-            EventManager.onPlayerFinish.Invoke();
-            if (playerTime[i] == 0f)
+            if (!playersEnded.Contains(i))
             {
+                playerPositions[i] = 1;
+                playersEnded.Add(i);
                 playerTime[i] = GlobalTimer.Time;
+
+                if (playerTime[i] == 0f)
+                {
+                    playerTime[i] = GlobalTimer.Time;
+                }
+                EventManager.onPlayerFinish.Invoke();
             }
         }
     }
