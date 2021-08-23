@@ -14,14 +14,14 @@ public class PlayerUIPanelController : MonoBehaviour, IMicroGameLoad
 
     private void OnEnable()
     {
-        EventManager.onUpdateScore.AddListener(SetPoints);
+        EventManager.onUpdateScore.AddListener(UpdateUI);
         EventManager.onPlayerFinish.AddListener(SetElimination);
     }
 
     private void OnDisable()
     {
-        EventManager.onUpdateScore.RemoveListener(SetPoints);
-        EventManager.onPlayerFinish.AddListener(SetElimination);
+        EventManager.onUpdateScore.RemoveListener(UpdateUI);
+        EventManager.onPlayerFinish.RemoveListener(SetElimination);
     }
 
     private void Update()
@@ -32,26 +32,54 @@ public class PlayerUIPanelController : MonoBehaviour, IMicroGameLoad
         }
     }
 
-    private void SetPoints(int player)
+    private void UpdateUI()
     {
-        if (player != playerNumber) return;
+        if (GameManager.Instance.currentMicroGame != null)
+        {
+            switch (GameManager.Instance.currentMicroGame.scoreType)
+            {
+                case MicroGame.ScoreType.Points:
+                    SetPoints();
+                    break;
+                case MicroGame.ScoreType.Percentage:
+                    SetPercentage();
+                    break;
+                case MicroGame.ScoreType.Elimination:
+                    SetElimination();
+                    break;
+                case MicroGame.ScoreType.Race:
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            if (ScoreManager.Instance.maximumPoints > 0f)
+            {
+                SetPercentage();
+            }
+            else
+            {
+                SetPoints();
+            }
+        }
+    }
 
+    private void SetPoints()
+    {
         output.text = ScoreManager.Instance.playerPoints[playerNumber].ToString();
     }
 
-    private void SetPercentage(int player)
+    private void SetPercentage()
     {
-        if (player != playerNumber) return;
-
         int playerPoints = ScoreManager.Instance.playerPoints[playerNumber];
         int maximumPoints = ScoreManager.Instance.maximumPoints;
-        output.text = ((float)playerPoints / (float)maximumPoints).ToString();
+        output.text = Mathf.RoundToInt(((float)playerPoints / (float)maximumPoints) * 100f) + "%";
     }
 
-    private void SetElimination(int player)
+    private void SetElimination()
     {
-        if (player != playerNumber) return;
-
         output.text = ScoreManager.Instance.playerPositions[playerNumber].Ordinal();
     }
 

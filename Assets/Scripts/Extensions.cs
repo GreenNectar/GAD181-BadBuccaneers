@@ -59,6 +59,11 @@ public static class Extensions
         string[] ordinals = { "umm", "st", "nd", "rd", "th" };
         string ordinal = "bruh";
 
+        if (number == 0)
+        {
+            return "";
+        }
+
         if (number <= 20)
         {
             ordinal = number.ToString() + ordinals[Mathf.Clamp(number, 0, 4)];

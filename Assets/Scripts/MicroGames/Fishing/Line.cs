@@ -7,7 +7,6 @@ public class Line : MonoBehaviour
 {
     [SerializeField]
     private GameObject hookedObject;
-    public GameObject hook;
 
     public UnityEvent<GameObject> onHook;
     public UnityEvent<GameObject> onUnHook;

@@ -6,83 +6,66 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI timerText;
-    [SerializeField]
-    private float maxTime = 30f;
-
-    private float currentTime = 0f;
+    public float time = 30f;
 
     [SerializeField]
-    private bool startOnPlayerFinish = false;
+    private bool onStart = true;
 
-    public UnityEvent onStart;
-    public UnityEvent onFinish;
-    public UnityEvent onStop;
+    [SerializeField]
+    private bool finishLevelOnComplete = false;
 
-    private bool isTiming;
+    [SerializeField]
+    private bool stopTimerOnPlayersFinished = false;
+
+    public UnityEvent onTimerFinish;
+
+    public bool IsTiming => TimeManager.Instance.isTiming;
 
     private void OnEnable()
     {
-        if (startOnPlayerFinish)
-        {
-            EventManager.onPlayerFinish.AddListener((a) => StartTimer());
-        }
+        EventManager.onTimerEnd.AddListener(TimerEnd);
+        EventManager.onPlayerFinish.AddListener(CheckPlayersFinish);
     }
 
     private void OnDisable()
     {
-        if (startOnPlayerFinish)
+        EventManager.onTimerEnd.RemoveListener(TimerEnd);
+        EventManager.onPlayerFinish.RemoveListener(CheckPlayersFinish);
+    }
+
+    private void Start()
+    {
+        if (onStart)
         {
-            EventManager.onPlayerFinish.RemoveListener((a) => StartTimer());
+            StartTimer(true);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void StartTimer(bool forceStart = false)
     {
-        if (!startOnPlayerFinish)
-        {
-            StartTimer();
-        }
+        if (forceStart || (!forceStart && !TimeManager.Instance.isTiming))
+            TimeManager.StartTimer(time);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TimerEnd()
     {
-        if (isTiming)
+        if (finishLevelOnComplete)
         {
-            if (currentTime < maxTime)
+            GameManager.EndGameStatic();
+        }
+
+        onTimerFinish.Invoke();
+    }
+
+    private void CheckPlayersFinish()
+    {
+        if (stopTimerOnPlayersFinished)
+        {
+            if (ScoreManager.Instance.AllPlayersFinished)
             {
-                currentTime += Time.deltaTime;
+                TimeManager.StopTimer();
+                if (finishLevelOnComplete) GameManager.EndGameStatic();
             }
-            else
-            {
-                onFinish.Invoke();
-            }
-
-            currentTime = Mathf.Clamp(currentTime, 0f, maxTime);
-
-            timerText.text = $"{Mathf.Ceil(maxTime - currentTime)}";
         }
-    }
-
-    public void ResetTimer()
-    {
-        currentTime = 0f;
-    }
-
-    private void StopTimer()
-    {
-        isTiming = false;
-        onStop.Invoke();
-    }
-
-    private void StartTimer()
-    {
-        isTiming = true;
-        timerText.gameObject.SetActive(true);
-        timerText.transform.parent.gameObject.SetActive(true);
-        onStart.Invoke();
     }
 }

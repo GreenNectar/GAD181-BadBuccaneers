@@ -40,6 +40,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &-9053938044325612172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &-9032171641146210504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +172,47 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1600
+--- !u!114 &-8674019084193102193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &-8516911390074611383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
+--- !u!114 &-8477616376415237142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +247,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637649021068730258
+  lastModified: 637653529207791879
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -237,6 +297,46 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 1170
+--- !u!114 &-8021747582659127070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &-7954132534624561226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &-7915175570962427464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,10 +352,53 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637649021068249138
+  lastModified: 637653529192688689
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-7874508062799902499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient/Forest
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient/Forest
+  guid: 3bc00a1151cdd24b8b28430218608dd3
+  Banks:
+  - {fileID: 3403164440369807333}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 123428
+--- !u!114 &-7853614270108589944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &-7797474505539864648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +439,49 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &-7636302099244530582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &-7534919764995224410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VO/PracticeVO_Fishing
+  m_EditorClassIdentifier: 
+  Path: event:/VO/PracticeVO_Fishing
+  guid: 0ae433b9446c8540a328822445acff03
+  Banks:
+  - {fileID: -2198350708730441781}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 18575
 --- !u!114 &-7523170578193790878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +525,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &-7303035999531191336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &-7257651005071276327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +568,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 1030
+--- !u!114 &-7214506877610390702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
 --- !u!114 &-7126410912992563497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +608,26 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &-7086054543656989760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
 --- !u!114 &-6981767698805253270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +671,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 1
+--- !u!114 &-6874108642526427776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &-6725032837712438673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +734,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 480
+--- !u!114 &-6503055463689234230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/HeistTheBooty/Shoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/HeistTheBooty/Shoot
+  guid: 8ab23b4cdd20e94bb73e3621b51b36c6
+  Banks:
+  - {fileID: -4354206360138248056}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2163
 --- !u!114 &-6202096484950619063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +792,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Male_Pirate_01.bank
   Name: Male_Pirate_01
   StudioPath: bank:/Male_Pirate_01
-  lastModified: 637649021071547538
+  lastModified: 637653529190159087
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -613,6 +902,46 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1511
+--- !u!114 &-5486035609737260037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
+--- !u!114 &-5220198617104279334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
 --- !u!114 &-5208291401545213387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +962,29 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 1
+--- !u!114 &-5142222809226256127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VO/PracticeVO_BoatRun
+  m_EditorClassIdentifier: 
+  Path: event:/VO/PracticeVO_BoatRun
+  guid: 641bc77a73901342a5ab1fbda74e0299
+  Banks:
+  - {fileID: -2198350708730441781}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 25008
 --- !u!114 &-5097250625796045518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +1024,66 @@ MonoBehaviour:
   ID:
     data1: 194308427
     data2: 4170436746
+  Exists: 0
+--- !u!114 &-4821747427296932404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
+--- !u!114 &-4664116656550262729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &-4639497083324512279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
   Exists: 0
 --- !u!114 &-4564335055123562147
 MonoBehaviour:
@@ -713,6 +1125,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 1
+--- !u!114 &-4552103938600473773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &-4476189959534486586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,10 +1180,30 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637649021071299539
+  lastModified: 637653529213758757
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-4220569788610487934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &-4204996069198677660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +1287,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 950
+--- !u!114 &-3875655820691874336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &-3846319751671002284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +1327,46 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &-3822770350791040323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
+--- !u!114 &-3776961179187033082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &-3769556183564593463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +1390,46 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 2660
+--- !u!114 &-3655426169421299366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
+--- !u!114 &-3507101783815071769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &-3466249561162015260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,6 +1469,26 @@ MonoBehaviour:
   ID:
     data1: 1685736616
     data2: 2294900714
+  Exists: 0
+--- !u!114 &-3292723326302923873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
   Exists: 0
 --- !u!114 &-2995560115966027394
 MonoBehaviour:
@@ -996,7 +1568,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Female_Pirate_01.bank
   Name: Female_Pirate_01
   StudioPath: bank:/Female_Pirate_01
-  lastModified: 637649021072703218
+  lastModified: 637653529189454773
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1020,6 +1592,29 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 1
+--- !u!114 &-2683426248338287861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/HeistTheBooty/CoinPickup
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/HeistTheBooty/CoinPickup
+  guid: 37e7f18de5835447aa0f7f96465d4cbc
+  Banks:
+  - {fileID: -4354206360138248056}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 724
 --- !u!114 &-2654560936451488629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,6 +1656,26 @@ MonoBehaviour:
     data2: 4170436746
   Exists: 0
 --- !u!114 &-2633558391829389117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &-2621494673545438120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1235,7 +1850,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 637649021070173623
+  lastModified: 637653529221987390
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1259,6 +1874,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 1
+--- !u!114 &-1991713217996923665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
 --- !u!114 &-1917946611703240636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1913,66 @@ MonoBehaviour:
   ID:
     data1: 3647290023
     data2: 533984493
+  Exists: 0
+--- !u!114 &-1888612525164077418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &-1877644448610797875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
+--- !u!114 &-1873619451631421087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
   Exists: 0
 --- !u!114 &-1866334775090286455
 MonoBehaviour:
@@ -1299,6 +1994,49 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &-1814730214436796264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
+--- !u!114 &-1796757816233799184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Fish/FishSlap
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Fish/FishSlap
+  guid: c78635231b9671479b6966be18d4680b
+  Banks:
+  - {fileID: -4354206360138248056}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 10000
+  Length: 704
 --- !u!114 &-1734931961909254282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +2197,127 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &-1087397320262893043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
 --- !u!114 &-1021825955475774298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &-1014456537891718915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
+--- !u!114 &-992063167872447087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &-937373971478222690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &-935121936122615872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
+--- !u!114 &-840291962442300878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1537,10 +2395,30 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Menu.bank
   Name: Menu
   StudioPath: bank:/Menu
-  lastModified: 637649021069608178
+  lastModified: 637653529207762120
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-748823849179721095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &-545385799997238553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,6 +2519,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &-194442643085352696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &-173799069607357739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,6 +2559,49 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &-173211586278298236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &-111936467845133773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VO/PracticeVO_PoopDeck
+  m_EditorClassIdentifier: 
+  Path: event:/VO/PracticeVO_PoopDeck
+  guid: 22d4f19dbee3f349b8cfc5167503c0de
+  Banks:
+  - {fileID: -2198350708730441781}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 17580
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,12 +2655,24 @@ MonoBehaviour:
   - {fileID: 3332524817020135839}
   - {fileID: 6639610632925891560}
   - {fileID: 1349721500397056707}
-  EditorParameters: []
+  - {fileID: -1796757816233799184}
+  - {fileID: -7534919764995224410}
+  - {fileID: -111936467845133773}
+  - {fileID: 5308495101735201207}
+  - {fileID: -5142222809226256127}
+  - {fileID: -6503055463689234230}
+  - {fileID: -7874508062799902499}
+  - {fileID: -2683426248338287861}
+  - {fileID: 5545631141941883512}
+  EditorParameters:
+  - {fileID: -5220198617104279334}
+  - {fileID: -4821747427296932404}
+  - {fileID: 4196005914062462663}
   MasterBanks:
   - {fileID: -7915175570962427464}
   StringsBanks:
   - {fileID: 2969618632254900566}
-  stringsBankWriteTime: 637649021068278899
+  stringsBankWriteTime: 637653529192708528
   cacheVersion: 6
 --- !u!114 &147504836299398273
 MonoBehaviour:
@@ -1780,6 +2733,26 @@ MonoBehaviour:
   ID:
     data1: 3647290023
     data2: 533984493
+  Exists: 0
+--- !u!114 &408960999662434833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
   Exists: 0
 --- !u!114 &555117786771580978
 MonoBehaviour:
@@ -1904,6 +2877,46 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &1275595021024954473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &1286117381689022925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &1349721500397056707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1927,6 +2940,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 123428
+--- !u!114 &1410632759340743949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &1420153169392511045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,6 +3042,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
+--- !u!114 &1758339483390383515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
 --- !u!114 &1761574842375634355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2029,6 +3082,46 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 1
+--- !u!114 &1824272148626970787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &1828142018579362093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &1834032902144438941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2052,6 +3145,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 18573
+--- !u!114 &1943489664890744917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &2010900673349332110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2092,6 +3205,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &2224871405111229571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
 --- !u!114 &2270808283281351763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,6 +3325,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 1
+--- !u!114 &2917891540421722264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &2954512494441283173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2227,11 +3380,11 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637649021068278899
+  lastModified: 637653529192708528
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2848
+    Value: 3260
   Exists: 1
 --- !u!114 &3108186826210402619
 MonoBehaviour:
@@ -2334,9 +3487,29 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 637649021068705462
+  lastModified: 637653529184703091
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &3563409242462792522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
   Exists: 1
 --- !u!114 &3995201368146248614
 MonoBehaviour:
@@ -2361,6 +3534,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 800
+--- !u!114 &4196005914062462663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &4306725769133660006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,7 +3576,27 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 60000
+  Length: 60096
+--- !u!114 &4338351124668901206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &4896844464180934645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,11 +3612,51 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Male_Pirate_05.bank
   Name: Male_Pirate_05
   StudioPath: bank:/Male_Pirate_05
-  lastModified: 637649021072127861
+  lastModified: 637653529192644047
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4991904058333489608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
 --- !u!114 &5195625035027309360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &5237785791062796323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2466,6 +3719,50 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &5308495101735201207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient/Ocean
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient/Ocean
+  guid: 0d2ec7096ed90b4f9da1588135e6424c
+  Banks:
+  - {fileID: 3403164440369807333}
+  - {fileID: -767634715219992272}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 60096
+--- !u!114 &5334963351378734263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &5338401917801793921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2509,6 +3806,26 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &5403965452382117085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &5454359212695108144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2529,6 +3846,29 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &5545631141941883512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/VO/PracticeVO_HeistTheBooty
+  m_EditorClassIdentifier: 
+  Path: event:/VO/PracticeVO_HeistTheBooty
+  guid: 4583caeca9119d4ca301b816692dba85
+  Banks:
+  - {fileID: -2198350708730441781}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 26630
 --- !u!114 &5718810579007909529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2570,6 +3910,26 @@ MonoBehaviour:
     data2: 533984493
   Exists: 1
 --- !u!114 &5851162268913531302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &6036396929288058495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2732,6 +4092,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &6808475766323829019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &6919249171605740591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2792,6 +4172,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &7183224627762215713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &7281540869537168238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,6 +4235,86 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 10000
   Length: 3300
+--- !u!114 &7604009329921040023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &7610499056234038748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &7616783772361627842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &7642011971026179144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 0
 --- !u!114 &7649107087416662192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2915,6 +4395,26 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 1
+--- !u!114 &8408992845436999970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &8447849123978530199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,6 +4455,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 0
+--- !u!114 &8490725652363461512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
 --- !u!114 &8830638468525602322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,10 +4490,30 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 637649021069895862
+  lastModified: 637653529214964037
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &8930117516348254015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &9019170987905912765
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,18 +12,18 @@ TagManager:
   - Trip
   - Cannon
   - CannonBall
+  - FinishLine
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Environment
+  - 
   - Water
   - UI
   - PostProcessing
   - Player
-  - Ground
-  - 
-  - 
+  - NoSelfCollision
   - 
   - 
   - 
