@@ -13,6 +13,7 @@ TagManager:
   - Cannon
   - CannonBall
   - FinishLine
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - PostProcessing
+  - Player
+  - NoSelfCollision
   - 
   - 
   - 
