@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Male_Pirate_01
   m_EditorClassIdentifier: 
   death: event:/Characters/Male_Pirate_01/Death
-  drowning: 
-  happy: 
-  jump: 
-  sad: 
-  startled: 
+  drowning: event:/Characters/Male_Pirate_01/Drowning
+  happy: event:/Characters/Male_Pirate_01/Happy
+  jump: event:/Characters/Male_Pirate_01/Jump
+  sad: event:/Characters/Male_Pirate_01/Sad
+  startled: event:/Characters/Male_Pirate_01/Startled

@@ -32,7 +32,7 @@
 			<destination>{c8a599d0-f13f-431a-a598-e1f3fea054ae}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{1d9ec35d-2cc3-4d2e-b516-ec3376ab3bf8}</destination>
+			<destination>{220f3cb5-b81e-4dbd-989d-59bfd251f955}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{ecb75c7b-b9fc-48c7-898e-29a4eb703e56}">
@@ -92,7 +92,6 @@
 		<property name="length">
 			<value>1.5</value>
 		</property>
-		<property name="name" />
 		<relationship name="fadeOutCurve">
 			<destination>{9acbccb2-8eab-4023-98e2-9d853b678a93}</destination>
 		</relationship>
@@ -108,7 +107,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{84893837-b731-4cfe-82ec-314c975124f8}">
 		<property name="volume">
-			<value>6</value>
+			<value>1.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
