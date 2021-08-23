@@ -23,15 +23,22 @@ public class BarrelGamePlayerController : TopDownPlayerController
             base.Update();
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit.gameObject.CompareTag("Trip"))
+        if (other.CompareTag("Trip"))
         {
-            Animator.SetTrigger("WipeOut");
-            hasWipedOut = true;
-            StartCoroutine(MoveToOutside());
-            Instantiate(impactFX, transform.TransformPoint(GetComponent<CharacterController>().center), Quaternion.identity);
+            WipeOut();
         }
+    }
+
+    public void WipeOut()
+    {
+        Animator.SetTrigger("WipeOut");
+        hasWipedOut = true;
+        StartCoroutine(MoveToOutside());
+        Instantiate(impactFX, transform.TransformPoint(GetComponent<CharacterController>().center), Quaternion.identity);
+        ScoreManager.Instance.EndPlayer(PlayerNumber);
+        PlayerManager.GetPlayerFMODEvent(PlayerNumber).Death(gameObject);
     }
 
     private IEnumerator MoveToOutside()

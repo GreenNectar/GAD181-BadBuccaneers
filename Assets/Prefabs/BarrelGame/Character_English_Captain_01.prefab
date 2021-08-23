@@ -5022,10 +5022,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
+  camera: {fileID: 0}
   speed: 5
   animatorSpeed: 1.25
   lerpSpeed: 8
   gravity: 9.8
+  walkEvent: event:/SFX/Footstep/Sand
+  wipeOutPosition: {fileID: 0}
+  impactFX: {fileID: 672347178882746030, guid: a3aada2685f57764db52b064cc6ccee8, type: 3}
 --- !u!114 &3191245522223663361
 MonoBehaviour:
   m_ObjectHideFlags: 0

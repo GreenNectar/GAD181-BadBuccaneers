@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class BarrelGameManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject barrel;
+    private BarrelController barrel;
 
     [SerializeField]
     private Row[] rows;
@@ -37,12 +37,6 @@ public class BarrelGameManager : MonoBehaviour
         StartCoroutine(GameSequence());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator GameSequence()
     {
         int currentRound = 0;
@@ -58,7 +52,7 @@ public class BarrelGameManager : MonoBehaviour
             // Create the barrels on the positions
             for (int i = 0; i < round.barrels; i++)
             {
-                Instantiate(barrel, positions[i].position, positions[i].rotation);
+                Instantiate(barrel, positions[i].position, positions[i].rotation).speed = round.speed;
             }
 
             // Wait a bit until the next barrels get sent
@@ -66,6 +60,16 @@ public class BarrelGameManager : MonoBehaviour
 
             currentRound++;
         }
+
+        // Wait for all barrels to fuck off
+        yield return new WaitUntil(() => FindObjectOfType<BarrelController>() == null);
+
+        ScoreManager.Instance.EndFinalPlayers();
+
+        yield return new WaitForSeconds(3f);
+
+        // ENd theA _F a_Fijao fj
+        GameManager.EndGameStatic();
     }
 }
 

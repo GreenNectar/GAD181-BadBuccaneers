@@ -247,7 +247,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637652430266510936
+  lastModified: 637653529207791879
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -352,7 +352,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637652430265533819
+  lastModified: 637653529192688689
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -792,7 +792,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Male_Pirate_01.bank
   Name: Male_Pirate_01
   StudioPath: bank:/Male_Pirate_01
-  lastModified: 637652430264720376
+  lastModified: 637653529190159087
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -922,6 +922,26 @@ MonoBehaviour:
     data1: 1685736616
     data2: 2294900714
   Exists: 1
+--- !u!114 &-5220198617104279334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 1
 --- !u!114 &-5208291401545213387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,6 +1025,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &-4821747427296932404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 1
 --- !u!114 &-4664116656550262729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1180,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637652456506091818
+  lastModified: 637653529213758757
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1528,7 +1568,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Female_Pirate_01.bank
   Name: Female_Pirate_01
   StudioPath: bank:/Female_Pirate_01
-  lastModified: 637652430264487256
+  lastModified: 637653529189454773
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1810,7 +1850,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 637652456506275343
+  lastModified: 637653529221987390
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1893,6 +1933,26 @@ MonoBehaviour:
   ID:
     data1: 3647290023
     data2: 533984493
+  Exists: 0
+--- !u!114 &-1877644448610797875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
   Exists: 0
 --- !u!114 &-1873619451631421087
 MonoBehaviour:
@@ -2335,7 +2395,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Menu.bank
   Name: Menu
   StudioPath: bank:/Menu
-  lastModified: 637652430266471256
+  lastModified: 637653529207762120
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2499,6 +2559,26 @@ MonoBehaviour:
     data1: 3647290023
     data2: 533984493
   Exists: 0
+--- !u!114 &-173211586278298236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &-111936467845133773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2584,12 +2664,15 @@ MonoBehaviour:
   - {fileID: -7874508062799902499}
   - {fileID: -2683426248338287861}
   - {fileID: 5545631141941883512}
-  EditorParameters: []
+  EditorParameters:
+  - {fileID: -5220198617104279334}
+  - {fileID: -4821747427296932404}
+  - {fileID: 4196005914062462663}
   MasterBanks:
   - {fileID: -7915175570962427464}
   StringsBanks:
   - {fileID: 2969618632254900566}
-  stringsBankWriteTime: 637652456506027338
+  stringsBankWriteTime: 637653529192708528
   cacheVersion: 6
 --- !u!114 &147504836299398273
 MonoBehaviour:
@@ -3297,7 +3380,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637652456506027338
+  lastModified: 637653529192708528
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -3404,7 +3487,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 637652456506453898
+  lastModified: 637653529184703091
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3451,6 +3534,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 800
+--- !u!114 &4196005914062462663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
+  Exists: 1
 --- !u!114 &4306725769133660006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3509,7 +3612,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Male_Pirate_05.bank
   Name: Male_Pirate_05
   StudioPath: bank:/Male_Pirate_05
-  lastModified: 637652430265469335
+  lastModified: 637653529192644047
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3534,6 +3637,26 @@ MonoBehaviour:
     data2: 2294900714
   Exists: 1
 --- !u!114 &5195625035027309360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
+--- !u!114 &5237785791062796323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3611,8 +3734,8 @@ MonoBehaviour:
   Path: event:/Ambient/Ocean
   guid: 0d2ec7096ed90b4f9da1588135e6424c
   Banks:
-  - {fileID: -767634715219992272}
   - {fileID: 3403164440369807333}
+  - {fileID: -767634715219992272}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -4367,7 +4490,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 637652430268068371
+  lastModified: 637653529214964037
   LoadResult: 0
   FileSizes: []
   Exists: 1
