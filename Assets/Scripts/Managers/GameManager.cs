@@ -7,25 +7,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Scenes")]
     [SerializeField, Scene]
     private string resultScreen;
     [SerializeField, Scene]
     private string homeScreen;
     [SerializeField, Scene]
     private string microGameOverlay;
+    [SerializeField, Scene]
+    private string playerUIOverlay;
 
+    [Header("Levels")]
     [SerializeField]
     private List<MicroGame> levels = new List<MicroGame>();
     private Stack<MicroGame> levelsToPlay = new Stack<MicroGame>();
     public MicroGame currentMicroGame { get; private set; } = null;
 
-    //private int finishedPlayers = 0;
-
-    private void Start()
+    public bool IsInPracticeMode
     {
-        //? This is for testing, remove this later
-        GenerateRandomLevels();
+        get
+        {
+            return SceneManager.GetSceneByName(microGameOverlay).IsValid();
+        }
     }
+
+    //private void Start()
+    //{
+    //    //? This is for testing, remove this later
+    //    GenerateRandomLevels();
+    //}
 
     private void OnEnable()
     {
@@ -39,16 +49,17 @@ public class GameManager : Singleton<GameManager>
         EventManager.onResultsFinish.RemoveListener(LoadNextLevel);
     }
 
-    //public void StartTimer()
-    //{
-    //    GlobalTimer.StartTimer();
-    //}
-
+    /// <summary>
+    /// Loads the results screen...
+    /// </summary>
     public void LoadResultsScreen()
     {
         SceneManager.LoadScene(resultScreen);
     }
 
+    /// <summary>
+    /// Loads the next level
+    /// </summary>
     public void LoadNextLevel()
     {
         if (levelsToPlay.Count > 0)
@@ -57,6 +68,7 @@ public class GameManager : Singleton<GameManager>
             string level = currentMicroGame.microGameScene;
             SceneManager.LoadScene(level, LoadSceneMode.Single);
             SceneManager.LoadScene(microGameOverlay, LoadSceneMode.Additive);
+            SceneManager.LoadScene(playerUIOverlay, LoadSceneMode.Additive);
         }
         else
         {
@@ -64,6 +76,32 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// Loads the level without the overlay
+    /// </summary>
+    public void LoadOutOfPractice()
+    {
+        StartCoroutine(LoadOutOfPracticeSequence());
+    }
+
+    /// <summary>
+    /// Waits a bit before loading the level without the overlay
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator LoadOutOfPracticeSequence()
+    {
+        yield return new WaitForSeconds(1f);
+
+        string level = currentMicroGame.microGameScene;
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
+        SceneManager.LoadScene(playerUIOverlay, LoadSceneMode.Additive);
+    }
+
+    /// <summary>
+    /// Calls the interface, this was for testing and I don't think this is needed
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="loadSceneMode"></param>
     public void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         //// Call 'OnMicroGameLoad' on all objects that implement the interface
@@ -74,7 +112,7 @@ public class GameManager : Singleton<GameManager>
         //        (obj as IMicroGameLoad).OnMicroGameLoad();
         //    }
         //}
-
+        
         // Does the same thing as above, just makes more sense to the eye
         FindObjectsOfType<MonoBehaviour>()
             .Where(m => m is IMicroGameLoad)
@@ -82,11 +120,9 @@ public class GameManager : Singleton<GameManager>
             .ForEach(m => m.OnMicroGameLoad());
     }
 
-    //public void SetLevels(List<string> levels)
-    //{
-    //    levelsToPlay = levels;
-    //}
-
+    /// <summary>
+    /// Generates random levels using the level stack, no duplicates
+    /// </summary>
     public void GenerateRandomLevels()
     {
         // Clear the current levels stacked
@@ -107,5 +143,38 @@ public class GameManager : Singleton<GameManager>
             levelsToPlay.Push(levelStack[randomLevelIndex]);
             levelStack.RemoveAt(randomLevelIndex);
         }
+    }
+
+    /// <summary>
+    /// This is the static version for invoking
+    /// </summary>
+    public static void EndGameStatic()
+    {
+        Instance.EndGame();
+    }
+
+    /// <summary>
+    /// End the game. If in practice mode it restarts the level, otherwise it loads the results screen
+    /// </summary>
+    public void EndGame()
+    {
+        if (IsInPracticeMode)
+        {
+            StartCoroutine(ReloadSceneSequence());
+        }
+        else
+        {
+            ScoreManager.Instance.EndFinalPlayers();
+            ScoreManager.Instance.FinaliseScores();
+            LoadResultsScreen();
+            EventManager.onGameEnd.Invoke();
+        }
+    }
+
+    private IEnumerator ReloadSceneSequence()
+    {
+        yield return SceneManager.UnloadSceneAsync(currentMicroGame.microGameScene);
+        yield return SceneManager.LoadSceneAsync(currentMicroGame.microGameScene, LoadSceneMode.Additive);
+        FindObjectOfType<MicroGameOverlayController>().SetCamera();
     }
 }

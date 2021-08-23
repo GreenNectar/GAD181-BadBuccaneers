@@ -1,3 +1,4 @@
+using FMODUnity;
 using Rewired;
 using System;
 using System.Collections;
@@ -55,8 +56,12 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
 
     #region Components
 
+    [SerializeField]
+    private Timer timer;
+
     //private PlayerInput playerInput;
     private Animator animator;
+
 
     #endregion
 
@@ -123,6 +128,33 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
 
     // Made it static so all other instances can use it (keeps the randomness the same on all instances)
     private static float[] randomValues;
+
+    #endregion
+
+    #region Animator Methods
+
+    public void StartTimer()
+    {
+        ScoreManager.Instance.StartTimer();
+        timer.StartTimer();
+    }
+
+    public void Finish()
+    {
+        ScoreManager.Instance.EndPlayer(PlayerNumber);
+    }
+
+    #endregion
+
+    #region Audio
+
+    [Header("Audio")]
+    [SerializeField, EventRef]
+    private string openChestEvent;
+    [SerializeField, EventRef]
+    private string openLastChestEvent;
+    [SerializeField, EventRef]
+    private string unlockPinEvent;
 
     #endregion
 
@@ -284,6 +316,15 @@ public class LockpickController : MicroGamePlayerController, IMicroGameLoad
                 currentPin = 0;
                 currentChest++;
                 animator.SetTrigger("Open");
+                if (currentChest == chests.Length) // If we open last chest
+                    RuntimeManager.PlayOneShot(openLastChestEvent);
+                else // If we open normal chest
+                    RuntimeManager.PlayOneShot(openChestEvent);
+            }
+            // If we didn't open the chest, play the unlock sound
+            else
+            {
+                RuntimeManager.PlayOneShot(unlockPinEvent);
             }
 
             if (currentLock < NumberOfPins - 1) currentLock++; // We only have three locks atm, this is hard-coded... should not be that way (I have - 1 so it's obvious there is three locks)

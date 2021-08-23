@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06171928c68d8f7418896d51e3ffc062, type: 3}
+  m_Name: HotBomb
+  m_EditorClassIdentifier: 
+  title: Hot Potato
+  description: Run into other players to give them the bomb, otherwise run!
+  developers: Jarrad
+  minimumRequiredPlayers: 2
+  microGameScene: HotBomb
+  controls:
+  - description: Move
+    buttons: <sprite name="Thumbstick-L">
+  scoreType: 2
+  scoreLayout: 1
+  voiceOverEvent: event:/VO/PracticeVO_HotBomb

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,8 +26,13 @@ public class HotBombController : MonoBehaviour
     [SerializeField]
     private float timeUntilNextRound = 3;
 
+    [Header("Visual FX")]
     [SerializeField]
     private ParticleSystem bombFX;
+
+    [Header("Sound")]
+    [SerializeField, EventRef]
+    private string explosionEvent;
 
     // Position switching and player management
     private Vector3 initialPosition;
@@ -83,7 +89,7 @@ public class HotBombController : MonoBehaviour
         }
     }
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (isTransferring) return; // We only want to transfer once we've finished transferring
 
@@ -106,6 +112,10 @@ public class HotBombController : MonoBehaviour
     {
         isTransferring = true;
 
+
+        // Play startled effect on the new player
+        PlayerManager.GetPlayerFMODEvent(currentPlayer.PlayerNumber).Startled(currentPlayer.gameObject);
+
         float time = 0;
         while (time < 1f)
         {
@@ -121,7 +131,7 @@ public class HotBombController : MonoBehaviour
 
             //Vector3 fromPosition = previousPlayer ? previousPlayer.BombPosition.position : oldPosition;
             //Quaternion fromRotation = previousPlayer ? previousPlayer.BombPosition.rotation : transform.rotation;
-            
+
             transform.position = Vector3.Lerp(oldPosition, currentPlayer.BombPosition.position, time) + Vector3.up * transferHeight * Mathf.Sin(time * Mathf.PI);
             Quaternion newRotation = Quaternion.Lerp(oldRotation, currentPlayer.BombPosition.rotation, time);
 
@@ -137,7 +147,7 @@ public class HotBombController : MonoBehaviour
         allowVibration = true;
 
         // Start the throb
-        yield return new WaitForSeconds(timeUntilFirstThrob + Random.Range(-randomTimeOffset/2f, randomTimeOffset/2f));
+        yield return new WaitForSeconds(timeUntilFirstThrob + Random.Range(-randomTimeOffset / 2f, randomTimeOffset / 2f));
         pulse.enabled = true;
 
         // Start the harsh throb
@@ -157,6 +167,9 @@ public class HotBombController : MonoBehaviour
         Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 0, 0.5f);
         Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 1, 0.5f);
 
+        // Hear the explosion!
+        RuntimeManager.PlayOneShot(explosionEvent, transform.position);
+
         yield return new WaitForSeconds(0.2f); // Allow the fx to go for a bit
 
         currentPlayer.Kill();
@@ -175,7 +188,7 @@ public class HotBombController : MonoBehaviour
         oldPosition = transform.position;
         oldRotation = transform.rotation;
         // Reset the previous player
-        previousPlayer = null; 
+        previousPlayer = null;
 
         // Reset the pulsing
         pulse.ResetScale();
@@ -193,10 +206,15 @@ public class HotBombController : MonoBehaviour
             StartCoroutine(CountDown());
         }
         // Otherwise end the game
-        //TODO End the game
         else
         {
+            yield return new WaitForSeconds(0.5f);
 
+            ScoreManager.Instance.EndFinalPlayers();
+
+            yield return new WaitForSeconds(2.5f);
+
+            GameManager.Instance.EndGame();
         }
     }
 

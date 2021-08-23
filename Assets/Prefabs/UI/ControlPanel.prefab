@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Description of the control here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
-  m_sharedMaterial: {fileID: 6040831218813559117, guid: be1be535416809e47801e2b1774dd9d8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 7675507492216063202}
   - component: {fileID: 7675507492216063204}
   - component: {fileID: 7675507492216063203}
+  - component: {fileID: 9151659424256459441}
   m_Layer: 5
   m_Name: Input
   m_TagString: Untagged
@@ -274,10 +275,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite name="Xbox-S"><sprite name="Dualsense-S"><sprite name="Dualshock-S">
+  m_text: '<sprite name="Xbox-S"><sprite name="Dualsense-S"><sprite name="Dualshock-S">
+
+    Test'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
+  m_sharedMaterial: {fileID: 8875033796472412468, guid: a97539a422824dd498f64cf5b8cf7f41, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -301,7 +304,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.8
+  m_fontSize: 65.4
   m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -343,6 +346,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9151659424256459441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675507492216063201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d54af859f2dac74292c957e5947b127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!1 &7675507493045802715
 GameObject:
   m_ObjectHideFlags: 0

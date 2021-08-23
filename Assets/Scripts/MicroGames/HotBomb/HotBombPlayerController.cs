@@ -26,12 +26,10 @@ public class HotBombPlayerController : TopDownPlayerController
     [SerializeField, Tooltip("This is the skeleton model attached to the prefab/it is the skin")]
     private GameObject skeletonModel;
 
+
     private float tempLerpSpeed;
     public float holdingWeight;
-
-
     public Transform BombPosition => bombPosition;
-
 
     protected override void Start()
     {
@@ -68,6 +66,11 @@ public class HotBombPlayerController : TopDownPlayerController
 
         // Disable this player controller component
         enabled = false;
+
+        // Play the death sound for the player
+        PlayerManager.GetPlayerFMODEvent(PlayerNumber).Death(gameObject);
+
+        ScoreManager.Instance.EndPlayer(PlayerNumber);
     }
 
     public void SetHolding()

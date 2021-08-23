@@ -1,19 +1,31 @@
+using FMODUnity;
 using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class MicroGame
+[CreateAssetMenu(menuName = "Bad Buccaneers/MicroGame Data", fileName = "MicroGameData")]
+public class MicroGame : ScriptableObject
 {
-    public string name;
+    public string title;
     [TextArea]
     public string description;
+    [TextArea]
+    public string developers;
+
     public int minimumRequiredPlayers = 1;
+
     [Scene]
     public string microGameScene;
+
     public Control[] controls;
+
+    public ScoreType scoreType = ScoreType.Points;
+    public ScoreLayout scoreLayout = ScoreLayout.Corners;
+
+    [EventRef]
+    public string voiceOverEvent;
 
     [Serializable]
     public class Control
@@ -21,4 +33,7 @@ public class MicroGame
         public string description;
         public string buttons;
     }
+
+    public enum ScoreType { Points, Percentage, Elimination, Race };
+    public enum ScoreLayout { Corners, Bottom, Left };
 }

@@ -27,6 +27,17 @@ public static class PlayerManager
         }
     }
 
+    //? I don't know what to call this. It gives 4 as players if it hasn't got any players
+    public static int PlayerCountScaled
+    {
+        get
+        {
+            return players.Count > 0 ? players.Count : 4;
+        }
+    }
+
+    #region Handling Players
+
     /// <summary>
     /// Shifts the players so the player numbers start from 0 and increment by 1 in order
     /// </summary>
@@ -193,6 +204,8 @@ public static class PlayerManager
         return -1;
     }
 
+    #endregion
+
     #region Controller Types
 
     private static void SetControllerTypes()
@@ -207,15 +220,17 @@ public static class PlayerManager
             Player p = ReInput.players.GetPlayer(player.Value);
 
             string type = "Xbox";
-            if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
+            if (p.controllers.joystickCount > 0)
             {
-                type = "Dualshock";
+                if (p.controllers.Joysticks[0].GetExtension<DualShock4Extension>() != null)
+                {
+                    type = "Dualshock";
+                }
+                else if (p.controllers.Joysticks[0].GetExtension<DualSenseExtension>() != null)
+                {
+                    type = "Dualsense";
+                }
             }
-            else if (p.controllers.Joysticks[0].GetExtension<DualSenseExtension>() != null)
-            {
-                type = "Dualsense";
-            }
-
             controllerTypes[player.Key] = type;
         }
 
@@ -330,6 +345,19 @@ public static class PlayerManager
     public static string GetPlayerModel(int playerNumber)
     {
         return playerCharacters[playerNumber];
+    }
+
+    #endregion
+
+    #region Character FMOD Events
+
+    private static CharacterEventTable allCharacterEvents;
+
+    public static CharacterFMODEvents GetPlayerFMODEvent(int playerNumber)
+    {
+        if (allCharacterEvents == null) allCharacterEvents = Resources.Load<CharacterEventTable>("CharacterEvents/CharacterEventTable");
+
+        return allCharacterEvents.GetCharacterEvents(GetPlayerModel(playerNumber));
     }
 
     #endregion

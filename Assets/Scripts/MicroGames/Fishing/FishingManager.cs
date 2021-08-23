@@ -56,12 +56,12 @@ public class FishingManager : MonoBehaviour
 
             if (isLeft)
             {
-                f.transform.localPosition = Vector3.left * 10f;
+                f.transform.localPosition = Vector3.left * 15f;
                 f.transform.localRotation = Quaternion.Euler(0, 90f, 0);
             }
             else
             {
-                f.transform.localPosition = Vector3.right * 10f;
+                f.transform.localPosition = Vector3.right * 15f;
                 f.transform.localRotation = Quaternion.Euler(0, 90f + 180f, 0);
             }
 

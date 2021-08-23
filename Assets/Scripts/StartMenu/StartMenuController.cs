@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using Rewired;
 using System;
 using System.Collections;
@@ -17,6 +19,20 @@ public class StartMenuController : MonoBehaviour
 
     [SerializeField]
     private CameraCanvasPosition starting;
+
+    [SerializeField, EventRef]
+    private string moveToEvent;
+    [SerializeField, EventRef]
+    private string goBackEvent;
+    [SerializeField, EventRef]
+    private string menuEvent;
+    [SerializeField, ParamRef]
+    private string ambientParameter;
+    private EventInstance menuEventInstance;
+
+
+
+
 
     private CameraCanvasPosition current;
     private CameraCanvasPosition previous;
@@ -42,25 +58,35 @@ public class StartMenuController : MonoBehaviour
     {
         StopBackRegister.onOccupied.AddListener(() => canGoBack = false);
         StopBackRegister.onUnOccupied.AddListener(() => canGoBack = true);
+        menuEventInstance = RuntimeManager.CreateInstance(menuEvent);
+        menuEventInstance.start();
     }
 
     private void OnDisable()
     {
         StopBackRegister.onOccupied.RemoveAllListeners();
         canGoBack = true;
+        menuEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        menuEventInstance.release();
     }
 
     private void Start()
     {
         current = starting;
 
+        // Haha ccp... Pooh Bear
         foreach (var ccp in positions)
         {
             if (ccp != current)
             {
-                ccp.canvasGroup.gameObject.SetActive(false);
                 ccp.canvasGroup.alpha = 0f;
+                ccp.canvasGroup.gameObject.SetActive(false);
             }
+        }
+
+        if (PlayerManager.PlayerCount > 0)
+        {
+            MoveTo(positions[0].name);
         }
     }
 
@@ -69,34 +95,20 @@ public class StartMenuController : MonoBehaviour
     {
         if (!isMoving)
         {
-            //foreach (var player in ReInput.players.AllPlayers)
-            //{
-            //    if (player.GetButtonDown("Start"))
-            //    {
-            //        if (PlayerManager.PlayerCount == 0) PlayerManager.AddPlayer(0, player.id);
-            //        MoveTo(positions[cur].name);
-            //        cur++;
-            //    }
-            //}
-            //{
-            //    if (PlayerManager.GetPlayer(0).GetButtonDown("Cancel"))
-            //    {
-            //        cur--;
-            //        GoBack();
-            //    }
-            //}
-
+            // Add the first player to the game and move to the first menu screen
             if (PlayerManager.PlayerCount == 0)
             {
                 foreach (var player in ReInput.players.AllPlayers)
                 {
                     if (player.GetButtonDown("Start"))
                     {
+                        RuntimeManager.StudioSystem.setParameterByName(ambientParameter, 1f); // Play ambient and music
                         PlayerManager.AddPlayer(0, player.id);
                         MoveTo(positions[0].name);
                     }
                 }
             }
+            // Go back...
             else
             {
                 if (PlayerManager.GetPlayer(0).GetButtonDown("Cancel") && canGoBack)
@@ -106,6 +118,7 @@ public class StartMenuController : MonoBehaviour
             }
         }
 
+        // Hard setting of the position as the transform might be moving so we want to constantly follow it
         if (!isMoving)
         {
             camera.transform.position = current.transform.position;
@@ -125,11 +138,18 @@ public class StartMenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Move to the screen with the given name
+    /// </summary>
+    /// <param name="name"></param>
     public void MoveTo(string name)
     {
         previous = current;
         undo.Push(previous);
         current = positions.First(p => p.name == name);
+
+        // Play the move to sfx
+        RuntimeManager.PlayOneShot(moveToEvent);
 
         StartCoroutine(MoveToRoutine(previous, current));
     }
@@ -142,6 +162,11 @@ public class StartMenuController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(EventSystem.current.gameObject);
 
         to.canvasGroup.gameObject.SetActive(true);
+
+        if (to.canvasGroup.GetComponent<StartMenuEvents>())
+            to.canvasGroup.GetComponent<StartMenuEvents>().Enter();
+        if (from.canvasGroup.GetComponent<StartMenuEvents>())
+            from.canvasGroup.GetComponent<StartMenuEvents>().Exit();
 
         float time = 0f;
         float timeBeforeAlpha = 0.5f;
@@ -165,13 +190,21 @@ public class StartMenuController : MonoBehaviour
         isMoving = false;
     }
 
+    /// <summary>
+    /// Go back to the previous window
+    /// </summary>
     public void GoBack()
     {
         previous = current;
         current = undo.Pop();
 
+        // Play go back sfx
+        RuntimeManager.PlayOneShot(goBackEvent);
+
+        // If we made it back to the title menu
         if (undo.Count == 0)
         {
+            RuntimeManager.StudioSystem.setParameterByName(ambientParameter, 0f); // Play the ambient only
             PlayerManager.RemovePlayer(0);
         }
 
