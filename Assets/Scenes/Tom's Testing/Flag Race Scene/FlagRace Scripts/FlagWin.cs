@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class FlagWin : MonoBehaviour
 {
-
-    // Once the player enters the trigger zone, prints "player wins"
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            print("Player wins");
-         
+            other.GetComponent<Animator>().SetTrigger("Victory");
         }
     }
 }
