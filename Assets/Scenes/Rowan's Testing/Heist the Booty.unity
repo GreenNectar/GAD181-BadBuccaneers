@@ -3344,6 +3344,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1932559302915978056, guid: 3a0d9935785ef0d42b36e1c16f71768d, type: 3}
+      propertyPath: playerNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6873659247581312094, guid: 3a0d9935785ef0d42b36e1c16f71768d, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -3990,6 +3994,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1932559302915978056, guid: 3a0d9935785ef0d42b36e1c16f71768d, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6873659247581312094, guid: 3a0d9935785ef0d42b36e1c16f71768d, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -5011,6 +5019,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1932559302915978056, guid: 3a0d9935785ef0d42b36e1c16f71768d, type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6873659247581312094, guid: 3a0d9935785ef0d42b36e1c16f71768d, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1

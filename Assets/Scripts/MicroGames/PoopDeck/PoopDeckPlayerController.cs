@@ -17,8 +17,6 @@ public class PoopDeckPlayerController : MicroGamePlayerController
     private Transform mop;
     [SerializeField]
     private Animator mirroredPlayer;
-    [SerializeField]
-    private Animator mirroredMopAnimator;
 
     private Animator animator;
 
@@ -30,12 +28,6 @@ public class PoopDeckPlayerController : MicroGamePlayerController
 
     protected override void Start()
     {
-        // Deactivate the mirrored player the player is not joined
-        if (PlayerNumber > PlayerManager.PlayerCount - 1 && PlayerManager.PlayerCount != 0)
-        {
-            mirroredPlayer.gameObject.SetActive(false);
-        }
-
         base.Start();
 
         animator = GetComponent<Animator>();
@@ -131,12 +123,6 @@ public class PoopDeckPlayerController : MicroGamePlayerController
             // Set the rotation
             transform.localRotation = Quaternion.Euler(currentEuler);
         }
-
-        mirroredMopAnimator.SetFloat("Horizontal", -player.GetAxis("RightMoveX"));
-        mirroredMopAnimator.SetFloat("Vertical", player.GetAxis("RightMoveY"));
-
-        //mopAnimator.speed = 1f + Mathf.Clamp(movement.magnitude, 0f, 1f) * mopSpeedMoveMultiplier;
-        //mirroredMopAnimator.speed = mopAnimator.speed;
     }
 
     private void Mop()

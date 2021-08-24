@@ -745,6 +745,7 @@ GameObject:
   - component: {fileID: 6873659247948821462}
   - component: {fileID: 6873659247948821448}
   - component: {fileID: 8522832076823835885}
+  - component: {fileID: 1932559302915978056}
   m_Layer: 0
   m_Name: HeistTheBootyPlayer
   m_TagString: Untagged
@@ -870,6 +871,19 @@ MonoBehaviour:
   - {fileID: 6873659247590864590}
   - {fileID: 6873659247590680788}
   - {fileID: 6873659247590837132}
+--- !u!114 &1932559302915978056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873659247590681646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550b3d455c8ac3d40bc8f8b7b88f7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!1 &6873659247590684402
 GameObject:
   m_ObjectHideFlags: 0

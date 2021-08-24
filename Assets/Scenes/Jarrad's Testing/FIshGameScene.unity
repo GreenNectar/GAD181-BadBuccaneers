@@ -377,7 +377,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh283480
+  m_Name: pb_Mesh-272282
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -541,7 +541,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh282042
+  m_Name: pb_Mesh-273650
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1035,6 +1035,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1569428922}
+    - target: {fileID: 6036994533472716429, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8772349031127100061, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
       propertyPath: playerNumber
       value: 2
@@ -1189,6 +1193,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 873376225}
+    - target: {fileID: 6036994533472716429, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
+      propertyPath: playerNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8772349031127100061, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
       propertyPath: playerNumber
       value: 3
@@ -1536,7 +1544,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh284188
+  m_Name: pb_Mesh-271632
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1700,7 +1708,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh282808
+  m_Name: pb_Mesh-272994
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2623,6 +2631,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1600928323}
+    - target: {fileID: 6036994533472716429, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8772349031127100061, guid: f9efbb2814947bb469c03a4170a3edd5, type: 3}
       propertyPath: playerNumber
       value: 1
