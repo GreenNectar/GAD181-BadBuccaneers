@@ -6,9 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Jarrad's Testing/IntroScene.unity
+    guid: 6185aab830e91c84ebfcf5e9d3e83e4b
+  - enabled: 1
+    path: Assets/Scenes/Jarrad's Testing/MicroGameOverlay.unity
+    guid: 1e0e12aec2553c64c96b6e6979d0f0a1
+  - enabled: 0
+    path: Assets/Scenes/Jarrad's Testing/CharacterSelection.unity
+    guid: 1bb6cd3c92a20ca4eb4ecd5f63153c11
+  - enabled: 1
     path: Assets/Scenes/Jarrad's Testing/LockpickingScene.unity
     guid: 643a90c0a03754a4b81c77705c539bd9
   - enabled: 1
     path: Assets/Scenes/Jarrad's Testing/FIshGameScene.unity
     guid: 93818d914c2db014fb9d4b3b19baa963
+  - enabled: 0
+    path: Assets/Scenes/Jarrad's Testing/PoopDeckScene.unity
+    guid: b72353e591c1e0e49972bbf15c50efd9
+  - enabled: 0
+    path: Assets/Scenes/Jarrad's Testing/ResultsScreen.unity
+    guid: 880f3dfb7a9d6b54785d742e5c2ce683
+  - enabled: 1
+    path: Assets/Scenes/Jarrad's Testing/HotBomb.unity
+    guid: a3de2986c04a4e54bbb90441e7110a65
   m_configObjects: {}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,5 +40,50 @@ public static class Extensions
     public static float StepFloor(this float value, float max, int steps)
     {
         return Mathf.Floor(value / (max / steps)) * (max / steps);
+    }
+
+    /// <summary>
+    /// Performs an action on all array elements
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="source"></param>
+    /// <param name="action"></param>
+    public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+    {
+        foreach (T item in source)
+            action(item);
+    }
+
+    public static string Ordinal(this int number)
+    {
+        string[] ordinals = { "umm", "st", "nd", "rd", "th" };
+        string ordinal = "bruh";
+
+        if (number <= 20)
+        {
+            ordinal = number.ToString() + ordinals[Mathf.Clamp(number, 0, 4)];
+        }
+        else
+        {
+            switch (number % 10)
+            {
+                case 1:
+                    ordinal = number.ToString() + ordinals[1];
+                    break;
+                case 2:
+                    ordinal = number.ToString() + ordinals[2];
+                    break;
+                case 3:
+                    ordinal = number.ToString() + ordinals[3];
+                    break;
+                default:
+                    ordinal = number.ToString() + ordinals[4];
+                    break;
+            }
+
+            //ordinal = number.ToString() + ordinals[Mathf.Clamp((number % 10), 1, 4)];
+        }
+
+        return ordinal;
     }
 }
