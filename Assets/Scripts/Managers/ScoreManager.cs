@@ -15,15 +15,15 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
     public int maximumPoints = 0; // Used for percentage
 
     public Score[] oldScores { get; set; } = new Score[]{
-        new Score { player = 0 },
-        new Score { player = 1 },
-        new Score { player = 2 },
-        new Score { player = 3 }};
+        new Score { player = 0, position = 0 },
+        new Score { player = 1, position = 1 },
+        new Score { player = 2, position = 2 },
+        new Score { player = 3, position = 3 }};
     public Score[] scores { get; set; } = new Score[]{
-        new Score { player = 0 },
-        new Score { player = 1 },
-        new Score { player = 2 },
-        new Score { player = 3 }};
+        new Score { player = 0, position = 0 },
+        new Score { player = 1, position = 1 },
+        new Score { player = 2, position = 2 },
+        new Score { player = 3, position = 3 }};
 
     public bool AllPlayersFinished => playersEnded.Count >= PlayerManager.PlayerCountScaled;
 
