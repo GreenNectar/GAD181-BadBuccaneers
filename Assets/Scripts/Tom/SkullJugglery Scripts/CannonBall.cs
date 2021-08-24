@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class CannonBall : MonoBehaviour
 {
-    //[SerializeField]
-    //public float farRight;
-    //public float farLeft;
+
     public float frontBarrier;
     public float backBarrier;
 
@@ -16,5 +14,13 @@ public class CannonBall : MonoBehaviour
         Vector3 clampedPosition = transform.position;
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, frontBarrier, backBarrier);
         transform.position = clampedPosition;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bucket"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
