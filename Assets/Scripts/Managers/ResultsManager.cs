@@ -57,7 +57,6 @@ public class ResultsManager : MonoBehaviour
     private void Start()
     {
         Initialise();
-        SortScores();
         Invoke("ResultsSequence", 2f);
         //ResultsSequence();
     }
@@ -116,6 +115,16 @@ public class ResultsManager : MonoBehaviour
         SetScorePositions(Scores);
         SetScorePositions(OldScores);
 
+        //foreach (var score in Scores)
+        //{
+        //    Debug.Log($"player {score.player} is in position {score.position} with score of {score.score}");
+            
+        //}
+        //foreach (var score in OldScores)
+        //{
+        //    Debug.Log($"player {score.player} was in position {score.position} with score of {score.score}");
+        //}
+
         // Get the scores ordered by player
         oldScores = OldScores.OrderBy(s => s.player).Select(s => s.score).ToArray();
         newScores = Scores.OrderBy(s => s.player).Select(s => s.score).ToArray();
@@ -137,18 +146,6 @@ public class ResultsManager : MonoBehaviour
 
         // Start the sort animation
         StartCoroutine(ScoreSequence());
-
-        // Copy the new score score into the old score
-        foreach (var score in Scores)
-        {
-            foreach (var oldScore in OldScores)
-            {
-                if (oldScore.player == score.player)
-                {
-                    oldScore.score = score.score;
-                }
-            }
-        }
     }
 
     private void SetScorePositions(Score[] scores)
@@ -164,8 +161,6 @@ public class ResultsManager : MonoBehaviour
             {
                 scores[i].position = i + 1;
             }
-
-            //scores[i].position = i + 1;
         }
     }
 
@@ -187,18 +182,6 @@ public class ResultsManager : MonoBehaviour
 
             return true;
         });
-
-        // Animate ordinals disappearing
-        //float time = 0f;
-        //while (time < 1f)
-        //{
-        //    time += Time.deltaTime * 4f;
-        //    for (int i = 0; i < resultsControllers.Length; i++)
-        //    {
-        //        resultsControllers[i].SetPositionSize(Vector2.Lerp(scales[i], Vector2.zero, time));
-        //    }
-        //    yield return null;
-        //}
 
         // Show progress
         string[] progress = new string[PlayerManager.PlayerCountScaled];
@@ -271,11 +254,6 @@ public class ResultsManager : MonoBehaviour
             resultsControllers[i].UpdatePosition(Scores.First(s => s.player == i).position);
         }
 
-        //foreach (var resultController in resultsControllers)
-        //{
-        //    resultController.UpdatePosition(Scores.First(s => s.player == resultController.playerNumber).position);
-        //}
-
         // Animate ordinals appearing in order
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
@@ -294,8 +272,6 @@ public class ResultsManager : MonoBehaviour
         }
 
         // Play the reaction
-        //foreach (var score in Scores)
-        //{
         for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
             int p = Scores[i].player;
@@ -305,6 +281,15 @@ public class ResultsManager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
         }
+
+        // Move the new scores into the old ones
+        foreach (var score in Scores)
+        {
+            Score oldScore = OldScores.First(s => s.player == score.player);
+            oldScore.position = score.position;
+            oldScore.score = score.score;
+        }
+        //OldScores = (Score[])Scores.Clone(); // It just copied the references :|
 
         // Wait for a bit
         yield return new WaitForSeconds(1f);

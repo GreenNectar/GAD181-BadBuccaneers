@@ -92,7 +92,7 @@ public class ResultsController : MonoBehaviour
     private IEnumerator IncrementScore(int from, int to)
     {
         // Initialise some shit
-        int coinDifference = Mathf.Abs(to - from);
+        int coinDifference = to - from;// Mathf.Abs(to - from); // The absolute made it fucking impossible to bug fix >:|
         addedCoinsScore.text = "+" + coinDifference.ToString();
 
         // Show addition coins
