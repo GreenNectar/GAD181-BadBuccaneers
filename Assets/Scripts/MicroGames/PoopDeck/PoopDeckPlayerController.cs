@@ -16,8 +16,6 @@ public class PoopDeckPlayerController : MicroGamePlayerController
     [SerializeField]
     private Transform mop;
     [SerializeField]
-    private Animator mopAnimator;
-    [SerializeField]
     private Animator mirroredPlayer;
     [SerializeField]
     private Animator mirroredMopAnimator;
@@ -134,8 +132,6 @@ public class PoopDeckPlayerController : MicroGamePlayerController
             transform.localRotation = Quaternion.Euler(currentEuler);
         }
 
-        mopAnimator.SetFloat("Horizontal", -player.GetAxis("RightMoveX"));
-        mopAnimator.SetFloat("Vertical", player.GetAxis("RightMoveY"));
         mirroredMopAnimator.SetFloat("Horizontal", -player.GetAxis("RightMoveX"));
         mirroredMopAnimator.SetFloat("Vertical", player.GetAxis("RightMoveY"));
 

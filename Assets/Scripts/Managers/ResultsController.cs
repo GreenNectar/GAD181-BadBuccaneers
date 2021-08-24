@@ -29,7 +29,6 @@ public class ResultsController : MonoBehaviour
         playerName.text = $"Player {playerNumber + 1}";
     }
 
-
     //public void UpdateUI()
     //{
     //    playerName.text = $"Player {playerNumber + 1}";
@@ -63,7 +62,7 @@ public class ResultsController : MonoBehaviour
         }
     }
 
-    private void UpdateWinText(int number)
+    public void UpdateWinText(int number)
     {
         wins.text = "Score: " + number.ToString();
     }

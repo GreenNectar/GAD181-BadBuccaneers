@@ -2005,6 +2005,10 @@ MonoBehaviour:
   time: 45
   onStart: 1
   finishLevelOnComplete: 1
+  stopTimerOnPlayersFinished: 0
+  onTimerFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1667121518
 Transform:
   m_ObjectHideFlags: 0
@@ -2422,7 +2426,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977951341}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}

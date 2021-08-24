@@ -247,7 +247,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637653578177730782
+  lastModified: 637653648237637573
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -272,7 +272,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 10000
   Length: 740
 --- !u!114 &-8247831672724887261
 MonoBehaviour:
@@ -375,7 +375,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637653578176833024
+  lastModified: 637653648236784454
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -568,6 +568,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 1
+--- !u!114 &-7269148758180801349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &-7257651005071276327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +841,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 10000
   Length: 1793
 --- !u!114 &-5955455067972268485
 MonoBehaviour:
@@ -946,7 +966,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 10000
   Length: 1667
 --- !u!114 &-5486035609737260037
 MonoBehaviour:
@@ -1050,6 +1070,26 @@ MonoBehaviour:
   ID:
     data1: 3647290023
     data2: 533984493
+  Exists: 0
+--- !u!114 &-4951475792215860459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
   Exists: 0
 --- !u!114 &-4910994830208906294
 MonoBehaviour:
@@ -1226,7 +1266,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637653578179074943
+  lastModified: 637653648238902377
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1478,7 +1518,7 @@ MonoBehaviour:
   ID:
     data1: 1685736616
     data2: 2294900714
-  Exists: 1
+  Exists: 0
 --- !u!114 &-3655426169421299366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,7 +1560,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 10000
   Length: 1643
 --- !u!114 &-3507101783815071769
 MonoBehaviour:
@@ -1597,7 +1637,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Characters.bank
   Name: Characters
   StudioPath: bank:/Characters
-  lastModified: 637653578176768544
+  lastModified: 637653648236724936
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1985,7 +2025,7 @@ MonoBehaviour:
   ID:
     data1: 3647290023
     data2: 533984493
-  Exists: 1
+  Exists: 0
 --- !u!114 &-2198350708730441781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,7 +2041,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 637653578179600703
+  lastModified: 637653648239418212
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2064,7 +2104,7 @@ MonoBehaviour:
   ID:
     data1: 194308427
     data2: 4170436746
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1917946611703240636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,7 +2606,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Menu.bank
   Name: Menu
   StudioPath: bank:/Menu
-  lastModified: 637653578177696065
+  lastModified: 637653648237597892
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2844,15 +2884,12 @@ MonoBehaviour:
   - {fileID: 8675552052292927243}
   - {fileID: 5350671382695355495}
   - {fileID: 8597680166331892587}
-  EditorParameters:
-  - {fileID: -2251581055800748359}
-  - {fileID: -3735353303324099317}
-  - {fileID: -1977174322493557796}
+  EditorParameters: []
   MasterBanks:
   - {fileID: -7915175570962427464}
   StringsBanks:
   - {fileID: 2969618632254900566}
-  stringsBankWriteTime: 637653578176862787
+  stringsBankWriteTime: 637653648236809251
   cacheVersion: 6
 --- !u!114 &147504836299398273
 MonoBehaviour:
@@ -2955,6 +2992,26 @@ MonoBehaviour:
     data2: 533984493
   Exists: 0
 --- !u!114 &559440423514691671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
+--- !u!114 &595864279921830430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3629,7 +3686,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637653578176862787
+  lastModified: 637653648236809251
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -3736,7 +3793,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 637653578174720064
+  lastModified: 637653648234919493
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4831,7 +4888,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 637653578179322944
+  lastModified: 637653648239145411
   LoadResult: 0
   FileSizes: []
   Exists: 1

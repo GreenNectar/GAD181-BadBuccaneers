@@ -23,6 +23,8 @@ public class GameManager : Singleton<GameManager>
     private Stack<MicroGame> levelsToPlay = new Stack<MicroGame>();
     public MicroGame currentMicroGame { get; private set; } = null;
 
+    private int numberOfLevels;
+
     public bool IsInPracticeMode
     {
         get
@@ -47,6 +49,11 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         EventManager.onResultsFinish.RemoveListener(LoadNextLevel);
+    }
+
+    public void SetLevels(int level)
+    {
+        numberOfLevels = level;
     }
 
     /// <summary>
@@ -128,16 +135,13 @@ public class GameManager : Singleton<GameManager>
         // Clear the current levels stacked
         levelsToPlay.Clear();
 
-        // How many levels we want to add
-        int levelsToAdd = 3;
-
         // The stack we will be getting the levels from
         //string[] temp = new string[levels.Count];
         //levels.CopyTo(temp);
         List<MicroGame> levelStack = levels.ToList();//temp.ToList();
 
         // Go through each level and randomly add a level then remove it from the stack
-        for (int i = 0; i < Mathf.Clamp(levelsToAdd, 0, levels.Count); i++)
+        for (int i = 0; i < Mathf.Clamp(numberOfLevels, 0, levels.Count); i++)
         {
             int randomLevelIndex = Random.Range(0, levelStack.Count);
             levelsToPlay.Push(levelStack[randomLevelIndex]);

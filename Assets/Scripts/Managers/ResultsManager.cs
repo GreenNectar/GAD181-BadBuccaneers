@@ -89,8 +89,14 @@ public class ResultsManager : MonoBehaviour
         OldScores = OldScores.OrderBy(s => -s.score).ToArray();
 
         // Set the ordinal positions
-        SetScorePositions(Scores);
+        //SetScorePositions(Scores);
         SetScorePositions(OldScores);
+
+        foreach (var result in FindObjectsOfType<ResultsController>())
+        {
+            result.UpdateWinText(OldScores[result.playerNumber].score);
+        }
+
 
         // Increment the counters
         foreach (var resultController in FindObjectsOfType<ResultsController>().OrderBy(r => r.playerNumber))

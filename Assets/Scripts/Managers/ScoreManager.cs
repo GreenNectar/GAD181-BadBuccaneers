@@ -172,6 +172,11 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         EventManager.onPlayerFinish.Invoke();
     }
 
+    public bool HasPlayerEnded(int player)
+    {
+        return playersEnded.Contains(player);
+    }
+
     public int GetScore(int player)
     {
         return playerPoints[player];
