@@ -13,6 +13,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
     public float[] playerStartTime = new float[4];
     public float[] playerTime = new float[4];
     public int maximumPoints = 0; // Used for percentage
+    public bool isGivingPoints = false;
 
     public Score[] oldScores { get; set; } = new Score[]{
         new Score { player = 0, position = 0 },
@@ -135,6 +136,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         playerStartTime = new float[4];
         playerTime = new float[4];
         maximumPoints = 0;
+        isGivingPoints = false;
     }
 
     public void OnMicroGameLoad()

@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: DumbWithRum
   m_EditorClassIdentifier: 
   title: Dumb with Rum
-  description: 
+  description: 'See which one of ye can drink the most
+
+    Watch out, your inebriation
+    sneaks up on you like you did to Davy Jones'' locker (of clothes)'
   developers: Rowan
   minimumRequiredPlayers: 1
-  microGameScene: IntroScene
+  microGameScene: Dumb with Rum
   controls:
   - description: Drink
     buttons: <sprite name="Controller-S">
   scoreType: 0
-  scoreLayout: 0
+  scoreLayout: 1
+  voiceOverEvent: event:/VO/PracticeVO_DumbWithRum

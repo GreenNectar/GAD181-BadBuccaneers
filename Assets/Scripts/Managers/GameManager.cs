@@ -152,15 +152,30 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// This is the static version for invoking
     /// </summary>
-    public static void EndGameStatic()
+    public static void EndGameStatic(float time = 0f)
     {
-        Instance.EndGame();
+        Instance.EndGame(time);
+    }
+
+    
+    public void EndGame(float time = 0f)
+    {
+        if (time > 0f)
+            StartCoroutine(EndGameRoutine(time));
+        else
+            EndGame();
+    }
+
+    private IEnumerator EndGameRoutine(float time = 0f)
+    {
+        yield return new WaitForSeconds(time);
+        EndGame();
     }
 
     /// <summary>
     /// End the game. If in practice mode it restarts the level, otherwise it loads the results screen
     /// </summary>
-    public void EndGame()
+    private void EndGame()
     {
         if (IsInPracticeMode)
         {

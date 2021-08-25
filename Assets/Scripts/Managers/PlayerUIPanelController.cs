@@ -80,7 +80,8 @@ public class PlayerUIPanelController : MonoBehaviour, IMicroGameLoad
 
     private void SetElimination()
     {
-        output.text = ScoreManager.Instance.HasPlayerEnded(playerNumber) ? ScoreManager.Instance.playerPositions[playerNumber].Ordinal() : "";
+        if (!GameManager.Instance.currentMicroGame || (GameManager.Instance.currentMicroGame && GameManager.Instance.currentMicroGame.scoreType == MicroGame.ScoreType.Elimination))
+            output.text = ScoreManager.Instance.HasPlayerEnded(playerNumber) ? ScoreManager.Instance.playerPositions[playerNumber].Ordinal() : "";
     }
 
     private void SetFirstToEnd(int player)

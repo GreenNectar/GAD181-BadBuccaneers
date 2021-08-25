@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{21c8c214-93ea-48f3-bf71-991e48f938a0}">
+		<property name="name">
+			<value>ReelingIn</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bb14ca34-40aa-4d62-9ef5-9bebbb0f934b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{4b7fc91c-0a95-422b-b56a-99ced8f4ad01}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{4b7fc91c-0a95-422b-b56a-99ced8f4ad01}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
