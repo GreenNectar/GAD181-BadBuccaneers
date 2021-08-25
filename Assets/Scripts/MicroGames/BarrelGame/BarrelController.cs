@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,18 @@ public class BarrelController : MonoBehaviour
         currentHeight = transform.position.y;
         offset = intialOffset;
 
+        UpdateTransform();
+
         StartCoroutine(RollSequence());
     }
 
     // Update is called once per frame
     void Update()
+    {
+        UpdateTransform();
+    }
+
+    private void UpdateTransform()
     {
         // Previous position
         if (Physics.Raycast((Vector3.up * 100f) + startingPosition + direction * offset, Vector3.down, out RaycastHit hit, 1000f, LayerMask.GetMask("Default")))

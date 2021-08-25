@@ -69,6 +69,10 @@ public class HotBombPlayerController : TopDownPlayerController
         // Stop playing footstep sounds
         footsteps.enabled = false;
 
+        // Stop vibing
+        Vibrator.Instance.Vibrate(PlayerNumber, 0, 0f);
+        Vibrator.Instance.Vibrate(PlayerNumber, 1, 0f);
+
         // Play the death sound for the player
         PlayerManager.GetPlayerFMODEvent(PlayerNumber).Death(gameObject);
 

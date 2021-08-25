@@ -14,7 +14,7 @@ public class BarrelGamePlayerController : TopDownPlayerController
     [SerializeField, EventRef]
     private string impactEvent;
 
-    private bool hasWipedOut = false;
+    public bool hasWipedOut { get; private set; } = false;
 
     protected override void Start()
     {
@@ -42,6 +42,8 @@ public class BarrelGamePlayerController : TopDownPlayerController
         StartCoroutine(MoveToOutside());
         Instantiate(impactFX, transform.TransformPoint(GetComponent<CharacterController>().center), Quaternion.identity);
         ScoreManager.Instance.EndPlayer(PlayerNumber);
+        Vibrator.Instance.ImpactVbration(PlayerNumber, 0, 0.5f);
+        Vibrator.Instance.ImpactVbration(PlayerNumber, 1, 0.5f);
         PlayerManager.GetPlayerFMODEvent(PlayerNumber).Death(gameObject);
         RuntimeManager.PlayOneShot(impactEvent, transform.position);
     }

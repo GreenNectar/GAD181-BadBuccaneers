@@ -21,9 +21,9 @@ MonoBehaviour:
   minimumRequiredPlayers: 1
   microGameScene: LockpickingScene
   controls:
-  - description: Moves pick left
+  - description: Moves left pick
     buttons: <sprite name="Thumbstick-L">
-  - description: Moves pick right
+  - description: Moves right pick
     buttons: <sprite name="Thumbstick-R">
   - description: Unlock
     buttons: Right Trigger

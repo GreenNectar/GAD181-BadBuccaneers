@@ -15,15 +15,15 @@ public class Footsteps : MonoBehaviour
 
     private void OnEnable()
     {
-        previousPosition = transform.position;
+        previousPosition = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Play the walk sound
-        walkDistance += (transform.position - previousPosition).magnitude;
-        previousPosition = transform.position;
+        walkDistance += (transform.localPosition - previousPosition).magnitude;
+        previousPosition = transform.localPosition;
         if (walkDistance > maxWalk)
         {
             walkDistance %= maxWalk;

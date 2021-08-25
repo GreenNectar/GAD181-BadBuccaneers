@@ -2065,6 +2065,7 @@ MonoBehaviour:
   - {fileID: 2509286668605422522}
   - {fileID: 2509286668605494194}
   skeletonModel: {fileID: 2509286668605422522}
+  footsteps: {fileID: 1770665994527244934}
   holdingWeight: 0
 --- !u!114 &4591378113229190203
 MonoBehaviour:
@@ -2121,6 +2122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkEvent: event:/SFX/Footstep/Sand
+  maxWalk: 1
 --- !u!1 &2509286668605422522
 GameObject:
   m_ObjectHideFlags: 0

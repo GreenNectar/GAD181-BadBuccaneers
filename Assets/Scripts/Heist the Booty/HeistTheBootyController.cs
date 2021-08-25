@@ -39,6 +39,22 @@ public class HeistTheBootyController : MonoBehaviour
     private float currentTimer;
 
 
+    public bool EveryoneHasChickened
+    {
+        get
+        {
+            for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+            {
+                if (chicken[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+
 
     private void Start()
     {
@@ -61,13 +77,22 @@ public class HeistTheBootyController : MonoBehaviour
             yield return StartCoroutine(Round());
         }
 
-        // End game 'animation'
-        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
-        {
-            players[i].RunToStart();
-        }
+        // Have all dead players run back to start
+        if (!EveryoneHasChickened)
+        {   
+            // End game 'animation'
+            for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+            {
+                players[i].RunToStart();
+            }
 
-        yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(5f);
+        }
+        // If all players chickened on last round, just wait a bit before ending the game
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
 
         GameManager.EndGameStatic();
     }
@@ -146,6 +171,14 @@ public class HeistTheBootyController : MonoBehaviour
                     }
                 }
             }
+
+            // If all players have chickened, exit the loop (with a little time buffer)
+            if (EveryoneHasChickened)
+            {
+                if (currentTime > 1.5f) yield return new WaitForSeconds(1.5f);
+                break;
+            }
+
             yield return null;
         }
         // End of round

@@ -160,7 +160,7 @@ public class ShellController : MonoBehaviour
         //for (int i = 0; i < votes.Length; i++) votes[i] = -1;
         for (int i = 0; i < scoresToGive.Length; i++) scoresToGive[i] = -1;
         playersVoted = 0;
-        currentScore = 3;
+        currentScore = 4;
     }
 
     private IEnumerator RoundSequence()
