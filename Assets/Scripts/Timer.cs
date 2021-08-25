@@ -68,4 +68,9 @@ public class Timer : MonoBehaviour
             }
         }
     }
+
+    public void StopTimer()
+    {
+        TimeManager.StopTimer();
+    }
 }

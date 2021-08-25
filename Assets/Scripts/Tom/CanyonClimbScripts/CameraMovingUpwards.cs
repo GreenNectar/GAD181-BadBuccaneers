@@ -23,12 +23,11 @@ public class CameraMovingUpwards : MonoBehaviour
         }
         else
         {
-        transform.Translate(Vector3.up * Time.deltaTime * upSpeed);
-        Vector3 clampedPosition = transform.position;
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, 0f, topHeight);
-        transform.position = clampedPosition;
+            transform.Translate(Vector3.up * Time.deltaTime * upSpeed, Space.World);
+            Vector3 clampedPosition = transform.position;
+            clampedPosition.y = Mathf.Clamp(clampedPosition.y, 0f, topHeight);
+            transform.position = clampedPosition;
         }
-        
     }
  
 }
