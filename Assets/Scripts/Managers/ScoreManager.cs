@@ -15,15 +15,15 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
     public int maximumPoints = 0; // Used for percentage
 
     public Score[] oldScores { get; set; } = new Score[]{
-        new Score { player = 0 },
-        new Score { player = 1 },
-        new Score { player = 2 },
-        new Score { player = 3 }};
+        new Score { player = 0, position = 0 },
+        new Score { player = 1, position = 1 },
+        new Score { player = 2, position = 2 },
+        new Score { player = 3, position = 3 }};
     public Score[] scores { get; set; } = new Score[]{
-        new Score { player = 0 },
-        new Score { player = 1 },
-        new Score { player = 2 },
-        new Score { player = 3 }};
+        new Score { player = 0, position = 0 },
+        new Score { player = 1, position = 1 },
+        new Score { player = 2, position = 2 },
+        new Score { player = 3, position = 3 }};
 
     public bool AllPlayersFinished => playersEnded.Count >= PlayerManager.PlayerCountScaled;
 
@@ -75,7 +75,7 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
                     // Connect the times to the player
                     for (int i = 0; i < PlayerManager.PlayerCount; i++)
                     {
-                        roundScores.Add(i, -playerTime[i]);
+                        roundScores.Add(i, -playerTime[i] * (HasPlayerEnded(i) ? 1f : 0f));
                     }
                     break;
                 default:
@@ -87,35 +87,34 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
 
             //https://stackoverflow.com/questions/289/how-do-you-sort-a-dictionary-by-value
             //var sortedTimes = roundScores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-            var sortedScore = from roundScore in roundScores orderby roundScore.Value descending select roundScore;
+            var sortedScores = from roundScore in roundScores orderby roundScore.Value descending select roundScore;
             // Use the sorted times to give the scores
             int score = 3;
             int previousScore = 3;
-            float previousValue = -1f;
-            foreach (var time in sortedScore)
+            float? previousValue = null;
+            foreach (var sortedScore in sortedScores)
             {
-                // 
-                if (previousValue == -1f)
+                // sortedScore.Value is the score
+                if (sortedScore.Value != 0f)
                 {
-                    scores[time.Key].score += score;
-                    previousScore = score;
-                    previousValue = time.Value;
-                }
-                else if (time.Value == 0f)
-                {
-                    scores[time.Key].score = 0;
-                }
-                else
-                {
-                    if (time.Value == previousValue)
+                    if (previousValue == null)
                     {
-                        scores[time.Key].score += previousScore;
+                        scores.First(s => s.player == sortedScore.Key).score += score;
+                        previousScore = score;
+                        previousValue = sortedScore.Value;
                     }
                     else
                     {
-                        scores[time.Key].score += score;
-                        previousScore = score;
-                        previousValue = time.Value;
+                        if (sortedScore.Value == previousValue)
+                        {
+                            scores.First(s => s.player == sortedScore.Key).score += previousScore;
+                        }
+                        else
+                        {
+                            scores.First(s => s.player == sortedScore.Key).score += score;
+                            previousScore = score;
+                            previousValue = sortedScore.Value;
+                        }
                     }
                 }
 
@@ -170,6 +169,11 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         playersEnded.Add(player);
         playerTime[player] = GlobalTimer.Time;
         EventManager.onPlayerFinish.Invoke();
+    }
+
+    public bool HasPlayerEnded(int player)
+    {
+        return playersEnded.Contains(player);
     }
 
     public int GetScore(int player)

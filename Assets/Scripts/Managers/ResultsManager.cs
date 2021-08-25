@@ -7,6 +7,20 @@ using static ScoreManager;
 
 public class ResultsManager : MonoBehaviour
 {
+    [SerializeField]
+    private Transform[] positions;
+
+    [SerializeField]
+    private Transform[] players;
+
+    [SerializeField]
+    private ResultsController[] resultsControllers;
+
+    int[] oldScores = new int[4];
+    int[] newScores = new int[4];
+
+    bool isFirstResult = true;
+
     private Score[] OldScores
     {
         get
@@ -30,29 +44,21 @@ public class ResultsManager : MonoBehaviour
         }
     }
 
-    public int GetPosition(int player)
-    {
-        return OldScores.First(s => s.player == player).position;
-    }
-
-    //public int GetOldWins(int player)
-    //{
-    //    return oldScores.First(s => s.player == player).wins;
-    //}
-
     public int GetScore(int player, Score[] scores)
     {
         return scores.First(s => s.player == player).score;
     }
 
-    //public void AddScore(int player)
+    //private void Start()
     //{
-    //    Scores.First(s => s.player == player).score++;
+    //    Invoke("ResultsSequence", 2f);
     //}
 
     private void Start()
     {
+        Initialise();
         Invoke("ResultsSequence", 2f);
+        //ResultsSequence();
     }
 
 #if UNITY_EDITOR
@@ -77,12 +83,29 @@ public class ResultsManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            SortScores();
             ResultsSequence();
         }
     }
 #endif
 
-    private void ResultsSequence()
+    private void Initialise()
+    {
+        foreach (var result in FindObjectsOfType<ResultsController>())
+        {
+            result.UpdateScoreText(OldScores[result.playerNumber].score);
+        }
+
+        SortScores();
+
+        // Put them on their correct location
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            players[OldScores[i].player].position = positions[i].position;
+        }
+    }
+
+    private void SortScores()
     {
         // Sort the scores
         Scores = Scores.OrderBy(s => -s.score).ToArray();
@@ -92,32 +115,37 @@ public class ResultsManager : MonoBehaviour
         SetScorePositions(Scores);
         SetScorePositions(OldScores);
 
+        //foreach (var score in Scores)
+        //{
+        //    Debug.Log($"player {score.player} is in position {score.position} with score of {score.score}");
+            
+        //}
+        //foreach (var score in OldScores)
+        //{
+        //    Debug.Log($"player {score.player} was in position {score.position} with score of {score.score}");
+        //}
+
+        // Get the scores ordered by player
+        oldScores = OldScores.OrderBy(s => s.player).Select(s => s.score).ToArray();
+        newScores = Scores.OrderBy(s => s.player).Select(s => s.score).ToArray();
+    }
+
+    private void ResultsSequence()
+    {
         // Increment the counters
-        foreach (var resultController in FindObjectsOfType<ResultsController>().OrderBy(r => r.playerNumber))
+        foreach (var resultController in resultsControllers.OrderBy(r => r.playerNumber))
         {
             resultController.UpdatePosition(OldScores.First(s => s.player == resultController.playerNumber).position);
 
             int p = resultController.playerNumber;
-            int from = GetScore(p, OldScores);
-            int to = GetScore(p, Scores);
+            int from = oldScores[p];
+            int to = newScores[p];
 
             resultController.StartIncrementScore(from, to);
         }
 
         // Start the sort animation
-        StartCoroutine(SortScores());
-
-        // Copy the new score score into the old score
-        foreach (var score in Scores)
-        {
-            foreach (var oldScore in OldScores)
-            {
-                if (oldScore.player == score.player)
-                {
-                    oldScore.score = score.score;
-                }
-            }
-        }
+        StartCoroutine(ScoreSequence());
     }
 
     private void SetScorePositions(Score[] scores)
@@ -136,7 +164,7 @@ public class ResultsManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SortScores()
+    private IEnumerator ScoreSequence()
     {
         // We want to wait for the values to set in
         yield return new WaitForEndOfFrame();
@@ -144,9 +172,9 @@ public class ResultsManager : MonoBehaviour
         // We want to wait until they have stopped their incrementing animation
         yield return new WaitUntil(() =>
         {
-            foreach (var result in FindObjectsOfType<ResultsController>())
+            foreach (var result in resultsControllers)
             {
-                if (result.IsIncrementing)
+                if (result.isActiveAndEnabled && result.IsIncrementing)
                 {
                     return false;
                 }
@@ -155,103 +183,116 @@ public class ResultsManager : MonoBehaviour
             return true;
         });
 
-        ResultsController[] resultsControllers = FindObjectsOfType<ResultsController>();
-
-        // Animate ordinals disappearing
-        Vector2[] scales = resultsControllers.Select(r => r.GetPositionSize()).ToArray();
-        float time = 0f;
-        while (time < 1f)
-        {
-            time += Time.deltaTime * 4f;
-            for (int i = 0; i < resultsControllers.Length; i++)
-            {
-                resultsControllers[i].SetPositionSize(Vector2.Lerp(scales[i], Vector2.zero, time));
-            }
-            yield return null;
-        }
-
-        // Check if the positions have changed
+        // Show progress
+        string[] progress = new string[PlayerManager.PlayerCountScaled];
         bool hasChangedPositions = false;
-        for (int i = 0; i < Scores.Length; i++)
+        for (int i = 0; i < progress.Length; i++)
         {
-            if (Scores[i] != OldScores[i])
+            int previousPosition = OldScores.First(s => s.player == i).position;
+            int newPosition = Scores.First(s => s.player == i).position;
+         
+            // If our position is lower (1st is lower than 4th) we are progressing
+            if (newPosition < previousPosition)
             {
+                progress[i] = "Forwards";
                 hasChangedPositions = true;
-                break;
             }
+            // I mean
+            else if (newPosition > previousPosition)
+            {
+                progress[i] = "Backwards";
+                hasChangedPositions = true;
+            }
+
+            Debug.Log($"player {i} has previous position of {previousPosition} and a new position of {newPosition} with a progression of {progress[i]}");
         }
+        
+
+        float time = 0f;
 
         // Only animate if the positions change
         if (hasChangedPositions)
         {
-            // Create a dictionary of results, this is so we can sort but keep track of the associated results
-            Dictionary<Score, ResultsController> results = new Dictionary<Score, ResultsController>();
-
-            // Add all of the scores
-            foreach (var result in FindObjectsOfType<ResultsController>())
+            // Show the progress of the player
+            for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
             {
-                results.Add(Scores.First(s => s.player == result.playerNumber), result);
+                if (!string.IsNullOrEmpty(progress[i]))
+                {
+                    resultsControllers[i].ShowArrow(true, progress[i] == "Forwards");
+                }
             }
 
-            // Sort the dictionary by the wins
-            results = results.OrderBy(r => r.Key.score).ToDictionary(r => r.Key, r => r.Value);
+            // Wait for a bit
+            yield return new WaitForSeconds(1f);
 
-            // Store the starting positions
-            Vector3[] startingPositions = results.Select(r => r.Value.transform.position).ToArray();
-
-            // Set as first sibling. This makes the horizontal layout group sort it, which we will lerp to
-            foreach (var result in results)
+            // Get the starting and ending positions
+            int playerCount = PlayerManager.PlayerCountScaled;
+            Vector3[] startingPositions = new Vector3[playerCount];
+            Vector3[] endingPositions = new Vector3[playerCount];
+            for (int i = 0; i < playerCount; i++)
             {
-                result.Value.transform.SetAsFirstSibling();
+                startingPositions[OldScores[i].player] = positions[i].position;
+                endingPositions[Scores[i].player] = positions[i].position;
             }
 
-            // Wait until the horizontal layout group sorts it
-            yield return new WaitForEndOfFrame();
-
-            // Store the ending positions
-            Vector3[] endingPositions = results.Select(r => r.Value.transform.position).ToArray();
-
-            // Disable the layout group, this is so it doesn't overwrite the position we want it to be on
-            var hlg = FindObjectOfType<HorizontalLayoutGroup>();
-            hlg.enabled = false;
-
-            // Lerp the ordinal element from its starting position to its ending position
+            // Lerp the players to the new positions
             time = 0f;
             while (time < 1f)
             {
                 time += Time.deltaTime;
-                int index = 0;
-                foreach (var result in results)
+                for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
                 {
-                    result.Value.transform.position = Vector3.Lerp(startingPositions[index], endingPositions[index], time);
-                    index++;
+                    players[i].transform.position = Vector3.Lerp(startingPositions[i], endingPositions[i], time);
                 }
                 yield return null;
             }
-
-            // Reenable the layout group, we should be in the correct position by then so this should do nothing visibly
-            hlg.enabled = true;
         }
 
-        foreach (var resultController in FindObjectsOfType<ResultsController>())
+        // Update ordinals
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
-            resultController.UpdatePosition(Scores.First(s => s.player == resultController.playerNumber).position);
+            resultsControllers[i].UpdatePosition(Scores.First(s => s.player == i).position);
         }
-
-        // Sort by sibling index, this is so we have the first player's position be shown first
-        resultsControllers = resultsControllers.OrderBy(r => r.transform.GetSiblingIndex()).ToArray();
 
         // Animate ordinals appearing in order
-        for (int i = 0; i < resultsControllers.Length; i++)
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
         {
-            time = 0f;
-            while (time < 1f)
+            resultsControllers[Scores[i].player].ShowOrdinal();
+            yield return new WaitForSeconds(1f);
+        }
+
+        // Hide the progress of the player
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            if (!string.IsNullOrEmpty(progress[i]))
             {
-                time += Time.deltaTime * 2f;
-                resultsControllers[i].SetPositionSize(Vector2.Lerp(Vector2.zero, scales[i], time));
-                yield return null;
+                var playerResultController = resultsControllers[i];
+                playerResultController.ShowArrow(false, false);
             }
         }
+
+        // Play the reaction
+        for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
+        {
+            int p = Scores[i].player;
+            if (!string.IsNullOrEmpty(progress[p]))
+            {
+                resultsControllers[p].PlayReaction(progress[p] == "Forwards");
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        // Move the new scores into the old ones
+        foreach (var score in Scores)
+        {
+            Score oldScore = OldScores.First(s => s.player == score.player);
+            oldScore.position = score.position;
+            oldScore.score = score.score;
+        }
+        //OldScores = (Score[])Scores.Clone(); // It just copied the references :|
+
+        // Wait for a bit
+        yield return new WaitForSeconds(1f);
 
         // Wait before we finish with the results
         yield return new WaitForSeconds(3f);

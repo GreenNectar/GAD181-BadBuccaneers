@@ -4620,6 +4620,7 @@ GameObject:
   - component: {fileID: 2870036954254436856}
   - component: {fileID: 2870036954254436806}
   - component: {fileID: 2870036954254436807}
+  - component: {fileID: 4759769739255713818}
   m_Layer: 0
   m_Name: LockPickingGame
   m_TagString: Untagged
@@ -4689,6 +4690,7 @@ MonoBehaviour:
   rotationRight: 90
   currentRotationLeft: 0
   currentRotationRight: 0
+  timer: {fileID: 0}
   chests:
   - pins:
     - pins:
@@ -4726,6 +4728,19 @@ MonoBehaviour:
   openChestEvent: event:/SFX/Lockpicking/OpenChest
   openLastChestEvent: event:/SFX/Lockpicking/OpenLootChest
   unlockPinEvent: event:/SFX/Lockpicking/UnlockPin
+--- !u!114 &4759769739255713818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870036954254436805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550b3d455c8ac3d40bc8f8b7b88f7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!1001 &670231488801689516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4803,14 +4818,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bf3840f48944d0439661acebc427ed7, type: 3}
---- !u!4 &2584982255109451260 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3067672998005891664, guid: 7bf3840f48944d0439661acebc427ed7, type: 3}
-  m_PrefabInstance: {fileID: 670231488801689516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2584982255109450654 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3067672998005892146, guid: 7bf3840f48944d0439661acebc427ed7, type: 3}
+  m_PrefabInstance: {fileID: 670231488801689516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2584982255109451260 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3067672998005891664, guid: 7bf3840f48944d0439661acebc427ed7, type: 3}
   m_PrefabInstance: {fileID: 670231488801689516}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2584982255560907223
@@ -5085,14 +5100,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5e1235b2e417983469723d36f05de88d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
---- !u!4 &2584982255034837842 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8989131291628095633, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
-  m_PrefabInstance: {fileID: 6872630344741118915}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2584982255034854562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8989131291628080993, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
+  m_PrefabInstance: {fileID: 6872630344741118915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2584982255034837842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8989131291628095633, guid: 5aad2e262c844eb44992d0ca8eb8dde1, type: 3}
   m_PrefabInstance: {fileID: 6872630344741118915}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8635503238843894228

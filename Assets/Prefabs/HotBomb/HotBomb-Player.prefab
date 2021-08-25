@@ -36,6 +36,7 @@ MonoBehaviour:
   randomTimeOffset: 4
   timeUntilNextRound: 5
   bombFX: {fileID: 0}
+  explosionEvent: 
 --- !u!114 &2509286668552874455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1930,6 +1931,7 @@ GameObject:
   - component: {fileID: 2509286668605383702}
   - component: {fileID: 2509286668605383701}
   - component: {fileID: 4591378113229190203}
+  - component: {fileID: 1039515360689997840}
   m_Layer: 0
   m_Name: HotBomb-Player
   m_TagString: Untagged
@@ -2034,6 +2036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
+  camera: {fileID: 0}
   speed: 5
   animatorSpeed: 1
   lerpSpeed: 10
@@ -2092,6 +2095,19 @@ MonoBehaviour:
   - {fileID: 2509286668605405036}
   - {fileID: 2509286668605422522}
   - {fileID: 2509286668605494194}
+--- !u!114 &1039515360689997840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509286668605421654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550b3d455c8ac3d40bc8f8b7b88f7194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!1 &2509286668605422522
 GameObject:
   m_ObjectHideFlags: 0
