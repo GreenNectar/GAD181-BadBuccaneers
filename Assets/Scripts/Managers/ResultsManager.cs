@@ -16,6 +16,11 @@ public class ResultsManager : MonoBehaviour
     [SerializeField]
     private ResultsController[] resultsControllers;
 
+#if UNITY_EDITOR
+    [SerializeField]
+    private bool isDebug = false;
+#endif
+
     int[] oldScores = new int[4];
     int[] newScores = new int[4];
 
@@ -56,10 +61,17 @@ public class ResultsManager : MonoBehaviour
 
     private void Start()
     {
-        Initialise();
-        Invoke("ResultsSequence", 2f);
-        //ResultsSequence();
-    }
+#if UNITY_EDITOR
+        if (!isDebug)
+        {
+#endif
+            Initialise();
+            Invoke("ResultsSequence", 2f);
+            //ResultsSequence();
+#if UNITY_EDITOR
+        }
+#endif
+        }
 
 #if UNITY_EDITOR
     private void Update()
