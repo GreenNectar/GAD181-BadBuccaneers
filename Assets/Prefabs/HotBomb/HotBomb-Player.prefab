@@ -1932,6 +1932,7 @@ GameObject:
   - component: {fileID: 2509286668605383701}
   - component: {fileID: 4591378113229190203}
   - component: {fileID: 1039515360689997840}
+  - component: {fileID: 1770665994527244934}
   m_Layer: 0
   m_Name: HotBomb-Player
   m_TagString: Untagged
@@ -2041,7 +2042,6 @@ MonoBehaviour:
   animatorSpeed: 1
   lerpSpeed: 10
   gravity: 9.8
-  walkEvent: event:/SFX/Footstep/Sand
   bombPosition: {fileID: 2509286669694546764}
   leftHandPosition: {fileID: 0}
   rightHandPosition: {fileID: 0}
@@ -2108,6 +2108,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
+--- !u!114 &1770665994527244934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509286668605421654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c66f709ed97bc24b880097fdb33448b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkEvent: event:/SFX/Footstep/Sand
 --- !u!1 &2509286668605422522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,13 +6666,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9efc28a4164868a45b28c1e4e208e10b, type: 3}
---- !u!1 &2509286668552750359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 158936, guid: 9efc28a4164868a45b28c1e4e208e10b, type: 3}
-  m_PrefabInstance: {fileID: 2509286668552874447}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2509286668552407227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 467316, guid: 9efc28a4164868a45b28c1e4e208e10b, type: 3}
+  m_PrefabInstance: {fileID: 2509286668552874447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2509286668552750359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 158936, guid: 9efc28a4164868a45b28c1e4e208e10b, type: 3}
   m_PrefabInstance: {fileID: 2509286668552874447}
   m_PrefabAsset: {fileID: 0}

@@ -12,10 +12,13 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
     private HeistTheBootyController bootyController;
     [SerializeField]
     private ParticleSystem coinsFX;
+    [SerializeField]
+    private Footsteps footsteps;
 
-    private Vector3 lootingPoint;//Transform lootingPoint;
     [SerializeField]
     private Transform fleeingPoint;
+    [SerializeField]
+    private Transform lootingPoint;
 
     private NavMeshAgent agent;
     private Vector3[] corners;
@@ -27,8 +30,8 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
     {
         base.Start();
         agent = GetComponent<NavMeshAgent>();
-        lootingPoint = transform.position;
         transform.position = fleeingPoint.position + Vector3.back * PlayerNumber * 0.5f;
+        footsteps.enabled = false;
         MoveBackToLoot();
     }
 
@@ -75,6 +78,7 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
     private IEnumerator MoveToFleePoint()
     {
         IsReadyToLoot = false;
+        footsteps.enabled = true;
 
         // Start moving
         animator.SetBool("Running", true);
@@ -89,7 +93,7 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
         agent.isStopped = true;
 
         // Look towards the next corner
-        while (Vector3.Distance(lootingPoint, transform.position) > 0.1f && currentCorner < corners.Length)
+        while (Vector3.Distance(lootingPoint.position, transform.position) > 0.1f && currentCorner < corners.Length)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(corners[currentCorner] - transform.position, Vector3.up), Time.deltaTime * 8f);
 
@@ -100,6 +104,8 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
 
             yield return null;
         }
+
+        footsteps.enabled = false;
 
         // Stop moving
         animator.SetBool("Running", false);
@@ -112,18 +118,20 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
 
         yield return new WaitForSeconds(0.5f);
 
+        footsteps.enabled = true;
+
         // Start moving
         animator.SetBool("Running", true);
 
         // Calculate path
         NavMeshPath path = new NavMeshPath();
-        agent.CalculatePath(lootingPoint, path);
+        agent.CalculatePath(lootingPoint.position, path);
         corners = path.corners;//agent.path.corners;
         int currentCorner = 0;
         agent.isStopped = true;
 
         // Look towards the next corner
-        while(Vector3.Distance(lootingPoint, transform.position) > 0.1f && currentCorner < corners.Length)
+        while(Vector3.Distance(lootingPoint.position, transform.position) > 0.1f && currentCorner < corners.Length)
         {
             Debug.DrawLine(transform.position, corners[currentCorner], Color.white);
 
@@ -146,6 +154,8 @@ public class HeistTheBootyPlayerController : MicroGamePlayerController
             transform.rotation = Quaternion.Lerp(transform.rotation, wantedRotation, Time.deltaTime * 10f);
             yield return null;
         }
+
+        footsteps.enabled = false;
 
         IsReadyToLoot = true;
     }

@@ -68,6 +68,9 @@ MonoBehaviour:
   bucket: {fileID: 3795627711375016750}
   maxFishStackHeight: 10
   fishAddEvent: event:/SFX/Fish/FishSlap
+  throwLineEvent: event:/SFX/Fish/ThrowLine
+  reelingEvent: event:/SFX/Fish/ReelLine
+  reelingParameter: 
   drawGizmos: 1
 --- !u!114 &6036994533472716429
 MonoBehaviour:

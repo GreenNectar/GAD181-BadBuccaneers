@@ -26,6 +26,8 @@ public class HotBombPlayerController : TopDownPlayerController
     [SerializeField, Tooltip("This is the skeleton model attached to the prefab/it is the skin")]
     private GameObject skeletonModel;
 
+    [SerializeField]
+    private Footsteps footsteps;
 
     private float tempLerpSpeed;
     public float holdingWeight;
@@ -64,13 +66,16 @@ public class HotBombPlayerController : TopDownPlayerController
         }
         skeletonModel.SetActive(true);
 
-        // Disable this player controller component
-        enabled = false;
+        // Stop playing footstep sounds
+        footsteps.enabled = false;
 
         // Play the death sound for the player
         PlayerManager.GetPlayerFMODEvent(PlayerNumber).Death(gameObject);
 
         ScoreManager.Instance.EndPlayer(PlayerNumber);
+
+        // Disable this player controller component
+        enabled = false;
     }
 
     public void SetHolding()

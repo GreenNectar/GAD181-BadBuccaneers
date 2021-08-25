@@ -10,6 +10,8 @@ public class PlayerCanyonClimber : MicroGamePlayerController
     private CharacterController controller;
     [SerializeField]
     private Timer timer;
+    [SerializeField]
+    private Footsteps footsteps;
 
     Animator animator;
 
@@ -71,6 +73,9 @@ public class PlayerCanyonClimber : MicroGamePlayerController
         // Set the animator values
         animator.SetFloat("Movement", move.magnitude);
         animator.SetBool("Grounded", controller.isGrounded);
+       
+        // Only allow footsteps if on ground
+        footsteps.enabled = controller.isGrounded;
 
         // Coyote time
         if (controller.isGrounded)

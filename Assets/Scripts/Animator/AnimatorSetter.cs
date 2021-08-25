@@ -10,7 +10,10 @@ public class AnimatorSetter : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
     private string parameterName;
+
+    [SerializeField]
     private int layerIndex;
 
     /// <summary>
@@ -37,6 +40,11 @@ public class AnimatorSetter : MonoBehaviour
     public void SetFloat(float value)
     {
         animator.SetFloat(parameterName, value);
+    }
+
+    public void SetBool(bool value)
+    {
+        animator.SetBool(parameterName, value);
     }
 
     public void SetLayerIndex(int index)

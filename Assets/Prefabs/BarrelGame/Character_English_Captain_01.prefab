@@ -4935,6 +4935,7 @@ GameObject:
   - component: {fileID: 3191245522223663366}
   - component: {fileID: -6063489301725371951}
   - component: {fileID: 3191245522223663361}
+  - component: {fileID: 330986063984374168}
   m_Layer: 0
   m_Name: Character_English_Captain_01
   m_TagString: Untagged
@@ -5027,9 +5028,9 @@ MonoBehaviour:
   animatorSpeed: 1.25
   lerpSpeed: 8
   gravity: 9.8
-  walkEvent: event:/SFX/Footstep/Sand
   wipeOutPosition: {fileID: 0}
   impactFX: {fileID: 672347178882746030, guid: a3aada2685f57764db52b064cc6ccee8, type: 3}
+  impactEvent: event:/SFX/Misc/Punch
 --- !u!114 &3191245522223663361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5059,6 +5060,20 @@ MonoBehaviour:
   - {fileID: 3191245522223598071}
   - {fileID: 3191245522223534879}
   - {fileID: 3191245522223541647}
+--- !u!114 &330986063984374168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191245522223709603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c66f709ed97bc24b880097fdb33448b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkEvent: event:/SFX/Footstep/Wood
+  maxWalk: 2
 --- !u!1 &3191245522223709695
 GameObject:
   m_ObjectHideFlags: 0
