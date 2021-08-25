@@ -98,11 +98,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 24685
+  Length: 37000
 --- !u!114 &-8951594205872066074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,11 +144,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 21916
+  Length: 34500
 --- !u!114 &-8842128042984501550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,11 +167,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 26601
+  Length: 39000
 --- !u!114 &-8780910374333644684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637655293671170913
+  lastModified: 637655359759721973
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -441,7 +441,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637655293670025155
+  lastModified: 637655359758635736
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -586,11 +586,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 18575
+  Length: 31000
 --- !u!114 &-7523170578193790878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1090,11 +1090,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 18102
+  Length: 30500
 --- !u!114 &-6394943078413937215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,11 +1504,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 25008
+  Length: 37500
 --- !u!114 &-5098676571141366583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,7 +1896,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 637655293673149950
+  lastModified: 637655359761740691
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2336,7 +2336,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Characters.bank
   Name: Characters
   StudioPath: bank:/Characters
-  lastModified: 637655293669930915
+  lastModified: 637655359758571253
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2843,7 +2843,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/VO.bank
   Name: VO
   StudioPath: bank:/VO
-  lastModified: 637655293673859235
+  lastModified: 637655359763169171
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3090,6 +3090,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-1690018290072018399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SeaShanty
+  m_EditorClassIdentifier: 
+  Name: SeaShanty
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1685736616
+    data2: 2294900714
+  Exists: 0
 --- !u!114 &-1640178153944154576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3390,7 +3410,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 7451171617056333097}
+  - {fileID: -475294888847708100}
   MinDistance: 0
   MaxDistance: 0
   Length: 4000
@@ -3492,7 +3512,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Menu.bank
   Name: Menu
   StudioPath: bank:/Menu
-  lastModified: 637655293670922916
+  lastModified: 637655359759469013
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3596,6 +3616,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &-475294888847708100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ReelLine/ReelingIn
+  m_EditorClassIdentifier: 
+  Name: ReelingIn
+  Min: -1
+  Max: 1
+  Default: -1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-367414749185311686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3780,11 +3820,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 17580
+  Length: 30000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3892,7 +3932,7 @@ MonoBehaviour:
   - {fileID: -7915175570962427464}
   StringsBanks:
   - {fileID: 2969618632254900566}
-  stringsBankWriteTime: 637655293670064836
+  stringsBankWriteTime: 637655359758670450
   cacheVersion: 6
 --- !u!114 &147504836299398273
 MonoBehaviour:
@@ -4632,11 +4672,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 18573
+  Length: 30773
 --- !u!114 &1943489664890744917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5044,7 +5084,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637655293670064836
+  lastModified: 637655359758670450
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -5174,7 +5214,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/Ambient.bank
   Name: Ambient
   StudioPath: bank:/Ambient
-  lastModified: 637655293665561160
+  lastModified: 637655359755575415
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -5783,11 +5823,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 26630
+  Length: 39000
 --- !u!114 &5602270616542580055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5906,11 +5946,11 @@ MonoBehaviour:
   - {fileID: -2198350708730441781}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 14137
+  Length: 26500
 --- !u!114 &5835293365726813857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6094,6 +6134,26 @@ MonoBehaviour:
     data1: 194308427
     data2: 4170436746
   Exists: 0
+--- !u!114 &6411042224820270560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Round
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3647290023
+    data2: 533984493
+  Exists: 0
 --- !u!114 &6522460344983051794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6113,6 +6173,26 @@ MonoBehaviour:
   ID:
     data1: 1685736616
     data2: 2294900714
+  Exists: 0
+--- !u!114 &6566059820160134548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MenuMusic
+  m_EditorClassIdentifier: 
+  Name: MenuMusic
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 194308427
+    data2: 4170436746
   Exists: 0
 --- !u!114 &6639610632925891560
 MonoBehaviour:
@@ -6359,7 +6439,7 @@ MonoBehaviour:
   ID:
     data1: 0
     data2: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &7570718358889281832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6810,7 +6890,7 @@ MonoBehaviour:
   Path: FMOD/BadBuccaneers/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 637655293673422754
+  lastModified: 637655359762157333
   LoadResult: 0
   FileSizes: []
   Exists: 1

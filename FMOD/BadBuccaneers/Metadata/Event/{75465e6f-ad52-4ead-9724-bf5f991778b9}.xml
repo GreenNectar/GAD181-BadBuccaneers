@@ -61,6 +61,7 @@
 	<object class="GroupTrack" id="{4621ee38-e73d-47f4-9591-bf36e08d512d}">
 		<relationship name="modules">
 			<destination>{85ac3a93-b43f-4822-b288-cb1362b5f49b}</destination>
+			<destination>{e1c444c5-f724-4ce0-9736-b64e616a9048}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{d47d63a3-c4e8-4826-accc-25f02440f80d}</destination>
@@ -69,6 +70,10 @@
 	<object class="Timeline" id="{9595c5af-61a1-4d21-bb1e-54ea552fe73e}">
 		<relationship name="modules">
 			<destination>{85ac3a93-b43f-4822-b288-cb1362b5f49b}</destination>
+			<destination>{e1c444c5-f724-4ce0-9736-b64e616a9048}</destination>
+		</relationship>
+		<relationship name="markers">
+			<destination>{6bb8ce8e-f988-4f54-9efc-cc9dd8207589}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{85b04dc4-abea-46a3-b45d-946a78ab358c}">
@@ -102,6 +107,17 @@
 			<destination>{57a1d416-f435-45cf-b8b7-98eb86a9d79f}</destination>
 		</relationship>
 	</object>
+	<object class="EventSound" id="{e1c444c5-f724-4ce0-9736-b64e616a9048}">
+		<property name="start">
+			<value>24.273654467168999</value>
+		</property>
+		<property name="length">
+			<value>5.1472562358276646</value>
+		</property>
+		<relationship name="event">
+			<destination>{25f34d09-6769-4667-811e-aa0935939b3f}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{d47d63a3-c4e8-4826-accc-25f02440f80d}">
 		<property name="volume">
 			<value>10</value>
@@ -117,6 +133,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{85b04dc4-abea-46a3-b45d-946a78ab358c}</destination>
+		</relationship>
+	</object>
+	<object class="LoopRegion" id="{6bb8ce8e-f988-4f54-9efc-cc9dd8207589}">
+		<property name="position">
+			<value>24.273654467168999</value>
+		</property>
+		<property name="length">
+			<value>6.4999999999999964</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{9595c5af-61a1-4d21-bb1e-54ea552fe73e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{8a7990c6-54cd-4d88-b19e-2216d81facd0}</destination>
 		</relationship>
 	</object>
 	<object class="ADSRModulator" id="{1d6ab203-bf58-4212-b637-116d828fd84b}">
