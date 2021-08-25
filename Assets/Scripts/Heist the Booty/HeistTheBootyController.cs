@@ -208,6 +208,8 @@ public class HeistTheBootyController : MonoBehaviour
 
     public void ShootPlayer()
     {
+        if (!enabled) return; // If this isn't enabled, don't shoot them
+
         players[playerToShoot].GetShot();
         hasShotPlayer = true;
     }

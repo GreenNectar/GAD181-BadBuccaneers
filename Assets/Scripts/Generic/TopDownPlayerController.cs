@@ -44,13 +44,6 @@ public class TopDownPlayerController : MicroGamePlayerController
 
     protected CollisionFlags moveFlags;
 
-    //private float currentSpeed;
-    [Header("Audio")]
-    [SerializeField, EventRef]
-    private string walkEvent;
-    private float walkDistance;
-    private float maxWalk = 0.8f;
-
     protected override void Start()
     {
         base.Start();
@@ -137,14 +130,6 @@ public class TopDownPlayerController : MicroGamePlayerController
         {
             verticalSpeed = gravity * 0.5f;
             characterController.Move(moveVector);
-        }
-
-        // Play the walk sound
-        walkDistance += moveVector.magnitude;
-        if (walkDistance > maxWalk)
-        {
-            walkDistance %= maxWalk;;
-            RuntimeManager.PlayOneShotAttached(walkEvent, gameObject);
         }
     }
 }

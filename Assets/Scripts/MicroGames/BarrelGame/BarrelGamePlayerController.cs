@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class BarrelGamePlayerController : TopDownPlayerController
 
     [SerializeField]
     private GameObject impactFX;
+
+    [SerializeField, EventRef]
+    private string impactEvent;
 
     private bool hasWipedOut = false;
 
@@ -39,6 +43,7 @@ public class BarrelGamePlayerController : TopDownPlayerController
         Instantiate(impactFX, transform.TransformPoint(GetComponent<CharacterController>().center), Quaternion.identity);
         ScoreManager.Instance.EndPlayer(PlayerNumber);
         PlayerManager.GetPlayerFMODEvent(PlayerNumber).Death(gameObject);
+        RuntimeManager.PlayOneShot(impactEvent, transform.position);
     }
 
     private IEnumerator MoveToOutside()

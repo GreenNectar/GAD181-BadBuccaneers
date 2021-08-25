@@ -4205,6 +4205,7 @@ GameObject:
   - component: {fileID: 5945895676631085609}
   - component: {fileID: 5945895676640984567}
   - component: {fileID: 5945895676515428257}
+  - component: {fileID: 9161439082791489640}
   m_Layer: 0
   m_Name: PoopDeckPlayerMirror
   m_TagString: Untagged
@@ -4291,6 +4292,20 @@ MonoBehaviour:
   - {fileID: 5945895676631397615}
   - {fileID: 5945895676631330311}
   - {fileID: 5945895676631322775}
+--- !u!114 &9161439082791489640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945895676631548091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c66f709ed97bc24b880097fdb33448b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkEvent: event:/SFX/Footstep/Wood
+  maxWalk: 2
 --- !u!1 &5945895676631548135
 GameObject:
   m_ObjectHideFlags: 0

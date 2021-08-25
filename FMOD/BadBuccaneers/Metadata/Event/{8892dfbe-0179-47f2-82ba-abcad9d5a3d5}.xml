@@ -31,6 +31,9 @@
 		<relationship name="timeline">
 			<destination>{aa13eac9-a386-4732-a0b9-e3f186a4cf98}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{4424fb49-758a-431c-9128-d9fa02ed626e}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{17de4f4b-d8a0-425d-aff7-941bb25e5162}">
 		<relationship name="masterBus">
@@ -69,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{bba14b77-f10b-4ef9-91f0-129f4a1d8fdd}">
+		<property name="volume">
+			<value>-10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{8e08eb3a-28dd-4e0c-96ce-18a8b6e069a0}</destination>
 		</relationship>
@@ -144,7 +150,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{d799a3b2-dd20-4471-ab3d-829d82d45f8c}" />
 	<object class="MixerBusFader" id="{639d6676-d049-4276-b2c3-367c1f9e06a6}" />
-	<object class="SpatialiserEffect" id="{0d20163a-5e61-4013-9d3c-807d1d0ec649}" />
+	<object class="SpatialiserEffect" id="{0d20163a-5e61-4013-9d3c-807d1d0ec649}">
+		<property name="maximumDistance">
+			<value>10000</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{85cdd33c-cbd4-457a-8ca5-fafb1680cd89}">
 		<property name="position">
 			<value>1</value>

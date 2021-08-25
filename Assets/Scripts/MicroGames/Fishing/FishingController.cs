@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using Rewired;
 using System.Collections;
@@ -35,6 +36,11 @@ public class FishingController : MicroGamePlayerController
     [Header("Audio")]
     [SerializeField, EventRef]
     private string fishAddEvent;
+    [SerializeField, EventRef]
+    private string throwLineEvent;
+    [SerializeField, EventRef]
+    private string reelingEvent;
+    private EventInstance reelingInstance;
 
     private float movement;
 
@@ -45,6 +51,19 @@ public class FishingController : MicroGamePlayerController
         base.Start();
         // Add this controller to the manager
         FindObjectOfType<FishingManager>().Add(this);
+
+        // Throw line sound
+        RuntimeManager.PlayOneShot(throwLineEvent, transform.position);
+
+        // Create reeling instance
+        reelingInstance = RuntimeManager.CreateInstance(reelingEvent);
+        reelingInstance.start();
+    }
+
+    private void OnDestroy()
+    {
+        reelingInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        reelingInstance.release();
     }
 
     // Update is called once per frame
@@ -67,6 +86,8 @@ public class FishingController : MicroGamePlayerController
     private void GetInput()
     {
         movement = player.GetAxis("LeftMoveY");
+
+        reelingInstance.setParameterByName("ReelingIn", Mathf.Clamp(movement * 10f, -1f, 1f));
     }
 
     /// <summary>
@@ -148,6 +169,9 @@ public class FishingController : MicroGamePlayerController
         {
             hook.SetActive(true);
             animator.SetTrigger("Cast");
+
+            // Throw line sound
+            RuntimeManager.PlayOneShot(throwLineEvent, transform.position);
         }
     }
 }

@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 2751544776969712797}
   - component: {fileID: 3576248182298042808}
   - component: {fileID: 8929242052521554218}
+  - component: {fileID: 4343101156195292456}
   m_Layer: 0
   m_Name: Player-CanyonClimber
   m_TagString: Untagged
@@ -516,10 +517,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   controller: {fileID: 3576248182298042808}
+  timer: {fileID: 0}
+  footsteps: {fileID: 4343101156195292456}
   moveSpeed: 7
   jumpVelocity: 15
   gravMultiplier: 2
   rotationSpeed: 30
+  coyoteTime: 0.25
+--- !u!114 &4343101156195292456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107045821850324805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c66f709ed97bc24b880097fdb33448b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkEvent: event:/SFX/Footstep/Wood
+  maxWalk: 2
 --- !u!1 &1107045821850325221
 GameObject:
   m_ObjectHideFlags: 0
