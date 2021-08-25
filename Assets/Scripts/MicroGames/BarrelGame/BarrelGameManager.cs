@@ -40,8 +40,14 @@ public class BarrelGameManager : MonoBehaviour
     private IEnumerator GameSequence()
     {
         int currentRound = 0;
+        BarrelGamePlayerController[] players = FindObjectsOfType<BarrelGamePlayerController>();
         while(currentRound < rounds.Length)
         {
+            if (players.Where(p => p.hasWipedOut).Count() == PlayerManager.PlayerCountScaled)
+            {
+                break;
+            }
+
             // Get the round
             BarrelRound round = rounds[currentRound];
             // Get a random row

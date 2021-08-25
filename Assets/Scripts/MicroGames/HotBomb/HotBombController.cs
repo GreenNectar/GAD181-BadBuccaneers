@@ -163,13 +163,9 @@ public class HotBombController : MonoBehaviour
         isHarshVibration = false;
         allowVibration = false;
 
-        // Stop normal vibrations
-        Vibrator.Instance.Vibrate(currentPlayer.PlayerNumber, 0, 0f);
-        Vibrator.Instance.Vibrate(currentPlayer.PlayerNumber, 0, 0f);
-
         // Feel the explosion!
-        Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 0, 0.5f);
-        Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 1, 0.5f);
+        Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 0, 1f);
+        Vibrator.Instance.ImpactVbration(currentPlayer.PlayerNumber, 1, 1f);
 
         // Hear the explosion!
         RuntimeManager.PlayOneShot(explosionEvent, transform.position);
