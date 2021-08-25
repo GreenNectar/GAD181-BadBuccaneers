@@ -5347,10 +5347,10 @@ MonoBehaviour:
   playerNumber: 0
   inebriation: 0
   currentInebriation: 0
-  drinkPotency: 25
-  soberingSpeed: 7.5
-  drunkUpdateDelay: 0.5
-  inebriationLerpSpeed: 15
+  drinkPotency: 35
+  soberingSpeed: 13
+  drunkUpdateDelay: 0.65
+  inebriationLerpSpeed: 20
   inebriationSmoothing: 1.2
   drinkEvent: event:/SFX/DumbwithRum/Drink
   bodyFallEvent: event:/SFX/Misc/BodyFall
