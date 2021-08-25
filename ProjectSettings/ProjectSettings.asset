@@ -44,6 +44,8 @@ PlayerSettings:
     duration: 2
   - logo: {fileID: 21300000, guid: f9f49faee9a33d7469205add60a9f8eb, type: 3}
     duration: 2
+  - logo: {fileID: 21300000, guid: 44ad52304d8b89945ac84a7515caf106, type: 3}
+    duration: 3
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -131,7 +133,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 0
-  bundleVersion: 0.0.69
+  bundleVersion: 0.0.74
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -150,7 +152,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.GAD181
+    Standalone: com.PirateYacht.BadBuccaneers
   buildNumber:
     Standalone: 0
     iPhone: 0
