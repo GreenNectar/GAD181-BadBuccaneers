@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class WaterLevel : MonoBehaviour
 { 
-
     void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log("Collison");
-
         if (other.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
+            other.GetComponent<PlayerCanyonClimber>().Drown();
         }
-
     }
-
 }
