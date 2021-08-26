@@ -79,6 +79,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            ScoreManager.Instance.ResetEverything();
             SceneManager.LoadScene(homeScreen);
         }
     }

@@ -45,7 +45,7 @@ public class HeistTheBootyController : MonoBehaviour
         {
             for (int i = 0; i < PlayerManager.PlayerCountScaled; i++)
             {
-                if (chicken[i])
+                if (chicken[i] == false)
                 {
                     return false;
                 }

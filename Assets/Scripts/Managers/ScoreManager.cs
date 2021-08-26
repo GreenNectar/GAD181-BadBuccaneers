@@ -139,6 +139,21 @@ public class ScoreManager : Singleton<ScoreManager>, IMicroGameLoad
         isGivingPoints = false;
     }
 
+    public void ResetEverything()
+    {
+        ResetScores();
+        oldScores = new Score[]{
+            new Score { player = 0, position = 0 },
+            new Score { player = 1, position = 1 },
+            new Score { player = 2, position = 2 },
+            new Score { player = 3, position = 3 }};
+        scores = new Score[]{
+            new Score { player = 0, position = 0 },
+            new Score { player = 1, position = 1 },
+            new Score { player = 2, position = 2 },
+            new Score { player = 3, position = 3 }};
+    }
+
     public void OnMicroGameLoad()
     {
         ResetScores();
