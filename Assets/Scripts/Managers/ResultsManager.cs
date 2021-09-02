@@ -105,7 +105,7 @@ public class ResultsManager : MonoBehaviour
     {
         foreach (var result in FindObjectsOfType<ResultsController>())
         {
-            result.UpdateScoreText(OldScores[result.playerNumber].score);
+            result.UpdateScoreText(OldScores.First(s => s.player == result.playerNumber).score);
         }
 
         SortScores();
