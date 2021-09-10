@@ -133,6 +133,9 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void GenerateRandomLevels()
     {
+        // Reset all score stuff
+        ScoreManager.Instance.ResetEverything();
+
         // Clear the current levels stacked
         levelsToPlay.Clear();
 
