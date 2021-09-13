@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000018006EDDFC8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000029335F6D9B8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -16,3 +16,39 @@
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] SoundI::release                          : Waves Crashing on rocks (00000293EF223768)
+[LOG] SoundI::release                          :     Waves Crashing on rocks (000002934301D538)
+[LOG] SoundI::release                          :     Waves Crashing on rocks (00000293EF224848)
+[LOG] SoundI::release                          : Ambiance Ocean waves (00000293EF223918)
+[LOG] SoundI::release                          :     Ambiance Ocean waves (000002934301D1F8)
+[LOG] SoundI::release                          :     Ambiance Ocean waves (00000293EF223AC8)
+[LOG] SoundI::release                          :  (000002934433CCD8)
+[LOG] SoundI::release                          :     Bird tweet 1 (000002934301C698)
+[LOG] SoundI::release                          :  (000002934433BE78)
+[LOG] SoundI::release                          :     Bird tweet 10 (000002934301C838)
+[LOG] SoundI::release                          :  (000002934433CFB8)
+[LOG] SoundI::release                          :     Bird tweet 2 (000002934301D058)
+[LOG] SoundI::release                          :  (000002934433F688)
+[LOG] SoundI::release                          :     Bird tweet 3 (000002934301C358)
+[LOG] SoundI::release                          :  (000002934433E998)
+[LOG] SoundI::release                          :     Bird tweet 4 (000002934301C4F8)
+[LOG] SoundI::release                          :  (000002934433BB98)
+[LOG] SoundI::release                          :     Bird tweet 5 (0000029343017F18)
+[LOG] SoundI::release                          :  (000002934433AD38)
+[LOG] SoundI::release                          :     Bird tweet 6 (000002934301CB78)
+[LOG] SoundI::release                          :  (000002934433C888)
+[LOG] SoundI::release                          :     Bird tweet 7 (000002934301A958)
+[LOG] SoundI::release                          :  (000002934433CE48)
+[LOG] SoundI::release                          :     Bird tweet 8 (000002934301C9D8)
+[LOG] SoundI::release                          :  (000002934433C718)
+[LOG] SoundI::release                          :     Bird tweet 9 (000002934301CEB8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
